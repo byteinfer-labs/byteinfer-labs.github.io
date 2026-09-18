@@ -457,3 +457,5 @@ svg .e-del{stroke:var(--del);stroke-width:1.4;stroke-dasharray:5 3;fill:none}
 .topnav-brand{font-size:1.05rem}
 .topnav-flame{width:26px}
 .pub-series{font-size:13.5px;font-weight:600;color:var(--ink);margin:12px 0 2px}
+.card-art{width:100%;height:auto;display:block;margin:-6px 0 14px;border-radius:14px;background:var(--bg);border:1px solid var(--hair)}
+:root[data-theme="dark"] .card-art{background:var(--nd-dead-fill)}
