@@ -3,8 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ByteInfer Labs — Fast ML Inference, Built from First Principles</title>
-    <meta name="description" content="ByteInfer Labs — the infrastructure for fast ML inference, built from first principles. Home of Rune, the graph surgery DSL, and the Blaze kernel compiler.">
+    <title>ByteInfer Labs — Researching Edge AI, from first principles</title>
+    <meta name="description" content="ByteInfer Labs researches edge AI from first principles: Rune, a graph surgery DSL for exported models; research into how ML accelerators actually work; Blaze, a kernel compiler.">
+    <script>try{if((localStorage.getItem('byteinfer-theme')||'light')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle light / dark">
+        <svg class="ic-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+        <span class="tlbl">Dark</span>
+    </button>
+
+    <div class="noise-overlay"></div>
+    <canvas id="graph-canvas"></canvas>
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Nav bar -->
+    <nav class="topnav">
+        <a href="index.html" class="topnav-brand">
+            <img src="flame-transparent.png" alt="" class="topnav-flame">
+            ByteInfer Labs
+        </a>
+        <div class="topnav-links">
+            <a href="rune/">Rune</a>
+            <a href="#research">Research</a>
+            <a href="https://maderix.github.io/articles/">Blog</a>
+            <a href="mailto:hello@byteinfer.ai">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="flame-transparent.png" alt="" class="flame">
+            </div>
+            <h1 class="brand-name">ByteInfer Labs</h1>
+            <h2 class="tagline">Researching Edge AI, from first principles<span class="cursor">_</span></h2>
+            <p class="subtitle">We build tools that rewrite models for real hardware, and study how accelerators actually work.</p>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="product-section">
+        <div class="product-grid">
+            <!-- Rune -->
+            <div class="product-card">
+                <div class="product-card-inner">
+                    <div class="product-header">
+                        <img src="flame-transparent.png" alt="" class="product-flame">
+                        <div>
+                            <div class="product-eyebrow">Graph surgery DSL</div>
+                            <h3 class="product-name">Rune</h3>
+                        </div>
+                    </div>
+                    <p class="product-desc">Rewrites ONNX, TFLite and torch.export graphs with rules you can read. Write the pattern and the change; Rune checks it, applies it and reports what changed.</p>
+                    <ul class="product-points">
+                        <li>Rules, not scripts — a few lines each</li>
+                        <li>A gate refuses anything that would corrupt the graph</li>
+                        <li>Proven, or refused: every rewrite is checked</li>
+                        <li>A report per run: before, after, what changed</li>
+                    </ul>
+                    <a href="rune/" class="cta-btn">Explore Rune <span class="arrow">→</span></a>
+                </div>
+            </div>
+
+            <!-- Research -->
+            <div class="product-card" id="research">
+                <div class="product-card-inner">
+                    <div class="product-header">
+                        <img src="flame-transparent.png" alt="" class="product-flame">
+                        <div>
+                            <div class="product-eyebrow">Accelerator research</div>
+                            <h3 class="product-name">Systems Research</h3>
+                        </div>
+                    </div>
+                    <p class="product-desc">We measure what ML accelerators actually do beneath the vendor's frameworks, drive them directly, and make inference hardware train.</p>
+                    <ul class="product-points">
+                        <li>Measured behaviour, not published peak numbers</li>
+                        <li>Driving the hardware below the public frameworks</li>
+                        <li>Compilers for private instruction formats</li>
+                        <li>Teaching inference hardware to train</li>
+                    </ul>
+                    <div class="pub-intro">Published work</div>
+                    <div class="pub-series">Inside the M4 Neural Engine — a five-part series</div>
+                    <ul class="pub-list">
+                        <li><span class="pub-part">Part 1</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-1/">Reverse Engineering</a></li>
+                        <li><span class="pub-part">Part 2</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-2/">Benchmarks</a></li>
+                        <li><span class="pub-part">Part 3</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-3/">Training</a></li>
+                        <li><span class="pub-part">Part 4</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-4/">The Complete Machine</a></li>
+                        <li><span class="pub-part">Part 4b</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-4b/">Inside the Compiler</a></li>
+                    </ul>
+                    <a href="https://maderix.github.io/articles/" class="cta-btn cta-ghost">All articles <span class="arrow">→</span></a>
+                </div>
+            </div>
+
+            <!-- Blaze -->
+            <div class="product-card">
+                <div class="product-card-inner">
+                    <div class="product-header">
+                        <img src="flame-transparent.png" alt="" class="product-flame">
+                        <div>
+                            <div class="product-eyebrow">Kernel compiler</div>
+                            <h3 class="product-name">Blaze</h3>
+                        </div>
+                    </div>
+                    <p class="product-desc">Write plain scalar loops, get hardware-tuned kernels. The schedule is the only thing that changes.</p>
+                    <ul class="product-points">
+                        <li>One kernel source, every backend</li>
+                        <li>Tuned by schedule, not rewritten by hand</li>
+                        <li>Near hardware-peak matmul, attention and matvec</li>
+                        <li>In progress</li>
+                    </ul>
+                    <span class="cta-soon">Coming soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="philosophy">
+        <p>Understand the machine first. Then build.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-status">Blaze — Coming Soon</div>
+            <div class="footer-links">
+                <a href="rune/">Rune</a>
+                <span class="footer-dot">·</span>
+                <a href="#research">Research</a>
+                <span class="footer-dot">·</span>
+                <a href="https://maderix.github.io/articles/">Blog</a>
+                <span class="footer-dot">·</span>
+                <a href="mailto:hello@byteinfer.ai">Contact</a>
+            </div>
+            <div class="footer-copy">© 2026 ByteInfer Labs. All rights reserved.</div>
+        </div>
+    </footer>
+
     <script>try{if((localStorage.getItem('byteinfer-theme')||'light')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
