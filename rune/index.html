@@ -4837,4 +4837,23 @@ new MutationObserver(function(){paint();}).observe(document.documentElement,{att
 });
 })();
 </script>
+
+<!-- LAUNCH GATE: remove this block on launch day. Dims install commands and GitHub links until the repo is public. -->
+<style>
+.install.soon{position:relative;opacity:.55}
+.install.soon .itabs button,.install.soon .copy{pointer-events:none}
+.install.soon::after{content:"Available on launch day";position:absolute;top:-11px;right:12px;font:600 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--bg);padding:3px 8px;border:1px solid var(--accent);border-radius:999px}
+.soon-link{opacity:.55;cursor:default;text-decoration:none}
+.soon-link::after{content:" · soon";font-family:var(--mono);font-size:.8em;color:var(--ink-3)}
+</style>
+<script>
+(function(){
+  var inst=document.getElementById('install'); if(inst) inst.classList.add('soon');
+  document.querySelectorAll('a[href^="https://github.com/ByteInfer-Labs/rune"]').forEach(function(a){
+    var sp=document.createElement('span'); sp.className=(a.className?a.className+' ':'')+'soon-link';
+    sp.title='Public on launch day'; sp.innerHTML=a.innerHTML.replace(/\s*(&rarr;|→)\s*$/,'');
+    a.replaceWith(sp);
+  });
+})();
+</script>
 </body></html>
