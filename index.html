@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByteInfer Labs — Fast ML Inference, Built from First Principles</title>
-    <meta name="description" content="ByteInfer Labs — the infrastructure for fast ML inference, built from first principles. Home of the Blaze kernel compiler and the Rune graph-rewrite DSL.">
+    <meta name="description" content="ByteInfer Labs — the infrastructure for fast ML inference, built from first principles. Home of Rune, the graph surgery DSL, and the Blaze kernel compiler.">
     <script>try{if((localStorage.getItem('byteinfer-theme')||'light')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,27 +37,6 @@
     <!-- Products -->
     <section class="product-section">
         <div class="product-grid">
-            <!-- Blaze -->
-            <div class="product-card">
-                <div class="product-card-inner">
-                    <div class="product-header">
-                        <img src="flame-transparent.png" alt="" class="product-flame">
-                        <div>
-                            <div class="product-eyebrow">Kernel compiler</div>
-                            <h3 class="product-name">Blaze <span class="product-badge">SDK</span></h3>
-                        </div>
-                    </div>
-                    <p class="product-desc">Write plain scalar loops. Get hardware-optimized kernels for x86, ARM, CUDA, and Metal — the schedule is the only thing that changes.</p>
-                    <ul class="product-points">
-                        <li>Near hardware-peak matmul, attention, and matvec</li>
-                        <li>One kernel source, every backend</li>
-                        <li>Tuned by schedule, not rewritten by hand</li>
-                        <li>Schedule wins measured in orders of magnitude</li>
-                    </ul>
-                    <span class="cta-btn" style="opacity:.55;cursor:default;pointer-events:none" title="Coming soon">Blaze · coming soon</span>
-                </div>
-            </div>
-
             <!-- Rune -->
             <div class="product-card">
                 <div class="product-card-inner">
@@ -78,6 +57,27 @@
                     <a href="rune/" class="cta-btn">Explore Rune <span class="arrow">→</span></a>
                 </div>
             </div>
+            <!-- Blaze -->
+            <div class="product-card">
+                <div class="product-card-inner">
+                    <div class="product-header">
+                        <img src="flame-transparent.png" alt="" class="product-flame">
+                        <div>
+                            <div class="product-eyebrow">Kernel compiler</div>
+                            <h3 class="product-name">Blaze</h3>
+                        </div>
+                    </div>
+                    <p class="product-desc">Write plain scalar loops. Get hardware-optimized kernels for x86, ARM, CUDA, and Metal — the schedule is the only thing that changes.</p>
+                    <ul class="product-points">
+                        <li>Near hardware-peak matmul, attention, and matvec</li>
+                        <li>One kernel source, every backend</li>
+                        <li>Tuned by schedule, not rewritten by hand</li>
+                        <li>Schedule wins measured in orders of magnitude</li>
+                    </ul>
+                    <span class="cta-btn" style="opacity:.55;cursor:default;pointer-events:none" title="Coming soon">Blaze · coming soon</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -89,11 +89,11 @@
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-inner">
-            <div class="footer-status">Blaze SDK Alpha — Coming Soon</div>
+            <div class="footer-status">Blaze — Coming Soon</div>
             <div class="footer-links">
-                <a href="blaze.html">Blaze</a>
-                <span class="footer-dot">·</span>
                 <a href="rune/">Rune</a>
+                <span class="footer-dot">·</span>
+                <a href="blaze.html">Blaze</a>
                 <span class="footer-dot">·</span>
                 <a href="mailto:hello@byteinfer.ai">Contact</a>
             </div>
