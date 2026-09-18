@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJSdW5lIj4KICA8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNCIgZmlsbD0iI0MyNTUxQSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwIDgpIHNjYWxlKDAuNDQpIiBmaWxsPSIjRkZGRkZGIj4KICAgIDxwYXRoIGQ9Ik01NCA2SDkwTDExNiAzMkw5NiA1OEwxMTggOTZIOTNMNzIgNThMNDggMzRWMTRaIi8+CiAgPC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwIDgpIHNjYWxlKDAuNDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iOSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTAgMjZMMzYgNTBMMTAgNzQiLz48cGF0aCBkPSJNMzYgNTBINjAiLz48L2c+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAgOCkgc2NhbGUoMC40NCkiIGZpbGw9IiNGRkZGRkYiPjxjaXJjbGUgY3g9IjEwIiBjeT0iMjYiIHI9IjExIi8+PGNpcmNsZSBjeD0iMTAiIGN5PSI3NCIgcj0iMTEiLz48Y2lyY2xlIGN4PSIzNiIgY3k9IjUwIiByPSIxMSIvPjwvZz4KPC9zdmc+Cg==">
 <title>Rune: Faster models with transparent rewrites</title>
 <style>:root{--bg:#FFFFFF;--card:#F5F5F7;--codebg:#1D1D1F;--ink:#1D1D1F;--ink-2:#515154;--ink-3:#86868B;
   --accent:#B4531A;--accent-2:#8E3E11;--del:#C0392B;--hair:rgba(0,0,0,.09);--hair-2:rgba(0,0,0,.18);--inline-code:rgba(0,0,0,.06);
@@ -74,7 +75,8 @@
   .wrap{max-width:1440px;margin:0 auto;padding:0 40px}
   .top{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--hair)}
   .top .wrap{display:flex;align-items:center;gap:26px;height:56px}
-  .top .logo{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:1rem;margin-right:auto}
+  .top .logo{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:1rem;margin-right:auto;display:inline-flex;align-items:center;gap:8px}
+  .rmark{height:1.15em;width:auto;color:var(--accent)}
   .top a.nl{font-family:var(--mono);font-size:.78rem;color:var(--ink-2)}
   .top a.nl:hover{color:var(--ink)}
   .top .home{font-family:var(--mono);font-size:.78rem;color:var(--ink-3)}
@@ -89,16 +91,18 @@
   .rail .rhead{position:absolute;top:0;left:0;right:0;height:56px;display:flex;flex-direction:column;justify-content:center;padding-left:28px;gap:2px}
   .rail .rhead a{text-transform:none;letter-spacing:0}
   .rail .rhead a::before{display:none}
-  .rail .rhead .rlogo{font-weight:700;color:var(--ink);font-size:1rem}
+  .rail .rhead .rlogo{font-weight:700;color:var(--ink);font-size:1rem;display:inline-flex;align-items:center;gap:8px}
   body.railed{padding-left:168px}
   body.railed .top .logo,body.railed .top .home{display:none}
+  body.railed .top .wrap{justify-content:flex-end}
   @media (max-width:1400px){
     .rail{width:44px;padding-left:18px;border-right:0;background:transparent}
     .rail .rhead{display:none}
     .rail a span{opacity:0;transform:translateX(-4px);transition:opacity .2s,transform .2s;background:var(--card);padding:4px 8px;border-radius:6px}
     .rail:hover a span,.rail a.on span{opacity:1;transform:none}
     body.railed{padding-left:44px}
-    body.railed .top .logo,body.railed .top .home{display:inline}
+    body.railed .top .logo,body.railed .top .home{display:inline-flex}
+    body.railed .top .wrap{justify-content:flex-start}
   }
   @media (max-width:1000px){.rail{display:none}body.railed{padding-left:0}}
   #theme-toggle{position:static;border:0;background:transparent;box-shadow:none;padding:6px;color:var(--ink-2);cursor:pointer}
@@ -106,7 +110,8 @@
   /* hero */
   #hero{padding:64px 0 24px;display:flex;align-items:center;overflow:hidden}
   #hero .wrap{display:grid;grid-template-columns:.7fr 1.3fr;gap:48px;align-items:center;width:100%}
-  .h1{font-size:clamp(56px,6.5vw,96px);line-height:.95;margin:0;letter-spacing:-.04em;color:var(--accent);font-weight:800}
+  .h1{font-size:clamp(56px,6.5vw,96px);line-height:.95;margin:0;letter-spacing:-.04em;color:var(--accent);font-weight:800;display:flex;align-items:center;gap:.18em}
+  .hmark{height:.9em;width:auto;color:var(--accent);flex:none}
   .tag{font-size:clamp(22px,2.2vw,32px);font-weight:600;line-height:1.15;margin:18px 0 12px;letter-spacing:-.02em}
   .sub{font-size:1.12rem;color:var(--ink-2);max-width:46ch;margin:0}
   .ctas{display:flex;gap:22px;align-items:center;margin:34px 0 0}
@@ -384,7 +389,7 @@
 
 <nav class="top"><div class="wrap">
   <a class="home" href="../">&larr; ByteInfer Labs</a>
-  <a class="logo" href="#hero">Rune</a>
+  <a class="logo" href="#hero"><svg class="rmark" viewBox="0 0 120 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 26L34 50L12 74"/><path d="M34 50H62"/></g><g fill="currentColor"><circle cx="12" cy="26" r="8.5"/><circle cx="12" cy="74" r="8.5"/><circle cx="34" cy="50" r="8.5"/><path d="M54 6H90L116 32L96 58L118 96H93L72 58L48 34V14Z"/></g></svg>Rune</a>
   <span class="nl" style="opacity:.55;cursor:default" title="Coming on launch day">Whitepaper · coming soon</span>
   <a class="nl" href="https://github.com/ByteInfer-Labs/rune">GitHub</a>
   <button id="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle light / dark">
@@ -394,7 +399,7 @@
 </button>
 </div></nav>
 <nav class="rail" aria-label="Sections">
-  <div class="rhead"><a class="home" href="../">&larr; ByteInfer Labs</a><a class="rlogo" href="#hero">Rune</a></div>
+  <div class="rhead"><a class="home" href="../">&larr; ByteInfer Labs</a><a class="rlogo" href="#hero"><svg class="rmark" viewBox="0 0 120 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 26L34 50L12 74"/><path d="M34 50H62"/></g><g fill="currentColor"><circle cx="12" cy="26" r="8.5"/><circle cx="12" cy="74" r="8.5"/><circle cx="34" cy="50" r="8.5"/><path d="M54 6H90L116 32L96 58L118 96H93L72 58L48 34V14Z"/></g></svg>Rune</a></div>
   <a href="#problem"><span>Why</span></a>
   <a href="#what"><span>How it works</span></a>
   <a href="#examples"><span>Examples</span></a>
@@ -438,7 +443,7 @@
 
 <section id="hero"><div class="wrap">
   <div class="vl">
-    <h1 class="h1">Rune</h1>
+    <h1 class="h1"><svg class="hmark" viewBox="0 0 120 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 26L34 50L12 74"/><path d="M34 50H62"/></g><g fill="currentColor"><circle cx="12" cy="26" r="8.5"/><circle cx="12" cy="74" r="8.5"/><circle cx="34" cy="50" r="8.5"/><path d="M54 6H90L116 32L96 58L118 96H93L72 58L48 34V14Z"/></g></svg>Rune</h1>
     <p class="tag">Faster models with transparent rewrites</p>
     <p class="sub">Rune is a graph surgery DSL that works on ONNX, TFLite and torch.export graphs and safely rewrites them with easily auditable rules. It refuses rules that produce incorrect graphs. Every time.</p>
     <div class="ctas"><a class="btn" href="#play">See a rule work</a><a class="lnk" href="https://github.com/ByteInfer-Labs/rune">GitHub &rarr;</a></div>

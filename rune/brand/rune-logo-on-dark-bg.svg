@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-label="Rune — cleaner graphs, faster models">
+  <rect width="520" height="140" fill="#0F0F10"/>
+  <g transform="translate(16 20)">
+  <g fill="none" stroke="#C2551A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 26L34 50L12 74"/>
+    <path d="M34 50H62"/>
+  </g>
+  <g fill="#C2551A">
+    <circle cx="12" cy="26" r="8.5"/>
+    <circle cx="12" cy="74" r="8.5"/>
+    <circle cx="34" cy="50" r="8.5"/>
+    <path d="M54 6H90L116 32L96 58L118 96H93L72 58L48 34V14Z"/>
+  </g>
+  </g>
+  <text x="156" y="92" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="800" font-size="84" letter-spacing="-3" fill="#FFFFFF">Rune</text>
+  <text x="158" y="122" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace" font-weight="500" font-size="12" letter-spacing="3" fill="#9AA0A6">CLEANER GRAPHS. FASTER MODELS.</text>
+</svg>
