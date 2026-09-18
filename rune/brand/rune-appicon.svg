@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Rune">
-  <rect width="256" height="256" rx="56" fill="#C2551A"/>
-  <g transform="translate(43.5 56.3) scale(1.4080)">
-  <g fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 26L34 50L12 74"/>
-    <path d="M34 50H62"/>
-  </g>
-  <g fill="#FFFFFF">
-    <circle cx="12" cy="26" r="8.5"/>
-    <circle cx="12" cy="74" r="8.5"/>
-    <circle cx="34" cy="50" r="8.5"/>
-    <path d="M54 6H90L116 32L96 58L118 96H93L72 58L48 34V14Z"/>
-  </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Rune"><rect width="256" height="256" rx="56" fill="#C2551A"/><g transform="translate(46.1 48.6) scale(1.3653)"><g fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 44L57 59L17 74"/></g><g fill="#FFFFFF"><circle cx="17" cy="44" r="10.5"/><circle cx="17" cy="74" r="10.5"/><circle cx="57" cy="59" r="8"/></g><path fill="#FFFFFF" d="M34 10H82L108 35V58L84 78L108 107H74L51 82L83 48L71 35H50Z"/></g></svg>

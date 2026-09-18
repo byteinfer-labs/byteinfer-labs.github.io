@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-label="Rune — cleaner graphs, faster models">
-  <g transform="translate(16 20)">
-  <g fill="none" stroke="#C2551A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 26L34 50L12 74"/>
-    <path d="M34 50H62"/>
-  </g>
-  <g fill="#C2551A">
-    <circle cx="12" cy="26" r="8.5"/>
-    <circle cx="12" cy="74" r="8.5"/>
-    <circle cx="34" cy="50" r="8.5"/>
-    <path d="M54 6H90L116 32L96 58L118 96H93L72 58L48 34V14Z"/>
-  </g>
-  </g>
-  <text x="156" y="92" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="800" font-size="84" letter-spacing="-3" fill="#FFFFFF">Rune</text>
-  <text x="158" y="122" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace" font-weight="500" font-size="12" letter-spacing="3" fill="#9AA0A6">CLEANER GRAPHS. FASTER MODELS.</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-label="Rune — cleaner graphs, faster models"><g transform="translate(14 14) scale(1.05)"><g fill="none" stroke="#C2551A" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 44L57 59L17 74"/></g><g fill="#C2551A"><circle cx="17" cy="44" r="10.5"/><circle cx="17" cy="74" r="10.5"/><circle cx="57" cy="59" r="8"/></g><path fill="#C2551A" d="M34 10H82L108 35V58L84 78L108 107H74L51 82L83 48L71 35H50Z"/><path fill="#A8471A" d="M51 82L84 78L108 107H74Z"/><path fill="#fff" fill-opacity=".16" d="M51 82L84 78L86 81L54 85Z"/></g><text x="160" y="96" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="800" font-size="84" letter-spacing="-3" fill="#FFFFFF">Rune</text><text x="162" y="128" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace" font-weight="500" font-size="12" letter-spacing="3" fill="#9AA0A6">CLEANER GRAPHS. FASTER MODELS.</text></svg>
