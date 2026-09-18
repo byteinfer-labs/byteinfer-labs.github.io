@@ -24,7 +24,7 @@ function initThemeToggle() {
         readNet();
     }
     let saved = 'light';
-    try { saved = localStorage.getItem('byteinfer-theme') || 'light'; } catch (e) {}
+    try { saved = localStorage.getItem('byteinfer-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
     apply(saved);
     btn.addEventListener('click', () => apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 }

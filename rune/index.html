@@ -383,10 +383,10 @@
   function apply(t){
     if(t==='dark'){root.setAttribute('data-theme','dark');lbl.textContent='Light';}
     else{root.removeAttribute('data-theme');lbl.textContent='Dark';}
-    try{localStorage.setItem('rune-wp-theme',t);}catch(e){}
+    try{localStorage.setItem('byteinfer-theme',t);}catch(e){}
     if(window.__syncNet) requestAnimationFrame(window.__syncNet);
   }
-  var saved='light'; try{saved=localStorage.getItem('rune-wp-theme')||'light';}catch(e){}
+  var saved='light'; try{saved=localStorage.getItem('byteinfer-theme')||'light';}catch(e){}
   apply(saved);
   btn.addEventListener('click',function(){
     apply(root.getAttribute('data-theme')==='dark'?'light':'dark');

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByteInfer Labs — Researching Edge AI, from first principles</title>
     <meta name="description" content="ByteInfer Labs researches edge AI from first principles: Rune, a graph surgery DSL for exported models; research into how ML accelerators actually work; Blaze, a kernel compiler.">
-    <script>try{if((localStorage.getItem('byteinfer-theme')||'light')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+    <script>try{var t=localStorage.getItem('byteinfer-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,6 @@
         <div class="topnav-links">
             <a href="rune/">Rune</a>
             <a href="#research">Research</a>
-            <a href="https://maderix.github.io/articles/">Blog</a>
             <a href="mailto:hello@byteinfer.ai">Contact</a>
         </div>
     </nav>
@@ -119,15 +118,8 @@
                         <li>Teaching inference hardware to train</li>
                     </ul>
                     <div class="pub-intro">Published work</div>
-                    <div class="pub-series">Inside the M4 Neural Engine — a five-part series</div>
-                    <ul class="pub-list">
-                        <li><span class="pub-part">Part 1</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-1/">Reverse Engineering</a></li>
-                        <li><span class="pub-part">Part 2</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-2/">Benchmarks</a></li>
-                        <li><span class="pub-part">Part 3</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-3/">Training</a></li>
-                        <li><span class="pub-part">Part 4</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-4/">The Complete Machine</a></li>
-                        <li><span class="pub-part">Part 4b</span><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-4b/">Inside the Compiler</a></li>
-                    </ul>
-                    <a href="https://maderix.github.io/articles/" class="cta-btn cta-ghost">All articles <span class="arrow">→</span></a>
+                    <div class="pub-series" style="color:var(--ink-3);font-weight:500">Publications open on launch day.</div>
+                    <span class="cta-soon">Publications coming soon</span>
                 </div>
             </div>
 
@@ -136,22 +128,22 @@
                 <div class="product-card-inner">
                     <svg class="card-art" viewBox="0 0 300 110" role="img" aria-hidden="true">
                     <defs><marker id="ah-blaze" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--edge)"/></marker></defs>
-<rect x="18" y="16" width="112" height="78" rx="8" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/>
-<text x="30" y="36" font-family="var(--mono)" font-size="9.5" fill="var(--svg-txt)">for i:</text>
-<text x="38" y="52" font-family="var(--mono)" font-size="9.5" fill="var(--svg-txt)">for j:</text>
-<text x="46" y="68" font-family="var(--mono)" font-size="9.5" fill="var(--svg-txt)">c[i,j] +=</text>
-<text x="54" y="84" font-family="var(--mono)" font-size="9.5" fill="var(--svg-txt)">a[i,k]*b[k,j]</text>
-<path d="M136 55h44" stroke="var(--edge)" stroke-width="1.6" fill="none" marker-end="url(#ah-blaze)"/>
-<text x="158" y="47" text-anchor="middle" font-family="var(--mono)" font-size="8.5" fill="var(--ink-3)">schedule</text>
-<rect x="190" y="22" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
-<rect x="220" y="22" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
-<rect x="250" y="22" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
-<rect x="190" y="44" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
-<rect x="220" y="44" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
-<rect x="250" y="44" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
-<rect x="190" y="66" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
-<rect x="220" y="66" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
-<rect x="250" y="66" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
+<rect x="12" y="14" width="126" height="82" rx="8" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/>
+<text x="22" y="35" font-family="var(--mono)" font-size="9" fill="var(--svg-txt)">for i:</text>
+<text x="30" y="52" font-family="var(--mono)" font-size="9" fill="var(--svg-txt)">for j:</text>
+<text x="38" y="69" font-family="var(--mono)" font-size="9" fill="var(--svg-txt)">c[i,j] +=</text>
+<text x="46" y="86" font-family="var(--mono)" font-size="9" fill="var(--svg-txt)">a[i,k]*b[k,j]</text>
+<path d="M144 55h40" stroke="var(--edge)" stroke-width="1.6" fill="none" marker-end="url(#ah-blaze)"/>
+<text x="164" y="47" text-anchor="middle" font-family="var(--mono)" font-size="8.5" fill="var(--ink-3)">schedule</text>
+<rect x="188" y="22" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
+<rect x="218" y="22" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
+<rect x="248" y="22" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
+<rect x="188" y="44" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
+<rect x="218" y="44" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
+<rect x="248" y="44" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
+<rect x="188" y="66" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
+<rect x="218" y="66" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
+<rect x="248" y="66" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
                 </svg>
                     <div class="product-header">
                         <div>
@@ -186,15 +178,14 @@
                 <span class="footer-dot">·</span>
                 <a href="#research">Research</a>
                 <span class="footer-dot">·</span>
-                <a href="https://maderix.github.io/articles/">Blog</a>
-                <span class="footer-dot">·</span>
+                    <span class="footer-dot">·</span>
                 <a href="mailto:hello@byteinfer.ai">Contact</a>
             </div>
             <div class="footer-copy">© 2026 ByteInfer Labs. All rights reserved.</div>
         </div>
     </footer>
 
-    <script>try{if((localStorage.getItem('byteinfer-theme')||'light')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+    <script>try{var t=localStorage.getItem('byteinfer-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
