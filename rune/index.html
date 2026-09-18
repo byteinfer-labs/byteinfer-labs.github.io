@@ -77,6 +77,30 @@
   .top .logo{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:1rem;margin-right:auto}
   .top a.nl{font-family:var(--mono);font-size:.78rem;color:var(--ink-2)}
   .top a.nl:hover{color:var(--ink)}
+  .top .home{font-family:var(--mono);font-size:.78rem;color:var(--ink-3)}
+  .top .home:hover{color:var(--ink)}
+  /* left section rail: its own column; labels always on wide screens, on hover below */
+  .rail{position:fixed;left:0;top:0;bottom:0;width:168px;z-index:60;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:0 0 0 28px;border-right:1px solid var(--hair);background:color-mix(in srgb,var(--bg) 80%,transparent)}
+  .rail a{display:flex;align-items:center;gap:10px;color:var(--ink-3);font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+  .rail a::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--hair-2);flex:none;transition:background .2s,transform .2s}
+  .rail a:hover{color:var(--ink)}
+  .rail a.on{color:var(--ink)}
+  .rail a.on::before{background:var(--accent);transform:scale(1.25)}
+  .rail .rhead{position:absolute;top:0;left:0;right:0;height:56px;display:flex;flex-direction:column;justify-content:center;padding-left:28px;gap:2px}
+  .rail .rhead a{text-transform:none;letter-spacing:0}
+  .rail .rhead a::before{display:none}
+  .rail .rhead .rlogo{font-weight:700;color:var(--ink);font-size:1rem}
+  body.railed{padding-left:168px}
+  body.railed .top .logo,body.railed .top .home{display:none}
+  @media (max-width:1400px){
+    .rail{width:44px;padding-left:18px;border-right:0;background:transparent}
+    .rail .rhead{display:none}
+    .rail a span{opacity:0;transform:translateX(-4px);transition:opacity .2s,transform .2s;background:var(--card);padding:4px 8px;border-radius:6px}
+    .rail:hover a span,.rail a.on span{opacity:1;transform:none}
+    body.railed{padding-left:44px}
+    body.railed .top .logo,body.railed .top .home{display:inline}
+  }
+  @media (max-width:1000px){.rail{display:none}body.railed{padding-left:0}}
   #theme-toggle{position:static;border:0;background:transparent;box-shadow:none;padding:6px;color:var(--ink-2);cursor:pointer}
   #theme-toggle .tlbl{display:none}
   /* hero */
@@ -359,15 +383,8 @@
 <body>
 
 <nav class="top"><div class="wrap">
-  <a class="nl" href="../" title="ByteInfer Labs">&larr; ByteInfer Labs</a>
+  <a class="home" href="../">&larr; ByteInfer Labs</a>
   <a class="logo" href="#hero">Rune</a>
-  <a class="nl" href="#problem">Why</a>
-  <a class="nl" href="#what">How it works</a>
-  <a class="nl" href="#examples">Examples</a>
-  <a class="nl" href="#play">Playground</a>
-  <a class="nl" href="#report">Report</a>
-  <a class="nl" href="#agents">Agents</a>
-  <a class="nl" href="#discover">Discovery</a>
   <span class="nl" style="opacity:.55;cursor:default" title="Coming on launch day">Whitepaper · coming soon</span>
   <a class="nl" href="https://github.com/ByteInfer-Labs/rune">GitHub</a>
   <button id="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle light / dark">
@@ -376,6 +393,31 @@
   <span class="tlbl">Dark</span>
 </button>
 </div></nav>
+<nav class="rail" aria-label="Sections">
+  <div class="rhead"><a class="home" href="../">&larr; ByteInfer Labs</a><a class="rlogo" href="#hero">Rune</a></div>
+  <a href="#problem"><span>Why</span></a>
+  <a href="#what"><span>How it works</span></a>
+  <a href="#examples"><span>Examples</span></a>
+  <a href="#play"><span>Playground</span></a>
+  <a href="#report"><span>Report</span></a>
+  <a href="#agents"><span>Agents</span></a>
+  <a href="#discover"><span>Discovery</span></a>
+  <a href="#limits"><span>Limits</span></a>
+</nav>
+<script>
+(function(){
+  document.body.classList.add('railed');
+  var links=[].slice.call(document.querySelectorAll('.rail a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function mark(){
+    var y=window.scrollY+window.innerHeight*0.4, cur=-1;
+    secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i;});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur);});
+  }
+  window.addEventListener('scroll',mark,{passive:true}); mark();
+})();
+</script>
+
 <script>
 (function(){
   var root=document.documentElement, btn=document.getElementById('theme-toggle');
@@ -638,7 +680,7 @@ rune-cli validate reports/run/optimized.onnx \
   </div>
 </div></section>
 
-<footer><div class="wrap"><code>pip install byteinfer-rune</code> &middot; <code>uv tool install byteinfer-rune</code><div style="margin-top:14px"><a href="https://github.com/ByteInfer-Labs/rune">GitHub</a><span  style="opacity:.6" title="Coming on launch day">Whitepaper · coming soon</span><a href="#play">Playground</a></div><div style="margin-top:14px">Rune by ByteInfer Labs &middot; open source</div></div></footer>
+<footer><div class="wrap"><a href="../">ByteInfer Labs</a> &middot; <a href="https://github.com/ByteInfer-Labs/rune">GitHub</a> &middot; <a href="mailto:hello@byteinfer.ai">hello@byteinfer.ai</a><div style="margin-top:12px">&copy; 2026 ByteInfer Labs</div></div></footer>
 
 
 <script>
@@ -4837,7 +4879,6 @@ new MutationObserver(function(){paint();}).observe(document.documentElement,{att
 });
 })();
 </script>
-
 <!-- LAUNCH GATE: remove this block on launch day. Dims install commands and GitHub links until the repo is public. -->
 <style>
 .install.soon{position:relative;opacity:.55}

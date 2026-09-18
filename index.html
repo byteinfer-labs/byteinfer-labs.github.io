@@ -55,14 +55,18 @@
                 <div class="product-card-inner">
                     <svg class="card-art" viewBox="0 0 300 110" role="img" aria-hidden="true">
                     <defs><marker id="ah-rune" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--edge)"/></marker></defs>
-<rect x="28" y="10" width="84" height="20" rx="6" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><text x="70.0" y="23.5" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--svg-txt)">ReduceMean</text>
-<rect x="28" y="36" width="84" height="20" rx="6" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><text x="70.0" y="49.5" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--svg-txt)">Sub</text>
-<rect x="28" y="62" width="84" height="20" rx="6" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><text x="70.0" y="75.5" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--svg-txt)">Mul</text>
-<rect x="28" y="88" width="84" height="20" rx="6" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><text x="70.0" y="101.5" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--svg-txt)">Add</text>
-<path d="M70 30v6M70 56v6M70 82v6" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
-<path d="M118 59h48" stroke="var(--edge)" stroke-width="1.6" fill="none" marker-end="url(#ah-rune)"/>
-<text x="142" y="52" text-anchor="middle" font-family="var(--mono)" font-size="8.5" fill="var(--ink-3)">rule</text>
-<rect x="172" y="46" width="112" height="26" rx="6" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.2"/><text x="228.0" y="62.5" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--svg-txt)">LayerNorm</text>
+<rect x="34" y="10" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 18.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
+<rect x="34" y="35" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 43.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
+<rect x="34" y="60" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 68.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
+<rect x="34" y="85" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 93.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
+<path d="M70 27v5" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
+<path d="M70 52v5" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
+<path d="M70 77v5" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
+<path d="M112 59h50" stroke="var(--edge)" stroke-width="1.6" fill="none" marker-end="url(#ah-rune)"/>
+<text x="137" y="51" text-anchor="middle" font-family="var(--mono)" font-size="8.5" letter-spacing=".08em" fill="var(--ink-3)">RULE</text>
+<rect x="170" y="36" width="104" height="46" rx="8" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.3"/>
+<path d="M190 59h40" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M240 60l6 6 12-13" stroke="var(--accent)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                     <div class="product-header">
                         <div>
@@ -70,12 +74,12 @@
                             <h3 class="product-name">Rune</h3>
                         </div>
                     </div>
-                    <p class="product-desc">Rewrites ONNX, TFLite and torch.export graphs with rules you can read. Write the pattern and the change; Rune checks it, applies it and reports what changed.</p>
+                    <p class="product-desc">Write the pattern and the change. Rune checks the graph, proves the outputs still match, and reports what it did.</p>
                     <ul class="product-points">
-                        <li>Rules, not scripts — a few lines each</li>
-                        <li>A gate refuses anything that would corrupt the graph</li>
-                        <li>Proven, or refused: every rewrite is checked</li>
-                        <li>A report per run: before, after, what changed</li>
+                        <li>Write the pattern, write the change</li>
+                        <li>A gate refuses anything that breaks the graph</li>
+                        <li>An oracle proves the outputs still match</li>
+                        <li>ONNX, TFLite and torch.export</li>
                     </ul>
                     <a href="rune/" class="cta-btn">Explore Rune <span class="arrow">→</span></a>
                 </div>
@@ -99,10 +103,10 @@
 <rect x="90" y="58" width="18" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
 <path d="M77 45C120 45 130 20 170 20" stroke="var(--accent)" stroke-width="1.4" fill="none" stroke-dasharray="3 3"/>
 <circle cx="77" cy="45" r="2.6" fill="var(--accent)"/>
-<text x="174" y="23" font-family="var(--mono)" font-size="8.5" fill="var(--ink-3)">measured</text>
+<text x="174" y="23" font-family="var(--mono)" font-size="8.5" letter-spacing=".08em" fill="var(--ink-3)">MEASURED</text>
 <path d="M150 74h8l6-30 7 46 6-38 6 22 5-12 6 12h64" stroke="var(--accent)" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
 <path d="M150 90h108" stroke="var(--edge-dead)" stroke-width="1"/>
-<text x="258" y="99" text-anchor="end" font-family="var(--mono)" font-size="8.5" fill="var(--ink-3)">cycles</text>
+
                 </svg>
                     <div class="product-header">
                         <div>
@@ -110,12 +114,12 @@
                             <h3 class="product-name">Systems Research</h3>
                         </div>
                     </div>
-                    <p class="product-desc">We measure what ML accelerators actually do beneath the vendor's frameworks, drive them directly, and make inference hardware train.</p>
+                    <p class="product-desc">We find out what neural accelerators really do, talk to them directly, and make them do things the vendor never shipped.</p>
                     <ul class="product-points">
-                        <li>Measured behaviour, not published peak numbers</li>
-                        <li>Driving the hardware below the public frameworks</li>
-                        <li>Compilers for private instruction formats</li>
-                        <li>Teaching inference hardware to train</li>
+                        <li>Real throughput, measured, not datasheet peaks</li>
+                        <li>Talk to the hardware, not the vendor's framework</li>
+                        <li>Our own compiler for the private instruction set</li>
+                        <li>Training on an inference-only chip</li>
                     </ul>
                     <div class="pub-intro">Published work</div>
                     <div class="pub-series" style="color:var(--ink-3);font-weight:500">Publications open on launch day.</div>
@@ -128,28 +132,19 @@
                 <div class="product-card-inner">
                     <svg class="card-art" viewBox="0 0 300 110" role="img" aria-hidden="true">
                     <defs><marker id="ah-blaze" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--edge)"/></marker></defs>
-<rect x="10" y="6" width="122" height="46" rx="7" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/>
-<text x="18" y="18" font-family="var(--mono)" font-size="7.5" fill="var(--ink-3)">PROGRAM</text>
-<text x="18" y="32" font-family="var(--mono)" font-size="8.5" fill="var(--svg-txt)">for i, j, k:</text>
-<text x="26" y="45" font-family="var(--mono)" font-size="8.5" fill="var(--svg-txt)">c[i,j] += a[i,k]*b[k,j]</text>
-<rect x="10" y="58" width="122" height="46" rx="7" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.2"/>
-<text x="18" y="70" font-family="var(--mono)" font-size="7.5" fill="var(--accent)">SCHEDULE</text>
-<text x="18" y="84" font-family="var(--mono)" font-size="8.5" fill="var(--svg-txt)">tile i,j 64  vectorize j</text>
-<text x="18" y="97" font-family="var(--mono)" font-size="8.5" fill="var(--svg-txt)">unroll k 4   parallel i</text>
-<path d="M132 29C150 29 152 55 166 55" stroke="var(--edge)" stroke-width="1.5" fill="none"/>
-<path d="M132 81C150 81 152 55 166 55" stroke="var(--edge)" stroke-width="1.5" fill="none"/>
-<path d="M166 55h20" stroke="var(--edge)" stroke-width="1.6" fill="none" marker-end="url(#ah-blaze)"/>
-<circle cx="166" cy="55" r="2.4" fill="var(--edge)"/>
-<rect x="196" y="22" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
-<rect x="226" y="22" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
-<rect x="256" y="22" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
-<rect x="196" y="44" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
-<rect x="226" y="44" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
-<rect x="256" y="44" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
-<rect x="196" y="66" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
-<rect x="226" y="66" width="26" height="18" rx="3" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.1"/>
-<rect x="256" y="66" width="26" height="18" rx="3" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.1"/>
-<text x="241" y="99" text-anchor="middle" font-family="var(--mono)" font-size="7.5" fill="var(--ink-3)">KERNEL</text>
+<rect x="16" y="8" width="80" height="44" rx="8" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/>
+<path d="M50 20l-6 7 6 7M64 20l6 7-6 7M60 18l-6 18" stroke="var(--svg-txt)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="56.0" y="43" text-anchor="middle" font-family="var(--mono)" font-size="9" letter-spacing=".08em" fill="var(--svg-txt)">PROGRAM</text>
+<rect x="16" y="60" width="80" height="44" rx="8" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.2"/>
+<rect x="46" y="68" width="7" height="7" rx="1.5" fill="var(--accent)" stroke="var(--accent)" stroke-width="1.1"/><rect x="56" y="68" width="7" height="7" rx="1.5" fill="none" stroke="var(--accent)" stroke-width="1.1"/><rect x="66" y="68" width="7" height="7" rx="1.5" fill="var(--accent)" stroke="var(--accent)" stroke-width="1.1"/><rect x="46" y="78" width="7" height="7" rx="1.5" fill="none" stroke="var(--accent)" stroke-width="1.1"/><rect x="56" y="78" width="7" height="7" rx="1.5" fill="var(--accent)" stroke="var(--accent)" stroke-width="1.1"/><rect x="66" y="78" width="7" height="7" rx="1.5" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+<text x="56.0" y="95" text-anchor="middle" font-family="var(--mono)" font-size="9" letter-spacing=".08em" fill="var(--svg-txt)">SCHEDULE</text>
+<path d="M96 30C120 30 122 56 140 56" stroke="var(--edge)" stroke-width="1.5" fill="none"/>
+<path d="M96 82C120 82 122 56 140 56" stroke="var(--edge)" stroke-width="1.5" fill="none"/>
+<circle cx="140" cy="56" r="2.4" fill="var(--edge)"/>
+<path d="M140 56h44" stroke="var(--edge)" stroke-width="1.6" fill="none" marker-end="url(#ah-blaze)"/>
+<rect x="194" y="20" width="94" height="72" rx="8" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.2"/>
+<rect x="228" y="30" width="26" height="26" rx="4" fill="none" stroke="var(--svg-txt)" stroke-width="1.5"/><rect x="235" y="37" width="12" height="12" rx="2" fill="var(--accent)"/><path d="M233 26v4M233 56v4" stroke="var(--svg-txt)" stroke-width="1.3"/><path d="M240 26v4M240 56v4" stroke="var(--svg-txt)" stroke-width="1.3"/><path d="M247 26v4M247 56v4" stroke="var(--svg-txt)" stroke-width="1.3"/><path d="M254 26v4M254 56v4" stroke="var(--svg-txt)" stroke-width="1.3"/><path d="M224 35h4M254 35h4" stroke="var(--svg-txt)" stroke-width="1.3"/><path d="M224 42h4M254 42h4" stroke="var(--svg-txt)" stroke-width="1.3"/><path d="M224 49h4M254 49h4" stroke="var(--svg-txt)" stroke-width="1.3"/><path d="M224 56h4M254 56h4" stroke="var(--svg-txt)" stroke-width="1.3"/>
+<text x="241.0" y="83" text-anchor="middle" font-family="var(--mono)" font-size="9" letter-spacing=".08em" fill="var(--svg-txt)">KERNEL</text>
                 </svg>
                     <div class="product-header">
                         <div>
@@ -157,12 +152,12 @@
                             <h3 class="product-name">Blaze</h3>
                         </div>
                     </div>
-                    <p class="product-desc">Write plain scalar loops, get hardware-tuned kernels. The schedule is the only thing that changes.</p>
+                    <p class="product-desc">The math stays plain loops. A schedule says how to run them. Same loops, a different schedule per chip.</p>
                     <ul class="product-points">
-                        <li>One kernel source, every backend</li>
-                        <li>Tuned by schedule, not rewritten by hand</li>
-                        <li>Near hardware-peak matmul, attention and matvec</li>
-                        <li>In progress</li>
+                        <li>Write the math as plain scalar loops</li>
+                        <li>Write the schedule separately: tile, vectorize, parallel</li>
+                        <li>One source for x86, ARM, CUDA and Metal</li>
+                        <li>Matmul and attention near hardware peak</li>
                     </ul>
                     <span class="cta-soon">Coming soon</span>
                 </div>
@@ -178,16 +173,10 @@
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-inner">
-            <div class="footer-status">Blaze — Coming Soon</div>
             <div class="footer-links">
-                <a href="rune/">Rune</a>
-                <span class="footer-dot">·</span>
-                <a href="#research">Research</a>
-                <span class="footer-dot">·</span>
-                    <span class="footer-dot">·</span>
-                <a href="mailto:hello@byteinfer.ai">Contact</a>
+                <a href="mailto:hello@byteinfer.ai">hello@byteinfer.ai</a>
             </div>
-            <div class="footer-copy">© 2026 ByteInfer Labs. All rights reserved.</div>
+            <div class="footer-copy">© 2026 ByteInfer Labs</div>
         </div>
     </footer>
 
