@@ -97,7 +97,7 @@
   #hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;width:100%}
   #hero .vl{position:relative;padding-left:40px;max-width:1080px}
   .heroreel{width:100%;aspect-ratio:640/420;position:relative}
-  .heroreel svg{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .6s ease}
+  .heroreel svg{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease}
   .heroreel svg.on{opacity:1}
   .heroreel .b rect{fill:var(--nd-dead-fill);stroke:var(--nd-init-stroke);stroke-width:1.2}
   .heroreel .b text{font-family:var(--mono);font-size:12.5px;fill:var(--nm)}
@@ -105,7 +105,8 @@
   .heroreel .a text{font-family:var(--mono);font-size:13px;fill:var(--svg-txt);font-weight:600}
   .heroreel .ln{stroke:var(--edge);stroke-width:1.4;fill:none}
   .heroreel .fn{stroke:var(--accent);stroke-width:1.6;fill:none;opacity:.75;stroke-dasharray:600;stroke-dashoffset:600}
-  .heroreel svg.on .fn{animation:reeldraw 1.1s ease forwards .25s}
+  .heroreel svg.on .fn{animation:reeldraw 1s ease forwards .2s}
+  .heroreel.still .fn{stroke-dashoffset:0;animation:none}
   @keyframes reeldraw{to{stroke-dashoffset:0}}
   .heroreel .cap{font-family:var(--mono);font-size:11.5px;fill:var(--ink-3);letter-spacing:.08em}
   .heroreel .cnt{font-family:var(--sans);font-size:30px;font-weight:800;fill:var(--accent);letter-spacing:-.02em}
@@ -4836,7 +4837,8 @@ SCENES.forEach(function(sc){
 });
 var svgs=host.querySelectorAll("svg"),i=0;svgs[0].classList.add("on");
 var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-if(!reduce)setInterval(function(){svgs[i].classList.remove("on");i=(i+1)%svgs.length;svgs[i].classList.add("on");},3400);
+if(reduce)host.classList.add("still");
+setInterval(function(){svgs[i].classList.remove("on");i=(i+1)%svgs.length;svgs[i].classList.add("on");},2600);
 });
 safe(function(){
 var ex=RuneExplain(document.getElementById("explain"));var exStep=0,exTimer=null;
