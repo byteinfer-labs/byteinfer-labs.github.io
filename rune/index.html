@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlJ1bmUiPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjQzI1NTFBIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuNSAxMi4yKSBzY2FsZSgwLjM0MTMpIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iNS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xNyA0NEw1NyA1OUwxNyA3NCIvPjwvZz48ZyBmaWxsPSIjRkZGRkZGIj48Y2lyY2xlIGN4PSIxNyIgY3k9IjQ0IiByPSIxMC41Ii8+PGNpcmNsZSBjeD0iMTciIGN5PSI3NCIgcj0iMTAuNSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNTkiIHI9IjgiLz48L2c+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTM0IDEwSDgyTDEwOCAzNVY1OEw4NCA3OEwxMDggMTA3SDc0TDUxIDgyTDgzIDQ4TDcxIDM1SDUwWiIvPjwvZz48L3N2Zz4K">
-<title>Rune: Cleaner graphs. Faster models.</title>
+<title>Rune: Model surgery without brittle graph scripts.</title>
 <style>:root{--bg:#FFFFFF;--card:#F5F5F7;--codebg:#1D1D1F;--ink:#1D1D1F;--ink-2:#515154;--ink-3:#86868B;
   --accent:#B4531A;--accent-2:#8E3E11;--del:#C0392B;--hair:rgba(0,0,0,.09);--hair-2:rgba(0,0,0,.18);--inline-code:rgba(0,0,0,.06);
   --code-txt:#F5F5F7;--code-c:#9A9A9F;--code-k:#F0A36B;--sel:rgba(180,83,26,.18);
@@ -68,7 +68,7 @@
 
 <style>
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;font-size:clamp(16px,.45vw + 11px,20px)}
+  html{scroll-behavior:smooth;font-size:clamp(16px,.45vw + 11px,20px);overflow-x:hidden}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
   a{color:var(--accent);text-decoration:none}
   code,pre{font-family:var(--mono)}
@@ -95,7 +95,7 @@
   /* hero */
   #hero{padding:96px 0 56px;display:flex;align-items:center;overflow:hidden}
   #hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;width:100%}
-  #hero .vl{position:relative;padding-left:40px;max-width:1080px}
+  #hero .vl{position:relative;padding-left:40px;max-width:1080px;min-width:0}
   .heroreel{width:100%;aspect-ratio:640/440;position:relative}
   .heroreel svg{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .8s ease}
   .heroreel svg.on{opacity:1}
@@ -126,7 +126,7 @@
   .h1{font-size:clamp(64px,9vw,136px);line-height:.95;margin:0;letter-spacing:-.04em;color:var(--accent);font-weight:800;display:flex;align-items:center;gap:.18em}
   .hmark{height:.9em;width:auto;color:var(--accent);flex:none}
   .tag{font-size:clamp(28px,3vw,46px);font-weight:700;line-height:1.05;margin:22px 0 18px;letter-spacing:-.03em;color:var(--ink)}
-  .sub{font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.5;color:var(--ink);max-width:56ch;margin:0;font-weight:500}
+  .sub{font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.5;color:var(--ink);max-width:56ch;margin:0;font-weight:500;overflow-wrap:break-word}
   .ctas{display:flex;gap:22px;align-items:center;margin:34px 0 0}
   .btn{display:inline-flex;align-items:center;padding:13px 22px;border-radius:999px;font-family:var(--mono);font-size:.86rem;background:var(--accent);color:#fff;transition:transform .15s,opacity .15s}
   .btn:hover{transform:translateY(-1px);opacity:.92}
@@ -400,7 +400,8 @@
   footer{padding:70px 0 70px;border-top:1px solid var(--hair);font-family:var(--mono);font-size:.8rem;color:var(--ink-3);text-align:center}
   footer a{margin:0 12px;color:var(--ink-2)}
   footer code{color:var(--ink-2)}
-  @media (max-width:960px){#hero .wrap,.slide,.play .grid,.explain,.limits .grid{grid-template-columns:1fr}.rulecode{margin-left:0}.slide{min-height:0}section.blk{padding:100px 0 30px}}
+  @media (max-width:960px){#hero .wrap,.slide,.play .grid,.explain,.limits .grid{grid-template-columns:1fr}.rulecode{margin-left:0}.slide{min-height:0}section.blk{padding:60px 0 30px}}
+  @media (max-width:600px){html,body{overflow-x:hidden;max-width:100vw}.wrap{padding:0 16px;max-width:100%}#hero .vl{padding-left:20px}#hero .vl::before{width:3px}.top .wrap{gap:8px;overflow:hidden}.top .home{display:none}.top a.nl{font-size:.68rem}.h1{font-size:clamp(36px,11vw,56px)}.tag{font-size:clamp(17px,4.6vw,24px)}.sub{font-size:.95rem}.icmd{font-size:.72rem;padding:10px 54px 10px 12px}h2.t{font-size:clamp(20px,5vw,28px)}.install{max-width:100%}#hero{padding:48px 0 32px}.skillrow{gap:8px}.sk{min-width:100%;padding:12px 14px}.sk .nm{font-size:.78rem}.sk .wh{font-size:.82rem}.limits .grid{gap:28px}.explain{gap:28px}p.s{font-size:.95rem}.pts li{font-size:.95rem}}
   @media (prefers-reduced-motion:reduce){.reveal > *{transition:none;opacity:1;transform:none}.slide{transition:none}}
 </style>
 </head>
@@ -462,8 +463,8 @@
 <section id="hero"><div class="wrap">
   <div class="vl">
     <h1 class="h1"><svg class="hmark" viewBox="0 0 120 116" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 44L57 59L17 74"/></g><g fill="currentColor"><circle cx="17" cy="44" r="10.5"/><circle cx="17" cy="74" r="10.5"/><circle cx="57" cy="59" r="8"/><path d="M34 10H82L108 35V58L84 78L108 107H74L51 82L83 48L71 35H50Z"/></g></svg>Rune</h1>
-    <p class="tag">Cleaner graphs. Faster models.</p>
-    <p class="sub">Rune is a graph surgery DSL that works on ONNX, TFLite and torch.export graphs and safely rewrites them with easily auditable rules. It refuses rules that produce incorrect graphs. Every time.</p>
+    <p class="tag">Model surgery without brittle graph scripts.</p>
+    <p class="sub">Rune is a small DSL for rewriting ONNX, TFLite and torch.export graphs.</p><p class="sub">Describe the pattern. Describe the replacement. Rune finds the matches, checks the rewrite, applies it, and can verify the result against the original model.</p>
     <div class="install" id="install">
       <div class="itabs"><button class="on" data-t="pip">pip</button><button data-t="uv">uv</button><button data-t="git">from source</button></div>
       <pre class="icmd" data-t="pip"><span class="p">$</span> pip install byteinfer-rune<button class="copy" aria-label="copy">copy</button></pre>
@@ -476,17 +477,17 @@
 
 <section class="blk" id="problem"><div class="wrap limits">
   <div class="grid reveal">
-    <div class="vl"><h2 class="t">Scripts work once.</h2><ul class="pts"><li>Exported models often need edits — runtimes only speed up the op patterns they recognise.</li><li>The usual fix is a Python script that edits the file. It works on that one export.</li><li>Then the model changes and the script breaks. Nothing tells you.</li><li>A Rune rule matches the pattern, not the file. It works on every version of the model, or it refuses and tells you why.</li></ul></div>
+    <div class="vl"><h2 class="t">Rewrite graphs, not exporter accidents.</h2><ul class="pts"><li>Graph-edit scripts tend to depend on one particular export layout.</li><li>Rune rules describe structure instead. If the expected pattern exists, Rune rewrites it. If it doesn&#x27;t, nothing is changed.</li></ul></div>
     <div class="fig box"><svg class="lim pr" viewBox="0 0 620 370" role="img" aria-label="Three versions of a model. A hand-written script edits the first correctly, then silently edits the wrong nodes or nothing as the model changes. The same Rune rule matches every version, is checked and verified each time, or refuses with a reason.">
 <text x="210" y="14" text-anchor="middle" class="lab">V1</text><g class="n sm"><rect x="164" y="26" width="92" height="18" rx="5"/><text x="210" y="39" text-anchor="middle">model</text></g><rect class="mini" x="180" y="52" width="60" height="8" rx="3"/><rect class="mini" x="180" y="64" width="60" height="8" rx="3"/><rect class="mini" x="180" y="76" width="60" height="8" rx="3"/><text x="370" y="14" text-anchor="middle" class="lab">V2 · NEW EXPORT</text><g class="n sm"><rect x="324" y="26" width="92" height="18" rx="5"/><text x="370" y="39" text-anchor="middle">model</text></g><rect class="mini" x="340" y="52" width="60" height="8" rx="3"/><rect class="mini" x="340" y="64" width="60" height="8" rx="3"/><rect class="mini" x="340" y="76" width="60" height="8" rx="3"/><text x="530" y="14" text-anchor="middle" class="lab">V3 · NEW OPSET</text><g class="n sm"><rect x="484" y="26" width="92" height="18" rx="5"/><text x="530" y="39" text-anchor="middle">model</text></g><rect class="mini" x="500" y="52" width="60" height="8" rx="3"/><rect class="mini" x="500" y="64" width="60" height="8" rx="3"/><rect class="mini" x="500" y="76" width="60" height="8" rx="3"/><g class="n exp"><rect x="0" y="126" width="140" height="30" rx="7"/><text x="70" y="145.5" text-anchor="middle">edit_model.py</text></g><path class="l s" d="M140 141H160"/><g class="ok"><circle cx="210" cy="141" r="9"/><path d="M206 141 l3 3 l6 -7"/></g><text x="210" y="170" text-anchor="middle" class="sub">edits 12 sites</text><g class="x"><circle cx="370" cy="141" r="9"/><path d="M366 137 l8 8 M374 137 l-8 8"/></g><text x="370" y="170" text-anchor="middle" class="del">edits the wrong nodes</text><text x="370" y="185" text-anchor="middle" class="sub">no error</text><g class="x"><circle cx="530" cy="141" r="9"/><path d="M526 137 l8 8 M534 137 l-8 8"/></g><text x="530" y="170" text-anchor="middle" class="del">edits nothing</text><text x="530" y="185" text-anchor="middle" class="sub">no error</text><g class="n hi"><rect x="0" y="246" width="140" height="30" rx="7"/><text x="70" y="265.5" text-anchor="middle">layernorm.rune</text></g><path class="l s" d="M140 261H160"/><g class="ok"><circle cx="210" cy="261" r="9"/><path d="M206 261 l3 3 l6 -7"/></g><text x="210" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="ok"><circle cx="370" cy="261" r="9"/><path d="M366 261 l3 3 l6 -7"/></g><text x="370" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="stop"><circle cx="530" cy="261" r="9"/><path d="M526 261h8"/></g><text x="530" y="290" text-anchor="middle" class="sub">refused: no match</text><text x="530" y="305" text-anchor="middle" class="sub">model untouched</text><text x="0" y="350" class="sub">the script edits the file; the rule matches the pattern</text></svg></div>
   </div>
 </div></section>
 
 <section class="blk" id="what"><div class="wrap">
-  <div class="reveal"><h2 class="t">What a rule does</h2><p class="s">Every rule goes through the same four steps.</p></div>
+  <div class="reveal"><h2 class="t">What a rule does</h2><p class="s">Find &rarr; Check &rarr; Apply &rarr; Verify</p></div>
   <div class="explain reveal">
     <div class="stepper vl">
-      <ol><li class="st" data-n="1"><span class="num">1</span><div><b>Find</b><p>You describe a pattern. Rune finds every place it appears in the graph.</p></div></li><li class="st" data-n="2"><span class="num">2</span><div><b>Check</b><p>Each match is simulated on a copy first. If it would break the graph, the gate refuses it.</p></div></li><li class="st" data-n="3"><span class="num">3</span><div><b>Apply</b><p>Only the changes that passed are applied, all at once.</p></div></li><li class="st" data-n="4"><span class="num">4</span><div><b>Verify</b><p>The rewritten model is run and its outputs compared with the original.</p></div></li></ol>
+      <ol><li class="st" data-n="1"><span class="num">1</span><div><b>Find</b><p>You describe a pattern. Rune finds every place it appears in the graph.</p></div></li><li class="st" data-n="2"><span class="num">2</span><div><b>Check</b><p>Each match is simulated on a copy first. If it would break the graph, the gate refuses it.</p></div></li><li class="st" data-n="3"><span class="num">3</span><div><b>Apply</b><p>Only the changes that passed get applied, all at once.</p></div></li><li class="st" data-n="4"><span class="num">4</span><div><b>Verify</b><p>The rewritten model is run and its outputs compared with the original.</p></div></li></ol>
       <pre class="rulecode"><span class="lab">the rule</span>Mul#m -&gt; Add#a -&gt; Relu#r
 <span class="k">+</span> FusedMulAddRelu#f
 <span class="k">&gt;</span> m.input[0] -&gt; f.input[0]  ...</pre>
@@ -496,11 +497,11 @@
 </div></section>
 
 <section class="blk" id="examples"><div class="gscroll" id="gscroll"><div class="gsticky"><div class="wrap">
-  <div class="reveal"><h2 class="t">Real rewrites</h2><p class="s">These are real models with real rules. Every output was checked against the original.</p></div>
+  <div class="reveal"><h2 class="t">Real model rewrites</h2><p class="s"></p></div>
   <div class="gal reveal" id="gal">
     <div class="stage" id="track">
-      <div class="slide"><div class="txt vl"><p class="tagm">BERT</p><h3>12 LayerNorm operations become 1, every time in BERT.</h3><div class="bgbox"><ul class="pts"><li>TensorFlow exported each LayerNorm as 12 separate ops. ONNX Runtime didn&#x27;t recognise them, so it ran each one as 12 kernels.</li><li>One rule matched all 37 sites and replaced each with a single LayerNormalization node.</li></ul><p class="rl"><span class="lab">the rule</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/bert_tf_fusion.rune">bert_tf_fusion.rune</a></p></div><p class="proof">Outputs identical to the original, and 5.07% more throughput than ONNX Runtime&#x27;s own fusion.</p></div><div class="fig box"><div class="plate"><div class="g" style="max-width:560px" data-fig="bert_surgery" data-dir="TB" data-scale="1.4"></div><div class="lgd"><span><i class="sw dead"></i>removed</span><span><i class="sw new"></i>inserted</span><span><i class="sw cut"></i>edge cut</span></div></div></div></div>
-      <div class="slide"><div class="txt vl"><p class="tagm">LLM serving</p><h3>One LLM export becomes a prefill model and a decode model.</h3><div class="bgbox"><ul class="pts"><li>A decoder LLM exported as one graph, no KV cache. Two rules split it into a prefill graph and a decode graph, sharing weights.</li></ul><p class="rl"><span class="lab">the rules</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_prefill.rune">smollm_prefill.rune</a> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_decode.rune">smollm_decode.rune</a></p></div><p class="proof">All 512 tokens identical. Decode is 2.67x faster.</p></div><div class="fig box"><div class="plate"><svg class="lim sp" viewBox="0 0 640 316" role="img" aria-label="One static export becomes a prefill graph that outputs each layer's KV cache and a decode graph that takes the past cache and one token; both share one copy of the weights.">
+      <div class="slide"><div class="txt vl"><p class="tagm">BERT</p><h3>BERT LayerNorm</h3><div class="bgbox"><ul class="pts"><li>Replace TensorFlow&#x27;s 12-op LayerNorm expansion with the native ONNX operation.</li></ul><p class="rl"><span class="lab">the rule</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/bert_tf_fusion.rune">bert_tf_fusion.rune</a></p></div><p class="proof">37 rewrites · outputs match · +5.07% throughput</p></div><div class="fig box"><div class="plate"><div class="g" style="max-width:560px" data-fig="bert_surgery" data-dir="TB" data-scale="1.4"></div><div class="lgd"><span><i class="sw dead"></i>removed</span><span><i class="sw new"></i>inserted</span><span><i class="sw cut"></i>edge cut</span></div></div></div></div>
+      <div class="slide"><div class="txt vl"><p class="tagm">LLM serving</p><h3>LLM prefill + decode</h3><div class="bgbox"><ul class="pts"><li>Split one decoder export into dedicated prefill and KV-cache decode graphs.</li></ul><p class="rl"><span class="lab">the rules</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_prefill.rune">smollm_prefill.rune</a> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_decode.rune">smollm_decode.rune</a></p></div><p class="proof">512 tokens verified · 2.67× faster decode</p></div><div class="fig box"><div class="plate"><svg class="lim sp" viewBox="0 0 640 316" role="img" aria-label="One static export becomes a prefill graph that outputs each layer's KV cache and a decode graph that takes the past cache and one token; both share one copy of the weights.">
   <defs><marker id="sparr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker></defs>
   <text x="0" y="14" class="lab">ONE EXPORT</text>
   <g class="n"><rect x="0" y="118" width="160" height="64" rx="9"/><text x="80" y="146" text-anchor="middle">decoder</text><text x="80" y="164" text-anchor="middle" class="sub">static loop, no cache</text></g>
@@ -519,8 +520,8 @@
   <path class="l w" d="M480,136 L460,136 L460,72 L442,72"/>
   <path class="l w" d="M480,164 L460,164 L460,228 L442,228"/>
 </svg></div></div></div>
-      <div class="slide"><div class="txt vl"><p class="tagm">SmolLM</p><h3>126 attention operations become 1, across all 30 attention blocks.</h3><div class="bgbox"><ul class="pts"><li>Optimum exported each attention block as 126 ops. ONNX Runtime has the fused kernel but didn&#x27;t recognise the pattern.</li><li>One rule fused all 30 attention blocks.</li></ul><p class="rl"><span class="lab">the rule</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_gqa_fusion_fp16.rune">smollm_gqa_fusion_fp16.rune</a></p></div><p class="proof">As accurate as the stock fp16 conversion. Each step is 9.8% faster.</p></div><div class="fig box"><div class="plate"><div class="g" data-fig="smollm_surgery" data-dir="TB" data-scale="1.0"></div><div class="lgd"><span><i class="sw dead"></i>removed</span><span><i class="sw new"></i>inserted</span><span><i class="sw cut"></i>edge cut</span></div></div></div></div>
-      <div class="slide"><div class="txt vl"><p class="tagm">LoRA</p><h3>LoRA adapters go into an exported model, get trained, and fold back out.</h3><div class="bgbox"><ul class="pts"><li>LoRA adapters injected into 60 projection sites in an exported ONNX model, no PyTorch needed.</li><li>After training, one rule folded the adapters back into the base weights.</li></ul><p class="rl"><span class="lab">the rules</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_lora_qv.rune">smollm_lora_qv.rune</a> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_lora_merge.rune">smollm_lora_merge.rune</a></p></div><p class="proof">Injected model is bit-identical to the base. Merged model matches within 5e-4.</p></div><div class="fig box"><div class="plate"><svg class="lim sp lr" viewBox="0 0 640 340" role="img" aria-label="A q projection before, with a LoRA adapter chain injected beside it, and after the trained adapter is folded back into the weight.">
+      <div class="slide"><div class="txt vl"><p class="tagm">SmolLM</p><h3>SmolLM GQA</h3><div class="bgbox"><ul class="pts"><li>Replace the exported 126-op attention block with the fused runtime operation.</li></ul><p class="rl"><span class="lab">the rule</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_gqa_fusion_fp16.rune">smollm_gqa_fusion_fp16.rune</a></p></div><p class="proof">30 blocks rewritten · accuracy preserved · +9.8% step performance</p></div><div class="fig box"><div class="plate"><div class="g" data-fig="smollm_surgery" data-dir="TB" data-scale="1.0"></div><div class="lgd"><span><i class="sw dead"></i>removed</span><span><i class="sw new"></i>inserted</span><span><i class="sw cut"></i>edge cut</span></div></div></div></div>
+      <div class="slide"><div class="txt vl"><p class="tagm">LoRA</p><h3>LoRA</h3><div class="bgbox"><ul class="pts"><li>Inject adapters directly into an exported ONNX model, train them, then fold them back into the base weights.</li></ul><p class="rl"><span class="lab">the rules</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_lora_qv.rune">smollm_lora_qv.rune</a> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_lora_merge.rune">smollm_lora_merge.rune</a></p></div><p class="proof">60 injection sites · identical before training · merged within 5e-4</p></div><div class="fig box"><div class="plate"><svg class="lim sp lr" viewBox="0 0 640 340" role="img" aria-label="A q projection before, with a LoRA adapter chain injected beside it, and after the trained adapter is folded back into the weight.">
   <defs><marker id="lrarr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker>
   <marker id="lrarrA" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mka"/></marker></defs>
   <text x="0" y="14" class="lab">BASE</text>
@@ -568,8 +569,8 @@
 </div></div></div></section>
 
 <section class="blk" id="play"><div class="wrap">
-  <script type="application/json" id="playtext">{"lines": [{"code": "ReduceMean#mean -> Identity#sg -> Sub#center -> Mul#sq -> ReduceMean#var -> Add#addeps -> Sqrt#sqrt -> Reciprocal#rstd -> Mul#gmul -> Mul#mul2 -> Sub#bsub -> Add#lnout", "note": "Find the 12-operation TensorFlow LayerNorm chain with named handles", "why": "Identifies the exact pattern to replace with references for each step"}, {"code": "+ LayerNormalization#ln epsilon=1e-12 axis=-1", "note": "Insert one native LayerNorm node with matching epsilon and axis", "why": "Runtime has a fast kernel for this; one node beats 12"}, {"code": "> mean.input[0] -> ln.input[X]", "note": "Connect the new node to the chain's original input", "why": "Preserves data flow from upstream; nothing changes there"}, {"code": "> gmul.input[1] -> ln.input[Scale]", "note": "Feed the scale weight parameter to the new node", "why": "Runtime LayerNorm needs this weight to compute correctly"}, {"code": "> bsub.input[0] -> ln.input[B]", "note": "Feed the bias weight parameter to the new node", "why": "Runtime LayerNorm needs this weight to compute correctly"}, {"code": "> ln.output[Y] -> lnout.output[0]", "note": "Redirect output so all downstream ops read from the new node", "why": "Old chain has no consumers left; safe implicit deletion"}], "bad_lines": [{"code": "ReduceMean#mean -> Identity#sg -> Sub#center", "note": "Find the first three operations of the LayerNorm chain", "why": "The match itself is fine; the mistake is in the next line"}, {"code": "! mean", "note": "Delete the ReduceMean node without rewiring its consumers", "why": "Breaks the graph; Sub still needs ReduceMean's output"}], "refusal": "Refused: ReduceMean node is deleted but Sub operation still depends on its output tensor.", "result_ok": "{before} operations became {after}. Outputs identical to the original.", "result_bad": "Refused: {node} is deleted but still needed downstream. Nothing changed.", "note_idle_title": "A rule is a pattern and a rewrite.", "note_idle": "It plays on its own. Step through it, or click any line.", "play_btn": "Play", "good_title": "A rule in action", "good_sub": "This rule takes the 12 ops TensorFlow uses for LayerNorm and replaces them with one node.", "bad_title": "Now let's try a bad rule", "bad_sub": "This rule deletes a node but forgets to rewire its consumer. The gate catches it and refuses.", "btn_bad": "Try the bad rule", "btn_good": "Back to the good rule"}</script>
-  <div class="reveal"><h2 class="t" id="play-title">A rule in action</h2><p class="s" id="play-sub">This rule takes the 12 ops TensorFlow uses for LayerNorm and replaces them with one node.</p></div>
+  <script type="application/json" id="playtext">{"lines": [{"code": "ReduceMean#mean -> Identity#sg -> Sub#center -> Mul#sq -> ReduceMean#var -> Add#addeps -> Sqrt#sqrt -> Reciprocal#rstd -> Mul#gmul -> Mul#mul2 -> Sub#bsub -> Add#lnout", "note": "Find the 12-operation TensorFlow LayerNorm chain with named handles", "why": "Identifies the exact pattern to replace with references for each step"}, {"code": "+ LayerNormalization#ln epsilon=1e-12 axis=-1", "note": "Insert one native LayerNorm node with matching epsilon and axis", "why": "Runtime has a fast kernel for this; one node beats 12"}, {"code": "> mean.input[0] -> ln.input[X]", "note": "Connect the new node to the chain's original input", "why": "Preserves data flow from upstream; nothing changes there"}, {"code": "> gmul.input[1] -> ln.input[Scale]", "note": "Feed the scale weight parameter to the new node", "why": "Runtime LayerNorm needs this weight to compute correctly"}, {"code": "> bsub.input[0] -> ln.input[B]", "note": "Feed the bias weight parameter to the new node", "why": "Runtime LayerNorm needs this weight to compute correctly"}, {"code": "> ln.output[Y] -> lnout.output[0]", "note": "Redirect output so all downstream ops read from the new node", "why": "Old chain has no consumers left; safe implicit deletion"}], "bad_lines": [{"code": "ReduceMean#mean -> Identity#sg -> Sub#center", "note": "Find the first three operations of the LayerNorm chain", "why": "The match itself is fine; the mistake is in the next line"}, {"code": "! mean", "note": "Delete the ReduceMean node without rewiring its consumers", "why": "Breaks the graph; Sub still needs ReduceMean's output"}], "refusal": "Refused: ReduceMean node is deleted but Sub operation still depends on its output tensor.", "result_ok": "{before} operations became {after}. Outputs identical to the original.", "result_bad": "Refused: {node} is deleted but still needed downstream. Nothing changed.", "note_idle_title": "A rule is a pattern and a rewrite.", "note_idle": "It plays on its own. Step through it, or click any line.", "play_btn": "Play", "good_title": "One rule, wherever the pattern appears", "good_sub": "", "bad_title": "Now let's try a bad rule", "bad_sub": "This rule deletes a node but forgets to rewire its consumer. The gate catches it and refuses.", "btn_bad": "Try the bad rule", "btn_good": "Back to the good rule"}</script>
+  <div class="reveal"><h2 class="t" id="play-title">One rule, wherever the pattern appears</h2><p class="s" id="play-sub"></p></div>
   <div class="play reveal"><div class="grid">
     <div class="rule vl">
       <div class="lines" id="lines-good"><div class="line" data-i="0" data-set="good"><span class="code">ReduceMean#mean -&gt; Identity#sg -&gt; Sub#center -&gt; Mul#sq -&gt; ReduceMean#var -&gt; Add#addeps -&gt; Sqrt#sqrt -&gt; Reciprocal#rstd -&gt; Mul#gmul -&gt; Mul#mul2 -&gt; Sub#bsub -&gt; Add#lnout</span><span class="ann">match the TensorFlow LayerNorm chain</span></div><div class="line" data-i="1" data-set="good"><span class="code"><span class="k">+</span> LayerNormalization#ln epsilon=1e-12 axis=-1</span><span class="ann">add one native LayerNorm node</span></div><div class="line" data-i="2" data-set="good"><span class="code"><span class="k">&gt;</span> mean.input[0] -&gt; ln.input[X]</span><span class="ann">route the input to the new node</span></div><div class="line" data-i="3" data-set="good"><span class="code"><span class="k">&gt;</span> gmul.input[1] -&gt; ln.input[Scale]</span><span class="ann">connect the scale weight</span></div><div class="line" data-i="4" data-set="good"><span class="code"><span class="k">&gt;</span> bsub.input[0] -&gt; ln.input[B]</span><span class="ann">connect the bias weight</span></div><div class="line" data-i="5" data-set="good"><span class="code"><span class="k">&gt;</span> ln.output[Y] -&gt; lnout.output[0]</span><span class="ann">wire the output to its consumers</span></div></div>
@@ -579,18 +580,17 @@
     <div class="scene">
       <div id="scene"></div>
       <p class="res" id="res"></p>
-      <p class="after" id="after">One rule covers every site in the model. It&#x27;s checked before anything changes.</p>
+      <p class="after" id="after">Rune finds every matching instance and checks each candidate before committing the rewrite.</p>
     </div>
   </div></div>
 </div></section>
 
 <section class="blk" id="report"><div class="wrap limits">
   <div class="grid reveal">
-    <div class="vl"><h2 class="t">Every run leaves a report</h2>
+    <div class="vl"><h2 class="t">Every run leaves a receipt</h2>
       <ul class="pts">
-        <li>Shows what changed, where, and whether the outputs still match.</li>
-        <li>Every run is versioned. <code>reproduce</code> replays one, <code>diff</code> compares two.</li>
-        <li><code>query</code> shows what a rule would match without actually running it.</li>
+        <li>See which rules matched, what changed, and whether the rewritten model still agrees with the original.</li>
+        <li>Runs can be reproduced and compared later.</li>
       </ul>
       <pre class="cmd">rune-cli optimize model.onnx --rules rules.rune \
     --report reports/run
@@ -630,8 +630,9 @@ rune-cli validate reports/run/optimized.onnx \
 </div></section>
 
 <section class="blk" id="agents"><div class="wrap">
-  <div class="reveal"><h2 class="t">Let an agent write the rules</h2>
-  <p class="s">Rune ships five agent skills in <code>.claude/skills/</code>. They handle setup, analysis, rule writing and execution.</p></div>
+  <div class="reveal"><h2 class="t">Works with coding agents</h2>
+  <p class="s">Rune ships with skills for inspecting models, writing rules, validating them and running rewrites.</p>
+  <p class="s" style="margin-top:12px">The agent writes the transformation. Rune decides whether it is safe to apply.</p></div>
   <div class="skillrow reveal">
     <a class="sk" href="https://github.com/ByteInfer-Labs/rune/tree/main/.claude/skills/rune-setup"><span class="nm">rune-setup</span><span class="wh">install and verify the environment</span></a><span class="sarr">&rarr;</span><a class="sk" href="https://github.com/ByteInfer-Labs/rune/tree/main/.claude/skills/rune-stage"><span class="nm">rune-stage</span><span class="wh">analyse a model, find rewrite candidates</span></a><span class="sarr">&rarr;</span><a class="sk" href="https://github.com/ByteInfer-Labs/rune/tree/main/.claude/skills/rune-author"><span class="nm">rune-author</span><span class="wh">write and validate rulesets until gate-clean</span></a><span class="sarr">&rarr;</span><a class="sk" href="https://github.com/ByteInfer-Labs/rune/tree/main/.claude/skills/rune-execute"><span class="nm">rune-execute</span><span class="wh">run a validated ruleset with provenance and a report</span></a>
     <span class="sarr plus">+</span>
@@ -641,7 +642,7 @@ rune-cli validate reports/run/optimized.onnx \
 
 <section class="blk" id="discover"><div class="wrap limits">
   <div class="grid reveal">
-    <div class="vl"><h2 class="t">Rune can also find rules</h2><p class="tagx">experimental</p><ul class="pts"><li>Point it at a model and it proposes rewrites on its own. Anything it can&#x27;t prove correct gets refused.</li><li>What passes comes out as a normal .rune file you can read and edit.</li><li>Covers conv-net patterns today. Transformers are next.</li></ul>
+    <div class="vl"><h2 class="t">Automatic discovery</h2><p class="tagx">experimental</p><ul class="pts"><li>Rune can inspect a model and propose reusable .rune rules automatically.</li><li>The output is normal Rune code: readable, editable and reusable.</li><li>CNN patterns are supported today. Transformer discovery is in development.</li></ul>
       <pre class="cmd">rune-cli discover model.onnx --out rules/</pre></div>
     <div class="fig box"><div id="discover-scene"></div></div>
   </div>
@@ -649,8 +650,8 @@ rune-cli validate reports/run/optimized.onnx \
 
 <section class="blk" id="limits"><div class="wrap limits">
   <div class="grid reveal">
-    <div class="vl"><h2 class="t">Before you start</h2><ul class="pts"><li>Rune is experimental software, under active development.</li><li>The gate checks that the graph stays valid. Verify runs the model and compares outputs with the original.</li><li>Rules match one exporter&#x27;s spelling — a different exporter needs its own rule. ONNX and torch.export work well; TFLite is experimental.</li><li>Benchmark numbers on this page come from specific models and hardware.</li></ul>
-      <p class="lp small"><b>Found a bug?</b> Open a <a href="https://github.com/ByteInfer-Labs/rune/issues">GitHub issue</a> with the export, the rule and the gate&rsquo;s report.</p></div>
+    <div class="vl"><h2 class="t">Current state</h2><ul class="pts"><li>Rune is experimental software.</li><li>ONNX and torch.export are the most mature targets. TFLite support is earlier.</li><li>Structural checks happen during rewriting. Numerical equivalence is verified separately by running the rewritten model against the original.</li></ul>
+</div>
     <div class="fig box"><svg class="lim" viewBox="0 0 620 400" role="img" aria-label="Every rewrite passes a structural gate and a numerical check; ONNX and torch.export are stable paths, TFLite is experimental, ExecuTorch is reached by lowering after the rewrite.">
   <defs><marker id="limarr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker>
   <marker id="limarrD" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mkd"/></marker></defs>
