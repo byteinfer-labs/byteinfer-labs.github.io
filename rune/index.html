@@ -96,21 +96,31 @@
   #hero{padding:96px 0 56px;display:flex;align-items:center;overflow:hidden}
   #hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;width:100%}
   #hero .vl{position:relative;padding-left:40px;max-width:1080px}
-  .heroreel{width:100%;aspect-ratio:640/420;position:relative}
-  .heroreel svg{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease}
+  .heroreel{width:100%;aspect-ratio:640/440;position:relative}
+  .heroreel svg{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .8s ease}
   .heroreel svg.on{opacity:1}
-  .heroreel .b rect{fill:var(--nd-dead-fill);stroke:var(--nd-init-stroke);stroke-width:1.2}
-  .heroreel .b text{font-family:var(--mono);font-size:12.5px;fill:var(--nm)}
-  .heroreel .a rect{fill:var(--nd-new-fill);stroke:var(--accent);stroke-width:1.5}
-  .heroreel .a text{font-family:var(--mono);font-size:13px;fill:var(--svg-txt);font-weight:600}
-  .heroreel .ln{stroke:var(--edge);stroke-width:1.4;fill:none}
-  .heroreel .fn{stroke:var(--accent);stroke-width:1.6;fill:none;opacity:.75;stroke-dasharray:600;stroke-dashoffset:600}
-  .heroreel svg.on .fn{animation:reeldraw 1s ease forwards .2s}
-  .heroreel.still .fn{stroke-dashoffset:0;animation:none}
-  @keyframes reeldraw{to{stroke-dashoffset:0}}
-  .heroreel .cap{font-family:var(--mono);font-size:11.5px;fill:var(--ink-3);letter-spacing:.08em}
-  .heroreel .cnt{font-family:var(--sans);font-size:30px;font-weight:800;fill:var(--accent);letter-spacing:-.02em}
-  .heroreel .more{font-family:var(--mono);font-size:11px;fill:var(--ink-3)}
+  .heroreel text{font-family:var(--mono);font-size:12.5px;fill:var(--svg-txt)}
+  .heroreel .n rect{fill:var(--nd-fill);stroke:var(--nd-port-stroke);stroke-width:1.2;transition:stroke .4s,fill .4s}
+  .heroreel .n.port rect{stroke-dasharray:3 3;fill:var(--nd-init-fill)}
+  .heroreel .n.port text{fill:var(--nm)}
+  .heroreel .n,.heroreel .e{transition:opacity .6s ease}
+  .heroreel .n.match rect{stroke:var(--accent);fill:var(--nd-new-fill)}
+  .heroreel .gone{opacity:0}
+  .heroreel .e{stroke:var(--edge);stroke-width:1.4;fill:none}
+  .heroreel .nn rect{fill:var(--nd-new-fill);stroke:var(--accent);stroke-width:1.6}
+  .heroreel .nn text{font-weight:700}
+  .heroreel .nn{opacity:0;transition:opacity .5s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .heroreel .nn.show{opacity:1}
+  .heroreel .ne{stroke:var(--accent);stroke-width:1.6;fill:none;stroke-dasharray:700;stroke-dashoffset:700;transition:stroke-dashoffset .9s ease,opacity .4s}
+  .heroreel .ne.show{stroke-dashoffset:0}
+  .heroreel .ne.hide{opacity:0}
+  .heroreel .ve{stroke:var(--accent);stroke-width:1.6;fill:none;opacity:0;transition:opacity .5s ease .5s}
+  .heroreel .ve.show{opacity:1}
+  .heroreel .cap{font-size:11px;fill:var(--ink-3);letter-spacing:.08em}
+  .heroreel .cnt{font-family:var(--sans);font-size:28px;font-weight:800;fill:var(--accent);letter-spacing:-.02em;opacity:0;transition:opacity .5s ease}
+  .heroreel .cnt.show{opacity:1}
+  .heroreel .mk path{fill:var(--edge)}
+  .heroreel .mkA path{fill:var(--accent)}
   @media (max-width:960px){.heroreel{display:none}}
   #hero .vl::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:5px;border-radius:3px;background:var(--accent)}
   .h1{font-size:clamp(64px,9vw,136px);line-height:.95;margin:0;letter-spacing:-.04em;color:var(--accent);font-weight:800;display:flex;align-items:center;gap:.18em}
@@ -287,7 +297,15 @@
   .pr .n.sm text{font-size:12px}
   .pr .l.s{marker-end:none;stroke-width:1.2}
   .pr .l.gap{stroke-dasharray:5 4;opacity:.7}
-  .pr .x path{stroke:#C0392B;stroke-width:2.5;stroke-linecap:round;fill:none}
+  .pr .x path{stroke:#C0392B;stroke-width:2.2;stroke-linecap:round;fill:none}
+  .pr .x circle{fill:none;stroke:#C0392B;stroke-width:1.6}
+  .pr .ok circle{fill:none;stroke:#2E7D46;stroke-width:1.6}
+  .pr .ok path{stroke:#2E7D46;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+  .pr .stop circle{fill:none;stroke:var(--accent);stroke-width:1.6}
+  .pr .stop path{stroke:var(--accent);stroke-width:2.2;stroke-linecap:round}
+  .pr .mini{fill:var(--nd-dead-fill);stroke:var(--nd-init-stroke);stroke-width:1}
+  :root[data-theme="dark"] .pr .ok circle,:root[data-theme="dark"] .pr .ok path{stroke:#4CC776}
+  :root[data-theme="dark"] .pr .x circle,:root[data-theme="dark"] .pr .x path{stroke:#E5484D}
   /* scene svg */
   .sc text{font-family:var(--mono);font-size:13px;fill:var(--ink)}
   .sc .nd rect{fill:var(--nd-fill,var(--card));stroke:var(--hair-2);stroke-width:1.2;transition:fill .35s,stroke .35s,opacity .5s}
@@ -458,20 +476,9 @@
 
 <section class="blk" id="problem"><div class="wrap limits">
   <div class="grid reveal">
-    <div class="vl"><h2 class="t">Why rewrite a model at all?</h2><ul class="pts"><li>To run faster. Runtimes only fuse the patterns they recognise; exporters spell things differently.</li><li>To change the model after export: LoRA adapters, quantization, a prefill/decode split.</li><li>Often the exported file is all you have. The PyTorch source is gone, or belongs to someone else.</li><li>Today all of that means a hand-written script, and scripts break models silently.</li></ul></div>
-    <div class="fig box"><svg class="lim pr" viewBox="0 0 620 370" role="img" aria-label="An exporter writes LayerNorm as twelve small operations; the runtime has one fast kernel for it but does not recognise that spelling. The usual fix is a hand-written script that edits the file and breaks it silently.">
-  <defs><marker id="prarr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker></defs>
-  <text x="0" y="14" class="lab">WHAT THE EXPORTER WROTE</text>
-  <g class="n sm"><rect x="0" y="30" width="120" height="22" rx="6"/><text x="60" y="45" text-anchor="middle">ReduceMean</text></g><path class="l s" d="M60,52 L60,57"/><g class="n sm"><rect x="0" y="57" width="120" height="22" rx="6"/><text x="60" y="72" text-anchor="middle">Identity</text></g><path class="l s" d="M60,79 L60,84"/><g class="n sm"><rect x="0" y="84" width="120" height="22" rx="6"/><text x="60" y="99" text-anchor="middle">Sub</text></g><path class="l s" d="M60,106 L60,111"/><g class="n sm"><rect x="0" y="111" width="120" height="22" rx="6"/><text x="60" y="126" text-anchor="middle">Mul</text></g><path class="l s" d="M60,133 L60,138"/><g class="n sm"><rect x="0" y="138" width="120" height="22" rx="6"/><text x="60" y="153" text-anchor="middle">ReduceMean</text></g><path class="l s" d="M60,160 L60,165"/><g class="n sm"><rect x="0" y="165" width="120" height="22" rx="6"/><text x="60" y="180" text-anchor="middle">Add</text></g><path class="l s" d="M60,187 L60,192"/><g class="n sm"><rect x="0" y="192" width="120" height="22" rx="6"/><text x="60" y="207" text-anchor="middle">Sqrt</text></g><path class="l s" d="M60,214 L60,219"/><g class="n sm"><rect x="0" y="219" width="120" height="22" rx="6"/><text x="60" y="234" text-anchor="middle">Reciprocal</text></g><path class="l s" d="M60,241 L60,246"/><g class="n sm"><rect x="0" y="246" width="120" height="22" rx="6"/><text x="60" y="261" text-anchor="middle">Mul</text></g><path class="l s" d="M60,268 L60,273"/><g class="n sm"><rect x="0" y="273" width="120" height="22" rx="6"/><text x="60" y="288" text-anchor="middle">Mul</text></g><path class="l s" d="M60,295 L60,300"/><g class="n sm"><rect x="0" y="300" width="120" height="22" rx="6"/><text x="60" y="315" text-anchor="middle">Sub</text></g><path class="l s" d="M60,322 L60,327"/><g class="n sm"><rect x="0" y="327" width="120" height="22" rx="6"/><text x="60" y="342" text-anchor="middle">Add</text></g>
-  <text x="440" y="14" class="lab">WHAT THE RUNTIME RUNS FAST</text>
-  <g class="n hi"><rect x="440" y="174" width="180" height="36" rx="7"/><text x="530" y="196.5" text-anchor="middle">LayerNormalization</text></g>
-  <path class="l gap" d="M132,192 L428,192"/>
-  <g class="x"><path d="M292,184 L308,200 M308,184 L292,200"/></g>
-  <text x="300" y="168" text-anchor="middle" class="sub">the fuser does not recognise this spelling</text>
-  <g class="n exp"><rect x="240" y="254" width="120" height="30" rx="7"/><text x="300" y="273.5" text-anchor="middle">edit_model.py</text></g>
-  <text x="300" y="238" text-anchor="middle" class="sub">the usual fix: a script that edits the file</text>
-  <text x="300" y="310" text-anchor="middle" class="del">breaks silently, numerics unverified</text>
-</svg></div>
+    <div class="vl"><h2 class="t">Scripts work once.</h2><ul class="pts"><li>Exported models need edits. Runtimes only fuse the spellings they recognise, and adapters, quantization and prefill/decode splits all change the graph.</li><li>The usual fix is a script that edits the file. It works, on that one export, and often the exported file is all you have.</li><li>Then the model changes: a new export, a new checkpoint, a new opset. The script edits the wrong nodes, or none, and nothing tells you.</li><li>A rule matches the pattern, not the file. The same rule runs on every version: checked, applied, verified. Or refused, with a reason.</li></ul></div>
+    <div class="fig box"><svg class="lim pr" viewBox="0 0 620 370" role="img" aria-label="Three versions of a model. A hand-written script edits the first correctly, then silently edits the wrong nodes or nothing as the model changes. The same Rune rule matches every version, is checked and verified each time, or refuses with a reason.">
+<text x="210" y="14" text-anchor="middle" class="lab">V1</text><g class="n sm"><rect x="164" y="26" width="92" height="18" rx="5"/><text x="210" y="39" text-anchor="middle">model</text></g><rect class="mini" x="180" y="52" width="60" height="8" rx="3"/><rect class="mini" x="180" y="64" width="60" height="8" rx="3"/><rect class="mini" x="180" y="76" width="60" height="8" rx="3"/><text x="370" y="14" text-anchor="middle" class="lab">V2 · NEW EXPORT</text><g class="n sm"><rect x="324" y="26" width="92" height="18" rx="5"/><text x="370" y="39" text-anchor="middle">model</text></g><rect class="mini" x="340" y="52" width="60" height="8" rx="3"/><rect class="mini" x="340" y="64" width="60" height="8" rx="3"/><rect class="mini" x="340" y="76" width="60" height="8" rx="3"/><text x="530" y="14" text-anchor="middle" class="lab">V3 · NEW OPSET</text><g class="n sm"><rect x="484" y="26" width="92" height="18" rx="5"/><text x="530" y="39" text-anchor="middle">model</text></g><rect class="mini" x="500" y="52" width="60" height="8" rx="3"/><rect class="mini" x="500" y="64" width="60" height="8" rx="3"/><rect class="mini" x="500" y="76" width="60" height="8" rx="3"/><g class="n exp"><rect x="0" y="126" width="140" height="30" rx="7"/><text x="70" y="145.5" text-anchor="middle">edit_model.py</text></g><path class="l s" d="M140 141H160"/><g class="ok"><circle cx="210" cy="141" r="9"/><path d="M206 141 l3 3 l6 -7"/></g><text x="210" y="170" text-anchor="middle" class="sub">edits 12 sites</text><g class="x"><circle cx="370" cy="141" r="9"/><path d="M366 137 l8 8 M374 137 l-8 8"/></g><text x="370" y="170" text-anchor="middle" class="del">edits the wrong nodes</text><text x="370" y="185" text-anchor="middle" class="sub">no error</text><g class="x"><circle cx="530" cy="141" r="9"/><path d="M526 137 l8 8 M534 137 l-8 8"/></g><text x="530" y="170" text-anchor="middle" class="del">edits nothing</text><text x="530" y="185" text-anchor="middle" class="sub">no error</text><g class="n hi"><rect x="0" y="246" width="140" height="30" rx="7"/><text x="70" y="265.5" text-anchor="middle">layernorm.rune</text></g><path class="l s" d="M140 261H160"/><g class="ok"><circle cx="210" cy="261" r="9"/><path d="M206 261 l3 3 l6 -7"/></g><text x="210" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="ok"><circle cx="370" cy="261" r="9"/><path d="M366 261 l3 3 l6 -7"/></g><text x="370" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="stop"><circle cx="530" cy="261" r="9"/><path d="M526 261h8"/></g><text x="530" y="290" text-anchor="middle" class="sub">refused: no match</text><text x="530" y="305" text-anchor="middle" class="sub">model untouched</text><text x="0" y="350" class="sub">the script edits the file; the rule matches the pattern</text></svg></div>
   </div>
 </div></section>
 
@@ -4812,33 +4819,70 @@ function safe(f){try{f();}catch(err){console.warn(err);}}
 safe(function(){
 var host=document.getElementById("heroreel"); if(!host) return;
 var SCENES=[
- {rule:"bert_tf_fusion.rune", before:["ReduceMean","Sub","Mul","ReduceMean","Add","Sqrt","Reciprocal","Mul","Mul","Sub","Add"], after:["LayerNormalization"]},
- {rule:"bert_tf_fusion.rune", before:["Pow","Mul","Add","Mul","Tanh","Add","Mul","Mul"], after:["FastGelu"]},
- {rule:"smollm_gqa_fusion.rune", before:["MatMul","Mul","Add","Softmax","Cast","Cast","MatMul","Transpose","Reshape","Expand","Slice","Concat"], after:["GroupQueryAttention"]},
- {rule:"smollm_lora_merge.rune", before:["MatMul","MatMul","MatMul","Mul","Add"], after:["MatMul"]},
- {rule:"shufflenet_bn_fold.rune", before:["Conv","BatchNormalization"], after:["Conv"]},
- {rule:"smollm_prefill.rune + smollm_decode.rune", before:["Decoder"], after:["prefill","decode"], split:true}
+ {rule:"bert_tf_fusion.rune", inp:"x", before:["ReduceMean","Sub","Mul","ReduceMean","Add","Sqrt","Reciprocal","Mul","Mul","Sub","Add"], after:["LayerNormalization"], out:"MatMul"},
+ {rule:"bert_tf_fusion.rune", inp:"x", before:["Pow","Mul","Add","Mul","Tanh","Add","Mul","Mul"], after:["FastGelu"], out:"MatMul"},
+ {rule:"smollm_gqa_fusion.rune", inp:"q · k · v", before:["Transpose","Reshape","MatMul","Mul","Add","Softmax","Cast","MatMul","Transpose","Reshape"], after:["GroupQueryAttention"], out:"o_proj"},
+ {rule:"smollm_lora_merge.rune", inp:"x", before:["MatMul","MatMul","MatMul","Mul","Add"], after:["MatMul"], out:"Reshape"},
+ {rule:"shufflenet_bn_fold.rune", inp:"x", before:["Conv","BatchNormalization"], after:["Conv"], out:"Relu"},
+ {rule:"smollm_prefill.rune · smollm_decode.rune", inp:"tokens", before:["Decoder"], after:["prefill","decode"], out:"logits", split:true}
 ];
 var NS="http://www.w3.org/2000/svg";
 function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
-function box(g,cls,x,y,w,h,label){var n=el("g",{"class":cls},g);el("rect",{x:x-w/2,y:y-h/2,width:w,height:h,rx:7},n);var t=el("text",{x:x,y:y+4.5,"text-anchor":"middle"},n);t.textContent=label;return n;}
+function box(g,cls,x,y,w,h,label){var n=el("g",{"class":cls},g);n.setAttribute("transform","translate("+x+" "+y+")");el("rect",{x:-w/2,y:-h/2,width:w,height:h,rx:7},n);var t=el("text",{x:0,y:4.5,"text-anchor":"middle"},n);t.textContent=label;return n;}
+var uid=0;
 SCENES.forEach(function(sc){
-  var svg=el("svg",{viewBox:"0 0 640 420"},host);
-  var LX=150,RX=500,MAX=6,shown=sc.before.slice(0,MAX),extra=sc.before.length-shown.length;
-  var H=30,GAP=12,top=210-((shown.length-1)*(H+GAP))/2;
-  shown.forEach(function(op,i){var y=top+i*(H+GAP);box(svg,"b",LX,y,170,H,op);if(i<shown.length-1)el("path",{"class":"ln",d:"M"+LX+" "+(y+H/2)+"V"+(y+H/2+GAP)},svg);});
-  if(extra>0){var m=el("text",{x:LX,y:top+shown.length*(H+GAP)+2,"text-anchor":"middle","class":"more"},svg);m.textContent="+ "+extra+" more";}
-  var ys=sc.after.length===2?[170,250]:[210];
-  sc.after.forEach(function(op,i){box(svg,"a",RX,ys[i],200,40,op);});
-  // one funnel per shown op into the new node(s)
-  shown.forEach(function(op,i){var y=top+i*(H+GAP);var ty=sc.split?ys[i%2]:ys[0];el("path",{"class":"fn",d:"M"+(LX+85)+" "+y+"C"+(LX+200)+" "+y+" "+(RX-220)+" "+ty+" "+(RX-100)+" "+ty},svg);});
-  var cap=el("text",{x:20,y:400,"class":"cap"},svg);cap.textContent=sc.rule.toUpperCase();
-  var cnt=el("text",{x:620,y:404,"text-anchor":"end","class":"cnt"},svg);cnt.textContent=sc.before.length+" → "+sc.after.length;
+  var svg=el("svg",{viewBox:"0 0 640 440"},host); uid++;
+  var d=el("defs",{},svg);
+  var m=el("marker",{id:"rl"+uid,"class":"mk",markerWidth:8,markerHeight:8,refX:7,refY:4,orient:"auto",markerUnits:"userSpaceOnUse"},d);el("path",{d:"M0 0L8 4L0 8Z"},m);
+  var mA=el("marker",{id:"rlA"+uid,"class":"mkA",markerWidth:8,markerHeight:8,refX:7,refY:4,orient:"auto",markerUnits:"userSpaceOnUse"},d);el("path",{d:"M0 0L8 4L0 8Z"},mA);
+  var CX=200,NX=470,MAX=6,shown=sc.before.slice(0,MAX),extra=sc.before.length-shown.length;
+  if(extra>0){shown=sc.before.slice(0,MAX-1);shown.push("+ "+(sc.before.length-(MAX-1))+" more");}
+  var H=26,GAP=14,IY=42,OY=390,top=IY+52;
+  var inp=box(svg,"n port",CX,IY,120,H,sc.inp);
+  var ops=[],edges=[];
+  shown.forEach(function(op,i){var y=top+i*(H+GAP);ops.push(box(svg,"n",CX,y,150,H,op));});
+  var lastY=top+(shown.length-1)*(H+GAP);
+  var out=box(svg,"n port",CX,OY,120,H,sc.out);
+  function E(cls,dd){var e=el("path",{"class":cls,d:dd},svg);e.style.markerEnd="url(#"+(cls.indexOf("e")===0?"rl":"rlA")+uid+")";return e;}
+  edges.push(E("e","M"+CX+" "+(IY+H/2)+"V"+(top-H/2-2)));
+  for(var i=0;i<shown.length-1;i++)edges.push(E("e","M"+CX+" "+(top+i*(H+GAP)+H/2)+"V"+(top+(i+1)*(H+GAP)-H/2-2)));
+  edges.push(E("e","M"+CX+" "+(lastY+H/2)+"V"+(OY-H/2-2)));
+  // new node(s) at the side, then their final places in the chain's column
+  var midY=(top+lastY)/2, nn=[], ne=[], ve=[];
+  if(sc.split) midY=(IY+OY)/2;
+  var finals=sc.split?[[CX-90,midY],[CX+90,midY]]:[[CX,midY]];
+  sc.after.forEach(function(op,i){var y=sc.split?(midY-40+i*80):midY;var n=box(svg,"nn",NX,y,sc.split?150:200,36,op);n.dataset.fx=finals[i][0];n.dataset.fy=finals[i][1];n.dataset.sx=NX;n.dataset.sy=y;nn.push(n);
+    ne.push(E("ne","M"+(CX+60)+" "+IY+"C"+(NX-60)+" "+IY+" "+(NX-140)+" "+y+" "+(NX-(sc.split?75:100)-2)+" "+y));
+    ne.push(E("ne","M"+NX+" "+(y+18)+"C"+NX+" "+(y+80)+" "+(CX+40)+" "+(OY-60)+" "+(CX+62)+" "+(OY-2)));
+    var fx=finals[i][0],fy=finals[i][1];
+    if(sc.split){
+      ve.push(E("ve","M"+CX+" "+(IY+H/2)+"V"+(fy-60)+"H"+fx+"V"+(fy-20)));
+      ve.push(E("ve","M"+fx+" "+(fy+18)+"V"+(fy+60)+"H"+CX+"V"+(OY-H/2-2)));
+    }else{
+      ve.push(E("ve","M"+fx+" "+(IY+H/2)+"V"+(fy-20)));
+      ve.push(E("ve","M"+fx+" "+(fy+18)+"V"+(OY-H/2-2)));
+    }
+  });
+  var cap=el("text",{x:20,y:428,"class":"cap"},svg);cap.textContent=sc.rule.toUpperCase();
+  var cnt=el("text",{x:620,y:432,"text-anchor":"end","class":"cnt"},svg);cnt.textContent=sc.before.length+" → "+sc.after.length;
+  svg._play=function(){
+    var all=ops.concat(edges);
+    all.forEach(function(x){x.classList.remove("match","gone");});
+    nn.forEach(function(n){n.classList.remove("show");n.setAttribute("transform","translate("+n.dataset.sx+" "+n.dataset.sy+")");});
+    ne.forEach(function(x){x.classList.remove("show","hide");});ve.forEach(function(x){x.classList.remove("show");});cnt.classList.remove("show");
+    var T=[];
+    T.push(setTimeout(function(){ops.forEach(function(n){n.classList.add("match");});},300));
+    T.push(setTimeout(function(){nn.forEach(function(n){n.classList.add("show");});},900));
+    T.push(setTimeout(function(){ne.forEach(function(x){x.classList.add("show");});},1300));
+    T.push(setTimeout(function(){all.forEach(function(x){x.classList.add("gone");});ne.forEach(function(x){x.classList.add("hide");});
+      nn.forEach(function(n){n.setAttribute("transform","translate("+n.dataset.fx+" "+n.dataset.fy+")");});ve.forEach(function(x){x.classList.add("show");});cnt.classList.add("show");},2500));
+    svg._timers=T;
+  };
 });
-var svgs=host.querySelectorAll("svg"),i=0;svgs[0].classList.add("on");
-var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-if(reduce)host.classList.add("still");
-setInterval(function(){svgs[i].classList.remove("on");i=(i+1)%svgs.length;svgs[i].classList.add("on");},2600);
+var svgs=host.querySelectorAll("svg"),i=0;
+function show(k){svgs.forEach(function(s2,j){s2.classList.toggle("on",j===k);if(s2._timers)s2._timers.forEach(clearTimeout);});svgs[k]._play();}
+show(0);
+setInterval(function(){i=(i+1)%svgs.length;show(i);},4600);
 });
 safe(function(){
 var ex=RuneExplain(document.getElementById("explain"));var exStep=0,exTimer=null;
