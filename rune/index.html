@@ -651,8 +651,8 @@ rune-cli validate reports/run/optimized.onnx \
 
 <section class="blk" id="limits"><div class="wrap limits">
   <div class="grid reveal">
-    <div class="vl"><h2 class="t">What to know before you start</h2><ul class="pts"><li>The gate checks structure; verify checks the numbers against the original.</li><li>A rule matches one exporter&#x27;s spelling, so another exporter needs its own.</li><li>ONNX and torch.export are stable; TFLite is experimental.</li><li>The numbers here come from specific models and hardware.</li></ul>
-      <p class="lp small"><b>Found a problem?</b> Open a <a href="https://github.com/ByteInfer-Labs/rune/issues">GitHub issue</a> with the model export, the rule, and the gate&rsquo;s refusal or audit report.</p></div>
+    <div class="vl"><h2 class="t">Before you start</h2><ul class="pts"><li>Rune is experimental software under active development.</li><li>The gate checks structure; verify compares the numbers with the original.</li><li>Rules are exporter-specific. ONNX and torch.export work; TFLite is experimental.</li><li>Benchmarks come from specific models and hardware.</li></ul>
+      <p class="lp small"><b>Found a bug?</b> Open a <a href="https://github.com/ByteInfer-Labs/rune/issues">GitHub issue</a> with the export, the rule and the gate&rsquo;s report.</p></div>
     <div class="fig box"><svg class="lim" viewBox="0 0 620 400" role="img" aria-label="Every rewrite passes a structural gate and a numerical check; ONNX and torch.export are stable paths, TFLite is experimental, ExecuTorch is reached by lowering after the rewrite.">
   <defs><marker id="limarr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker>
   <marker id="limarrD" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mkd"/></marker></defs>
