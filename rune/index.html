@@ -271,6 +271,7 @@
   .sk.side{border-style:dashed}
   .sarr{align-self:center;font-family:var(--mono);color:var(--ink-3);font-size:1.1rem}
   @media (max-width:900px){.sarr{display:none}}
+  .swipe{display:none}
   .lim text{font-family:var(--mono);font-size:13px;fill:var(--ink)}
   .lim .n rect{fill:var(--nd-fill,var(--card));stroke:var(--hair-2);stroke-width:1.2}
   .lim .n.hi rect{stroke:var(--accent);stroke-width:2;fill:var(--nd-new-fill)}
@@ -417,11 +418,20 @@
   h2.t{font-size:clamp(20px,5vw,28px)}p.s{font-size:.92rem}.pts li{font-size:.92rem}
   .gscroll{height:auto!important;position:relative;z-index:1}.gsticky{position:static!important;height:auto!important;overflow:visible!important}#examples.blk{padding:48px 0 24px!important;background:var(--bg);position:relative;z-index:1}.stage{position:relative!important;height:auto!important}
   .slide{position:static!important;opacity:1!important;transform:none!important;pointer-events:auto!important;display:block!important;margin-bottom:48px}
-  .slide .fig{display:none}.slide .bgbox{margin-top:10px}
+  .slide .bgbox{margin-top:10px}
   .galnav{display:none}
-  .explain{display:block}.explain #explain{display:none}.stepper{margin-top:0}
+  .explain{display:block}.stepper{margin-top:0}
   #play{display:none}
-  .limits .grid{display:block}.limits .fig{display:none}
+  .limits .grid{display:block}
+  /* wide technical figures: keep them legible by letting the reader pan, with a fade at the edge */
+  .fig,.slide .fig,#explain,#discover-scene{margin-top:22px}
+  .figscroll{position:relative}
+  .figscroll::after{content:"";position:absolute;top:0;right:0;bottom:0;width:36px;pointer-events:none;background:linear-gradient(to right,transparent,var(--card));border-radius:0 22px 22px 0}
+  .fig.box,.slide .plate{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:18px}
+  .fig.box > svg,.slide .plate > svg,.slide .plate .g > svg,#explain > svg,#discover-scene > svg{min-width:560px}
+  .slide .plate .g{min-width:560px}
+  .slide .plate svg,.slide .plate .g svg{max-height:none}
+  .swipe{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:8px 0 0;text-align:right}
   .skillrow{gap:8px}.sk{min-width:100%;padding:12px 14px}.sk .nm{font-size:.78rem}.sk .wh{font-size:.82rem}
   section.blk{padding:48px 0 24px;position:relative;z-index:1;background:var(--bg)}
   }
@@ -500,9 +510,9 @@
 
 <section class="blk" id="problem"><div class="wrap limits">
   <div class="grid reveal">
-    <div class="vl"><p class="eyebrow">The problem</p><h2 class="t">Rewrite graphs,<br>not <em>exporter accidents</em>.</h2><ul class="pts"><li>Graph-edit scripts tend to depend on <b>one particular export layout</b>.</li><li>Rune rules describe <b>structure</b> instead. If the expected pattern exists, Rune rewrites it. If it doesn&#x27;t, <b>nothing is changed</b>.</li></ul></div>
+    <div class="vl"><p class="eyebrow">The problem</p><h2 class="t">Rewrite graphs,<br>not <em>exporter accidents</em>.</h2><ul class="pts"><li>Graph-edit scripts tend to depend on <b>one particular export layout</b>.</li><li>A script can <b>silently introduce a bug</b> and leave you with a broken graph.</li><li>Rune rules describe <b>structure</b> instead. If the expected pattern exists, Rune rewrites it. If it doesn&#x27;t, <b>nothing is changed</b>.</li></ul></div>
     <div class="fig box"><svg class="lim pr" viewBox="0 0 620 370" role="img" aria-label="Three versions of a model. A hand-written script edits the first correctly, then silently edits the wrong nodes or nothing as the model changes. The same Rune rule matches every version, is checked and verified each time, or refuses with a reason.">
-<text x="210" y="14" text-anchor="middle" class="lab">V1</text><g class="n sm"><rect x="164" y="26" width="92" height="18" rx="5"/><text x="210" y="39" text-anchor="middle">model</text></g><rect class="mini" x="180" y="52" width="60" height="8" rx="3"/><rect class="mini" x="180" y="64" width="60" height="8" rx="3"/><rect class="mini" x="180" y="76" width="60" height="8" rx="3"/><text x="370" y="14" text-anchor="middle" class="lab">V2 · NEW EXPORT</text><g class="n sm"><rect x="324" y="26" width="92" height="18" rx="5"/><text x="370" y="39" text-anchor="middle">model</text></g><rect class="mini" x="340" y="52" width="60" height="8" rx="3"/><rect class="mini" x="340" y="64" width="60" height="8" rx="3"/><rect class="mini" x="340" y="76" width="60" height="8" rx="3"/><text x="530" y="14" text-anchor="middle" class="lab">V3 · NEW OPSET</text><g class="n sm"><rect x="484" y="26" width="92" height="18" rx="5"/><text x="530" y="39" text-anchor="middle">model</text></g><rect class="mini" x="500" y="52" width="60" height="8" rx="3"/><rect class="mini" x="500" y="64" width="60" height="8" rx="3"/><rect class="mini" x="500" y="76" width="60" height="8" rx="3"/><g class="n exp"><rect x="0" y="126" width="140" height="30" rx="7"/><text x="70" y="145.5" text-anchor="middle">edit_model.py</text></g><path class="l s" d="M140 141H160"/><g class="ok"><circle cx="210" cy="141" r="9"/><path d="M206 141 l3 3 l6 -7"/></g><text x="210" y="170" text-anchor="middle" class="sub">edits 12 sites</text><g class="x"><circle cx="370" cy="141" r="9"/><path d="M366 137 l8 8 M374 137 l-8 8"/></g><text x="370" y="170" text-anchor="middle" class="del">edits the wrong nodes</text><text x="370" y="185" text-anchor="middle" class="sub">no error</text><g class="x"><circle cx="530" cy="141" r="9"/><path d="M526 137 l8 8 M534 137 l-8 8"/></g><text x="530" y="170" text-anchor="middle" class="del">edits nothing</text><text x="530" y="185" text-anchor="middle" class="sub">no error</text><g class="n hi"><rect x="0" y="246" width="140" height="30" rx="7"/><text x="70" y="265.5" text-anchor="middle">layernorm.rune</text></g><path class="l s" d="M140 261H160"/><g class="ok"><circle cx="210" cy="261" r="9"/><path d="M206 261 l3 3 l6 -7"/></g><text x="210" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="ok"><circle cx="370" cy="261" r="9"/><path d="M366 261 l3 3 l6 -7"/></g><text x="370" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="stop"><circle cx="530" cy="261" r="9"/><path d="M526 261h8"/></g><text x="530" y="290" text-anchor="middle" class="sub">refused: no match</text><text x="530" y="305" text-anchor="middle" class="sub">model untouched</text><text x="0" y="350" class="sub">the script edits the file; the rule matches the pattern</text></svg></div>
+<text x="210" y="14" text-anchor="middle" class="lab">V1</text><g class="n sm"><rect x="164" y="26" width="92" height="18" rx="5"/><text x="210" y="39" text-anchor="middle">model</text></g><rect class="mini" x="180" y="52" width="60" height="8" rx="3"/><rect class="mini" x="180" y="64" width="60" height="8" rx="3"/><rect class="mini" x="180" y="76" width="60" height="8" rx="3"/><text x="370" y="14" text-anchor="middle" class="lab">V2 · NEW EXPORT</text><g class="n sm"><rect x="324" y="26" width="92" height="18" rx="5"/><text x="370" y="39" text-anchor="middle">model</text></g><rect class="mini" x="340" y="52" width="60" height="8" rx="3"/><rect class="mini" x="340" y="64" width="60" height="8" rx="3"/><rect class="mini" x="340" y="76" width="60" height="8" rx="3"/><text x="530" y="14" text-anchor="middle" class="lab">V3 · NEW OPSET</text><g class="n sm"><rect x="484" y="26" width="92" height="18" rx="5"/><text x="530" y="39" text-anchor="middle">model</text></g><rect class="mini" x="500" y="52" width="60" height="8" rx="3"/><rect class="mini" x="500" y="64" width="60" height="8" rx="3"/><rect class="mini" x="500" y="76" width="60" height="8" rx="3"/><g class="n exp"><rect x="0" y="126" width="140" height="30" rx="7"/><text x="70" y="145.5" text-anchor="middle">edit_model.py</text></g><path class="l s" d="M140 141H160"/><g class="ok"><circle cx="210" cy="141" r="9"/><path d="M206 141 l3 3 l6 -7"/></g><text x="210" y="170" text-anchor="middle" class="sub">edits 12 sites</text><g class="x"><circle cx="370" cy="141" r="9"/><path d="M366 137 l8 8 M374 137 l-8 8"/></g><text x="370" y="170" text-anchor="middle" class="del">edits the wrong nodes</text><text x="370" y="185" text-anchor="middle" class="sub">no error</text><g class="x"><circle cx="530" cy="141" r="9"/><path d="M526 137 l8 8 M534 137 l-8 8"/></g><text x="530" y="170" text-anchor="middle" class="del">edits nothing</text><text x="530" y="185" text-anchor="middle" class="sub">no error</text><g class="n hi"><rect x="0" y="246" width="140" height="30" rx="7"/><text x="70" y="265.5" text-anchor="middle">layernorm.rune</text></g><path class="l s" d="M140 261H160"/><g class="ok"><circle cx="210" cy="261" r="9"/><path d="M206 261 l3 3 l6 -7"/></g><text x="210" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="ok"><circle cx="370" cy="261" r="9"/><path d="M366 261 l3 3 l6 -7"/></g><text x="370" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="stop"><circle cx="530" cy="261" r="9"/><path d="M526 261h8"/></g><text x="530" y="290" text-anchor="middle" class="sub">refused: no match</text><text x="530" y="305" text-anchor="middle" class="sub">model untouched</text><text x="0" y="350" class="sub">the script edits the file; the rule matches the pattern</text></svg></div><p class="swipe">swipe to pan &rarr;</p>
   </div>
 </div></section>
 
@@ -515,7 +525,7 @@
 <span class="k">+</span> FusedMulAddRelu#f
 <span class="k">&gt;</span> m.input[0] -&gt; f.input[0]  ...</pre>
     </div>
-    <div id="explain" class="box"></div>
+    <div><div id="explain" class="box"></div><p class="swipe">swipe to pan &rarr;</p></div>
   </div>
 </div></section>
 
@@ -523,7 +533,7 @@
   <div class="reveal"><p class="eyebrow">Case studies</p><h2 class="t">Real model rewrites</h2></div>
   <div class="gal reveal" id="gal">
     <div class="stage" id="track">
-      <div class="slide"><div class="txt vl"><p class="tagm">BERT</p><h3>BERT LayerNorm</h3><div class="bgbox"><ul class="pts"><li>Replace TensorFlow&#x27;s <b>12-op LayerNorm expansion</b> with the native ONNX operation.</li></ul><p class="rl"><span class="lab">the rule</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/bert_tf_fusion.rune">bert_tf_fusion.rune</a></p></div><p class="proof">37 rewrites · outputs match · +5.07% throughput</p></div><div class="fig box"><div class="plate"><div class="g" style="max-width:560px" data-fig="bert_surgery" data-dir="TB" data-scale="1.4"></div><div class="lgd"><span><i class="sw dead"></i>removed</span><span><i class="sw new"></i>inserted</span><span><i class="sw cut"></i>edge cut</span></div></div></div></div>
+      <div class="slide"><div class="txt vl"><p class="tagm">BERT</p><h3>BERT LayerNorm</h3><div class="bgbox"><ul class="pts"><li>Replace TensorFlow&#x27;s <b>12-op LayerNorm expansion</b> with the native ONNX operation.</li></ul><p class="rl"><span class="lab">the rule</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/bert_tf_fusion.rune">bert_tf_fusion.rune</a></p></div><p class="proof">37 rewrites · outputs match · +5.07% throughput</p></div><div class="fig box"><div class="plate"><div class="g" style="max-width:560px" data-fig="bert_surgery" data-dir="TB" data-scale="1.4"></div><div class="lgd"><span><i class="sw dead"></i>removed</span><span><i class="sw new"></i>inserted</span><span><i class="sw cut"></i>edge cut</span></div></div><p class="swipe">swipe to pan &rarr;</p></div></div>
       <div class="slide"><div class="txt vl"><p class="tagm">LLM serving</p><h3>LLM prefill + decode</h3><div class="bgbox"><ul class="pts"><li>Split one decoder export into dedicated <b>prefill</b> and <b>KV-cache decode</b> graphs.</li></ul><p class="rl"><span class="lab">the rules</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_prefill.rune">smollm_prefill.rune</a> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_decode.rune">smollm_decode.rune</a></p></div><p class="proof">512 tokens verified · 2.67× faster decode</p></div><div class="fig box"><div class="plate"><svg class="lim sp" viewBox="0 0 640 316" role="img" aria-label="One static export becomes a prefill graph that outputs each layer's KV cache and a decode graph that takes the past cache and one token; both share one copy of the weights.">
   <defs><marker id="sparr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker></defs>
   <text x="0" y="14" class="lab">ONE EXPORT</text>
@@ -542,8 +552,8 @@
   <g class="n exp"><rect x="480" y="118" width="160" height="64" rx="9"/><text x="560" y="146" text-anchor="middle">weights</text><text x="560" y="164" text-anchor="middle" class="sub">one copy, shared</text></g>
   <path class="l w" d="M480,136 L460,136 L460,72 L442,72"/>
   <path class="l w" d="M480,164 L460,164 L460,228 L442,228"/>
-</svg></div></div></div>
-      <div class="slide"><div class="txt vl"><p class="tagm">SmolLM</p><h3>SmolLM GQA</h3><div class="bgbox"><ul class="pts"><li>Replace the exported <b>126-op attention block</b> with the fused runtime operation.</li></ul><p class="rl"><span class="lab">the rule</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_gqa_fusion_fp16.rune">smollm_gqa_fusion_fp16.rune</a></p></div><p class="proof">30 blocks rewritten · accuracy preserved · +9.8% step performance</p></div><div class="fig box"><div class="plate"><div class="g" data-fig="smollm_surgery" data-dir="TB" data-scale="1.0"></div><div class="lgd"><span><i class="sw dead"></i>removed</span><span><i class="sw new"></i>inserted</span><span><i class="sw cut"></i>edge cut</span></div></div></div></div>
+</svg></div><p class="swipe">swipe to pan &rarr;</p></div></div>
+      <div class="slide"><div class="txt vl"><p class="tagm">SmolLM</p><h3>SmolLM GQA</h3><div class="bgbox"><ul class="pts"><li>Replace the exported <b>126-op attention block</b> with the fused runtime operation.</li></ul><p class="rl"><span class="lab">the rule</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_gqa_fusion_fp16.rune">smollm_gqa_fusion_fp16.rune</a></p></div><p class="proof">30 blocks rewritten · accuracy preserved · +9.8% step performance</p></div><div class="fig box"><div class="plate"><div class="g" data-fig="smollm_surgery" data-dir="TB" data-scale="1.0"></div><div class="lgd"><span><i class="sw dead"></i>removed</span><span><i class="sw new"></i>inserted</span><span><i class="sw cut"></i>edge cut</span></div></div><p class="swipe">swipe to pan &rarr;</p></div></div>
       <div class="slide"><div class="txt vl"><p class="tagm">LoRA</p><h3>LoRA</h3><div class="bgbox"><ul class="pts"><li>Inject adapters directly into an exported ONNX model, train them, then <b>fold them back</b> into the base weights.</li></ul><p class="rl"><span class="lab">the rules</span> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_lora_qv.rune">smollm_lora_qv.rune</a> <a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/smollm_lora_merge.rune">smollm_lora_merge.rune</a></p></div><p class="proof">60 injection sites · identical before training · merged within 5e-4</p></div><div class="fig box"><div class="plate"><svg class="lim sp lr" viewBox="0 0 640 340" role="img" aria-label="A q projection before, with a LoRA adapter chain injected beside it, and after the trained adapter is folded back into the weight.">
   <defs><marker id="lrarr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker>
   <marker id="lrarrA" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mka"/></marker></defs>
@@ -585,7 +595,7 @@
   <g class="n"><rect x="460" y="294" width="100" height="30" rx="7"/><text x="510" y="313.5" text-anchor="middle">Reshape</text></g>
   <path class="l" d="M560,309 L598,309"/>
   <g class="n port"><rect x="600" y="294" width="40" height="30" rx="7"/><text x="620" y="313.5" text-anchor="middle">&rarr;</text></g>
-</svg></div></div></div>
+</svg></div><p class="swipe">swipe to pan &rarr;</p></div></div>
     </div>
     <div class="galnav"><button class="arr" id="prev" aria-label="previous">&larr;</button><div class="dots" id="dots"></div><button class="arr" id="next" aria-label="next">&rarr;</button></div>
   </div>
@@ -619,7 +629,7 @@
     --report reports/run
 rune-cli validate reports/run/optimized.onnx \
     --original model.onnx</pre></div>
-    <div class="fig box"><svg class="lim rp" viewBox="0 0 640 400" role="img" aria-label="A Rune run report: model in and out, node counts, sites matched, gate refusals, validation verdict, and a before/after drawing of one transformed site.">
+    <div><div class="fig box"><svg class="lim rp" viewBox="0 0 640 400" role="img" aria-label="A Rune run report: model in and out, node counts, sites matched, gate refusals, validation verdict, and a before/after drawing of one transformed site.">
   <defs><marker id="rparr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker></defs>
   <rect x="0" y="0" width="640" height="400" rx="14" class="sheet"/>
   <text x="24" y="30" class="lab">REPORT</text>
@@ -648,7 +658,7 @@ rune-cli validate reports/run/optimized.onnx \
   <text x="24" y="336" class="lab">OPERATOR CENSUS</text>
   <text x="24" y="360" class="sub">BatchNormalization&#160;&#160;&#160;56 &rarr; 0</text>
   <text x="24" y="382" class="sub">&#8942; 55 more sites, each drawn before and after</text>
-</svg></div>
+</svg></div><p class="swipe">swipe to pan &rarr;</p></div>
   </div>
 </div></section>
 
@@ -667,7 +677,7 @@ rune-cli validate reports/run/optimized.onnx \
   <div class="grid reveal">
     <div class="vl"><p class="eyebrow">Research</p><h2 class="t">Automatic discovery</h2><p class="tagx">experimental</p><ul class="pts"><li>Rune can inspect a model and propose reusable <code>.rune</code> rules <b>automatically</b>.</li><li>The output is normal Rune code: readable, editable and reusable.</li><li>CNN patterns are supported today. Transformer discovery is in development.</li></ul>
       <pre class="cmd">rune-cli discover model.onnx --out rules/</pre></div>
-    <div class="fig box"><div id="discover-scene"></div></div>
+    <div><div class="fig box"><div id="discover-scene"></div></div><p class="swipe">swipe to pan &rarr;</p></div>
   </div>
 </div></section>
 
@@ -709,7 +719,7 @@ rune-cli validate reports/run/optimized.onnx \
   <g class="n"><rect x="316" y="354" width="104" height="32" rx="7"/><text x="368" y="374.5" text-anchor="middle">lower</text></g>
   <path class="l" d="M420,370 L466,370"/>
   <g class="n"><rect x="466" y="354" width="88" height="32" rx="7"/><text x="510" y="374.5" text-anchor="middle">.pte</text></g>
-</svg></div>
+</svg></div><p class="swipe">swipe to pan &rarr;</p>
   </div>
 </div></section>
 
