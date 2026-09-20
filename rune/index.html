@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlJ1bmUiPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjQzI1NTFBIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuNSAxMi4yKSBzY2FsZSgwLjM0MTMpIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iNS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xNyA0NEw1NyA1OUwxNyA3NCIvPjwvZz48ZyBmaWxsPSIjRkZGRkZGIj48Y2lyY2xlIGN4PSIxNyIgY3k9IjQ0IiByPSIxMC41Ii8+PGNpcmNsZSBjeD0iMTciIGN5PSI3NCIgcj0iMTAuNSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNTkiIHI9IjgiLz48L2c+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTM0IDEwSDgyTDEwOCAzNVY1OEw4NCA3OEwxMDggMTA3SDc0TDUxIDgyTDgzIDQ4TDcxIDM1SDUwWiIvPjwvZz48L3N2Zz4K">
-<title>Rune: Model surgery without brittle graph scripts.</title>
+<title>Rune: Model transformations without brittle graph scripts.</title>
 <style>:root{--bg:#FFFFFF;--card:#F5F5F7;--codebg:#1D1D1F;--ink:#1D1D1F;--ink-2:#515154;--ink-3:#86868B;
   --accent:#B4531A;--accent-2:#8E3E11;--del:#C0392B;--hair:rgba(0,0,0,.09);--hair-2:rgba(0,0,0,.18);--inline-code:rgba(0,0,0,.06);
   --code-txt:#F5F5F7;--code-c:#9A9A9F;--code-k:#F0A36B;--sel:rgba(180,83,26,.18);
@@ -127,6 +127,8 @@
   .hmark{height:.9em;width:auto;color:var(--accent);flex:none}
   .tag{font-size:clamp(28px,3vw,46px);font-weight:700;line-height:1.05;margin:22px 0 18px;letter-spacing:-.03em;color:var(--ink)}
   .sub{font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.5;color:var(--ink);max-width:56ch;margin:0;font-weight:500;overflow-wrap:break-word}
+  .sub b{font-weight:700;color:var(--ink)}
+  .sub b.k,.sub .hl{color:var(--accent)}
   .ctas{display:flex;gap:22px;align-items:center;margin:34px 0 0}
   .btn{display:inline-flex;align-items:center;padding:13px 22px;border-radius:999px;font-family:var(--mono);font-size:.86rem;background:var(--accent);color:#fff;transition:transform .15s,opacity .15s}
   .btn:hover{transform:translateY(-1px);opacity:.92}
@@ -494,8 +496,8 @@
 <section id="hero"><div class="wrap">
   <div class="vl">
     <h1 class="h1"><svg class="hmark" viewBox="0 0 120 116" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 44L57 59L17 74"/></g><g fill="currentColor"><circle cx="17" cy="44" r="10.5"/><circle cx="17" cy="74" r="10.5"/><circle cx="57" cy="59" r="8"/><path d="M34 10H82L108 35V58L84 78L108 107H74L51 82L83 48L71 35H50Z"/></g></svg>Rune</h1>
-    <p class="tag">Model surgery without brittle graph scripts.</p>
-    <p class="sub">Rune is a powerful graph rewrite system for ONNX, TFLite and torch.export models.</p><p class="sub">With simple auditable rules, Rune finds every match site in the model, applies replacements, verifies the result against the original model and provides evidence.</p>
+    <p class="tag">Model transformations without brittle graph scripts.</p>
+    <p class="sub">Rune is a <b>powerful graph rewrite system</b> for ONNX, TFLite and torch.export models.</p><p class="sub">With <b>simple, auditable rules</b>, Rune finds <b>every match site</b> in the model, applies replacements, <b>verifies the result</b> against the original and provides <b>evidence</b>.</p>
     <div class="install" id="install">
       <div class="itabs"><button class="on" data-t="pip">pip</button><button data-t="uv">uv</button><button data-t="git">from source</button></div>
       <pre class="icmd" data-t="pip"><span class="p">$</span> pip install byteinfer-rune<button class="copy" aria-label="copy">copy</button></pre>
