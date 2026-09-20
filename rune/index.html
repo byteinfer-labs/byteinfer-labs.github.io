@@ -272,6 +272,7 @@
   .sarr{align-self:center;font-family:var(--mono);color:var(--ink-3);font-size:1.1rem}
   @media (max-width:900px){.sarr{display:none}}
   .swipe{display:none}
+  .only-tall{display:none!important}
   .lim text{font-family:var(--mono);font-size:13px;fill:var(--ink)}
   .lim .n rect{fill:var(--nd-fill,var(--card));stroke:var(--hair-2);stroke-width:1.2}
   .lim .n.hi rect{stroke:var(--accent);stroke-width:2;fill:var(--nd-new-fill)}
@@ -423,15 +424,12 @@
   .explain{display:block}.stepper{margin-top:0}
   #play{display:none}
   .limits .grid{display:block}
-  /* wide technical figures: keep them legible by letting the reader pan, with a fade at the edge */
+  /* figures: landscape art is replaced by a portrait variant, never panned */
   .fig,.slide .fig,#explain,#discover-scene{margin-top:22px}
-  .figscroll{position:relative}
-  .figscroll::after{content:"";position:absolute;top:0;right:0;bottom:0;width:36px;pointer-events:none;background:linear-gradient(to right,transparent,var(--card));border-radius:0 22px 22px 0}
-  .fig.box,.slide .plate{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:18px}
-  .fig.box > svg,.slide .plate > svg,.slide .plate .g > svg,#explain > svg,#discover-scene > svg{min-width:560px}
-  .slide .plate .g{min-width:560px}
-  .slide .plate svg,.slide .plate .g svg{max-height:none}
-  .swipe{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:8px 0 0;text-align:right}
+  .only-wide{display:none!important}
+  .only-tall{display:block!important;width:100%;height:auto;max-width:100%}
+  .fig.box,.slide .plate{padding:16px 14px}
+  .swipe{display:none}
   .skillrow{gap:8px}.sk{min-width:100%;padding:12px 14px}.sk .nm{font-size:.78rem}.sk .wh{font-size:.82rem}
   section.blk{padding:48px 0 24px;position:relative;z-index:1;background:var(--bg)}
   }
@@ -511,8 +509,8 @@
 <section class="blk" id="problem"><div class="wrap limits">
   <div class="grid reveal">
     <div class="vl"><p class="eyebrow">The problem</p><h2 class="t">Rewrite graphs,<br>not <em>exporter accidents</em>.</h2><ul class="pts"><li>Graph-edit scripts tend to depend on <b>one particular export layout</b>.</li><li>A script can <b>silently introduce a bug</b> and leave you with a broken graph.</li><li>Rune rules describe <b>structure</b> instead. If the expected pattern exists, Rune rewrites it. If it doesn&#x27;t, <b>nothing is changed</b>.</li></ul></div>
-    <div class="fig box"><svg class="lim pr" viewBox="0 0 620 370" role="img" aria-label="Three versions of a model. A hand-written script edits the first correctly, then silently edits the wrong nodes or nothing as the model changes. The same Rune rule matches every version, is checked and verified each time, or refuses with a reason.">
-<text x="210" y="14" text-anchor="middle" class="lab">V1</text><g class="n sm"><rect x="164" y="26" width="92" height="18" rx="5"/><text x="210" y="39" text-anchor="middle">model</text></g><rect class="mini" x="180" y="52" width="60" height="8" rx="3"/><rect class="mini" x="180" y="64" width="60" height="8" rx="3"/><rect class="mini" x="180" y="76" width="60" height="8" rx="3"/><text x="370" y="14" text-anchor="middle" class="lab">V2 · NEW EXPORT</text><g class="n sm"><rect x="324" y="26" width="92" height="18" rx="5"/><text x="370" y="39" text-anchor="middle">model</text></g><rect class="mini" x="340" y="52" width="60" height="8" rx="3"/><rect class="mini" x="340" y="64" width="60" height="8" rx="3"/><rect class="mini" x="340" y="76" width="60" height="8" rx="3"/><text x="530" y="14" text-anchor="middle" class="lab">V3 · NEW OPSET</text><g class="n sm"><rect x="484" y="26" width="92" height="18" rx="5"/><text x="530" y="39" text-anchor="middle">model</text></g><rect class="mini" x="500" y="52" width="60" height="8" rx="3"/><rect class="mini" x="500" y="64" width="60" height="8" rx="3"/><rect class="mini" x="500" y="76" width="60" height="8" rx="3"/><g class="n exp"><rect x="0" y="126" width="140" height="30" rx="7"/><text x="70" y="145.5" text-anchor="middle">edit_model.py</text></g><path class="l s" d="M140 141H160"/><g class="ok"><circle cx="210" cy="141" r="9"/><path d="M206 141 l3 3 l6 -7"/></g><text x="210" y="170" text-anchor="middle" class="sub">edits 12 sites</text><g class="x"><circle cx="370" cy="141" r="9"/><path d="M366 137 l8 8 M374 137 l-8 8"/></g><text x="370" y="170" text-anchor="middle" class="del">edits the wrong nodes</text><text x="370" y="185" text-anchor="middle" class="sub">no error</text><g class="x"><circle cx="530" cy="141" r="9"/><path d="M526 137 l8 8 M534 137 l-8 8"/></g><text x="530" y="170" text-anchor="middle" class="del">edits nothing</text><text x="530" y="185" text-anchor="middle" class="sub">no error</text><g class="n hi"><rect x="0" y="246" width="140" height="30" rx="7"/><text x="70" y="265.5" text-anchor="middle">layernorm.rune</text></g><path class="l s" d="M140 261H160"/><g class="ok"><circle cx="210" cy="261" r="9"/><path d="M206 261 l3 3 l6 -7"/></g><text x="210" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="ok"><circle cx="370" cy="261" r="9"/><path d="M366 261 l3 3 l6 -7"/></g><text x="370" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="stop"><circle cx="530" cy="261" r="9"/><path d="M526 261h8"/></g><text x="530" y="290" text-anchor="middle" class="sub">refused: no match</text><text x="530" y="305" text-anchor="middle" class="sub">model untouched</text><text x="0" y="350" class="sub">the script edits the file; the rule matches the pattern</text></svg></div><p class="swipe">swipe to pan &rarr;</p>
+    <div class="fig box"><svg class="lim pr only-tall" viewBox="0 0 340 520" role="img" aria-label="Three versions of a model. A hand-written script edits the first correctly, then silently edits the wrong nodes or nothing as the model changes. The same Rune rule matches every version, is checked and verified each time, or refuses with a reason."><text x="0" y="14" class="lab">V1</text><g class="n exp sm"><rect x="0" y="27" width="112" height="26" rx="6"/><text x="56" y="44" text-anchor="middle">edit_model.py</text></g><g class="ok"><circle cx="132" cy="40" r="9"/><path d="M128 40 l3 3 l6 -7"/></g><text x="150" y="41" class="sub">edits 12 sites</text><g class="n hi sm"><rect x="0" y="81" width="112" height="26" rx="6"/><text x="56" y="98" text-anchor="middle">layernorm.rune</text></g><g class="ok"><circle cx="132" cy="94" r="9"/><path d="M128 94 l3 3 l6 -7"/></g><text x="150" y="95" class="sub">12 sites, verified</text><path class="l s gap" d="M66 114V142"/><text x="0" y="166" class="lab">V2 &middot; NEW EXPORT</text><g class="n exp sm"><rect x="0" y="179" width="112" height="26" rx="6"/><text x="56" y="196" text-anchor="middle">edit_model.py</text></g><g class="x"><circle cx="132" cy="192" r="9"/><path d="M128 188 l8 8 M136 188 l-8 8"/></g><text x="150" y="193" class="del">edits the wrong nodes</text><text x="150" y="208" class="sub">no error</text><g class="n hi sm"><rect x="0" y="233" width="112" height="26" rx="6"/><text x="56" y="250" text-anchor="middle">layernorm.rune</text></g><g class="ok"><circle cx="132" cy="246" r="9"/><path d="M128 246 l3 3 l6 -7"/></g><text x="150" y="247" class="sub">12 sites, verified</text><path class="l s gap" d="M66 266V294"/><text x="0" y="318" class="lab">V3 &middot; NEW OPSET</text><g class="n exp sm"><rect x="0" y="331" width="112" height="26" rx="6"/><text x="56" y="348" text-anchor="middle">edit_model.py</text></g><g class="x"><circle cx="132" cy="344" r="9"/><path d="M128 340 l8 8 M136 340 l-8 8"/></g><text x="150" y="345" class="del">edits nothing</text><text x="150" y="360" class="sub">no error</text><g class="n hi sm"><rect x="0" y="385" width="112" height="26" rx="6"/><text x="56" y="402" text-anchor="middle">layernorm.rune</text></g><g class="stop"><circle cx="132" cy="398" r="9"/><path d="M128 398h8"/></g><text x="150" y="399" class="sub">refused: no match</text><text x="150" y="414" class="sub">model untouched</text><text x="0" y="494" class="sub">the script edits the file;</text><text x="0" y="510" class="sub">the rule matches the pattern</text></svg><svg class="lim pr only-wide" viewBox="0 0 620 370" role="img" aria-label="Three versions of a model. A hand-written script edits the first correctly, then silently edits the wrong nodes or nothing as the model changes. The same Rune rule matches every version, is checked and verified each time, or refuses with a reason.">
+<text x="210" y="14" text-anchor="middle" class="lab">V1</text><g class="n sm"><rect x="164" y="26" width="92" height="18" rx="5"/><text x="210" y="39" text-anchor="middle">model</text></g><rect class="mini" x="180" y="52" width="60" height="8" rx="3"/><rect class="mini" x="180" y="64" width="60" height="8" rx="3"/><rect class="mini" x="180" y="76" width="60" height="8" rx="3"/><text x="370" y="14" text-anchor="middle" class="lab">V2 · NEW EXPORT</text><g class="n sm"><rect x="324" y="26" width="92" height="18" rx="5"/><text x="370" y="39" text-anchor="middle">model</text></g><rect class="mini" x="340" y="52" width="60" height="8" rx="3"/><rect class="mini" x="340" y="64" width="60" height="8" rx="3"/><rect class="mini" x="340" y="76" width="60" height="8" rx="3"/><text x="530" y="14" text-anchor="middle" class="lab">V3 · NEW OPSET</text><g class="n sm"><rect x="484" y="26" width="92" height="18" rx="5"/><text x="530" y="39" text-anchor="middle">model</text></g><rect class="mini" x="500" y="52" width="60" height="8" rx="3"/><rect class="mini" x="500" y="64" width="60" height="8" rx="3"/><rect class="mini" x="500" y="76" width="60" height="8" rx="3"/><g class="n exp"><rect x="0" y="126" width="140" height="30" rx="7"/><text x="70" y="145.5" text-anchor="middle">edit_model.py</text></g><path class="l s" d="M140 141H160"/><g class="ok"><circle cx="210" cy="141" r="9"/><path d="M206 141 l3 3 l6 -7"/></g><text x="210" y="170" text-anchor="middle" class="sub">edits 12 sites</text><g class="x"><circle cx="370" cy="141" r="9"/><path d="M366 137 l8 8 M374 137 l-8 8"/></g><text x="370" y="170" text-anchor="middle" class="del">edits the wrong nodes</text><text x="370" y="185" text-anchor="middle" class="sub">no error</text><g class="x"><circle cx="530" cy="141" r="9"/><path d="M526 137 l8 8 M534 137 l-8 8"/></g><text x="530" y="170" text-anchor="middle" class="del">edits nothing</text><text x="530" y="185" text-anchor="middle" class="sub">no error</text><g class="n hi"><rect x="0" y="246" width="140" height="30" rx="7"/><text x="70" y="265.5" text-anchor="middle">layernorm.rune</text></g><path class="l s" d="M140 261H160"/><g class="ok"><circle cx="210" cy="261" r="9"/><path d="M206 261 l3 3 l6 -7"/></g><text x="210" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="ok"><circle cx="370" cy="261" r="9"/><path d="M366 261 l3 3 l6 -7"/></g><text x="370" y="290" text-anchor="middle" class="sub">12 sites, verified</text><g class="stop"><circle cx="530" cy="261" r="9"/><path d="M526 261h8"/></g><text x="530" y="290" text-anchor="middle" class="sub">refused: no match</text><text x="530" y="305" text-anchor="middle" class="sub">model untouched</text><text x="0" y="350" class="sub">the script edits the file; the rule matches the pattern</text></svg></div>
   </div>
 </div></section>
 
@@ -685,7 +683,7 @@ rune-cli validate reports/run/optimized.onnx \
   <div class="grid reveal">
     <div class="vl"><p class="eyebrow">Before you start</p><h2 class="t">Current state</h2><ul class="pts"><li>Rune is <b>experimental software</b>.</li><li><code>ONNX</code> and <code>torch.export</code> are the most mature targets. <code>TFLite</code> support is earlier.</li><li><b>Structural checks</b> happen during rewriting. <b>Numerical equivalence</b> is verified separately by running the rewritten model against the original.</li></ul>
 </div>
-    <div class="fig box"><svg class="lim" viewBox="0 0 620 400" role="img" aria-label="Every rewrite passes a structural gate and a numerical check; ONNX and torch.export are stable paths, TFLite is experimental, ExecuTorch is reached by lowering after the rewrite.">
+    <div class="fig box"><svg class="lim only-tall" viewBox="0 0 340 672" role="img" aria-label="Every rewrite passes a structural gate and a numerical check; ONNX and torch.export are stable paths, TFLite is experimental, ExecuTorch is reached by lowering after the rewrite."><defs><marker id="limarrT" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker><marker id="limarrTD" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mkd"/></marker></defs><text x="0" y="14" class="lab">EVERY REWRITE</text><g class="n "><rect x="0" y="30" width="150" height="30" rx="7"/><text x="75" y="49.5" text-anchor="middle">your rule</text></g><path class="l" style="marker-end:url(#limarrT)" d="M75 60V86"/><g class="n hi"><rect x="0" y="88" width="150" height="30" rx="7"/><text x="75" y="107.5" text-anchor="middle">gate</text></g><text x="0" y="78" class="sub">structure &middot; shadow copy</text><path class="l" style="marker-end:url(#limarrT)" d="M75 118V150"/><g class="n hi"><rect x="0" y="152" width="150" height="30" rx="7"/><text x="75" y="171.5" text-anchor="middle">verify</text></g><text x="162" y="171" class="sub">numbers vs original</text><path class="l" style="marker-end:url(#limarrT)" d="M75 182V214"/><g class="n "><rect x="0" y="216" width="150" height="30" rx="7"/><text x="75" y="235.5" text-anchor="middle">model</text></g><path class="l d" style="marker-end:url(#limarrTD)" d="M150 103H196"/><text x="162" y="130" class="del">refused</text><text x="162" y="146" class="sub">model untouched</text><text x="0" y="288" class="lab">FORMATS</text><g class="n "><rect x="0" y="304" width="150" height="30" rx="7"/><text x="75" y="323.5" text-anchor="middle">ONNX</text></g><circle cx="170" cy="319" r="4" class="ok"/><text x="182" y="323" class="sub">stable</text><g class="n "><rect x="0" y="344" width="150" height="30" rx="7"/><text x="75" y="363.5" text-anchor="middle">torch.export</text></g><circle cx="170" cy="359" r="4" class="ok"/><text x="182" y="363" class="sub">stable</text><g class="n exp"><rect x="0" y="384" width="150" height="30" rx="7"/><text x="75" y="403.5" text-anchor="middle">TFLite</text></g><circle cx="170" cy="399" r="4" class="warn"/><text x="182" y="403" class="sub">experimental</text><text x="0" y="452" class="lab">EXECUTORCH, ONE WAY</text><g class="n "><rect x="0" y="468" width="150" height="30" rx="7"/><text x="75" y="487.5" text-anchor="middle">torch.export</text></g><path class="l" style="marker-end:url(#limarrT)" d="M75 498V518"/><g class="n hi"><rect x="0" y="520" width="150" height="30" rx="7"/><text x="75" y="539.5" text-anchor="middle">Rune</text></g><path class="l" style="marker-end:url(#limarrT)" d="M75 550V570"/><g class="n "><rect x="0" y="572" width="150" height="30" rx="7"/><text x="75" y="591.5" text-anchor="middle">lower</text></g><path class="l" style="marker-end:url(#limarrT)" d="M75 602V622"/><g class="n "><rect x="0" y="624" width="150" height="30" rx="7"/><text x="75" y="643.5" text-anchor="middle">.pte</text></g></svg><svg class="lim only-wide" viewBox="0 0 620 400" role="img" aria-label="Every rewrite passes a structural gate and a numerical check; ONNX and torch.export are stable paths, TFLite is experimental, ExecuTorch is reached by lowering after the rewrite.">
   <defs><marker id="limarr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker>
   <marker id="limarrD" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mkd"/></marker></defs>
   <text x="0" y="14" class="lab">EVERY REWRITE</text>
@@ -719,7 +717,7 @@ rune-cli validate reports/run/optimized.onnx \
   <g class="n"><rect x="316" y="354" width="104" height="32" rx="7"/><text x="368" y="374.5" text-anchor="middle">lower</text></g>
   <path class="l" d="M420,370 L466,370"/>
   <g class="n"><rect x="466" y="354" width="88" height="32" rx="7"/><text x="510" y="374.5" text-anchor="middle">.pte</text></g>
-</svg></div><p class="swipe">swipe to pan &rarr;</p>
+</svg></div>
   </div>
 </div></section>
 
@@ -811,39 +809,77 @@ window.RuneScene=function(container,opts){
 
 // ---- discovery: propose -> verify -> distill on a small conv net
 window.RuneDiscover=function(container){
-  var svg=mk("svg",{viewBox:"0 0 800 400","class":"ex dv",role:"img","aria-label":"Discovery proposes candidate rewrites on a small conv net, verifies each one numerically, refuses the one it cannot prove, and writes the winner out as a .rune rule."},container);
+  var narrow=window.matchMedia("(max-width:600px)").matches;
+  var svg=mk("svg",{viewBox:narrow?"0 0 330 560":"0 0 800 400","class":"ex dv",role:"img","aria-label":"Discovery proposes candidate rewrites on a small conv net, verifies each one numerically, refuses the one it cannot prove, and writes the winner out as a .rune rule."},container);
   var defs=mk("defs",{},svg);var mm=mk("marker",{id:"dvarr",markerWidth:9,markerHeight:9,refX:8,refY:4.5,orient:"auto",markerUnits:"userSpaceOnUse"},defs);mk("path",{d:"M0 0L9 4.5L0 9Z",style:"fill:var(--edge)"},mm);
   var mm2=mk("marker",{id:"dvarrA",markerWidth:9,markerHeight:9,refX:8,refY:4.5,orient:"auto",markerUnits:"userSpaceOnUse"},defs);mk("path",{d:"M0 0L9 4.5L0 9Z",style:"fill:var(--accent)"},mm2);
   var g=mk("g",{},svg);
   // the pipeline on top doubles as the step indicator
-  var stages=["model","propose","verify","distill"],SX=[60,250,440,630],pipe=[];
-  stages.forEach(function(st,i){var n=mk("g",{"class":"n st"},g);mk("rect",{x:SX[i]-55,y:28,width:110,height:32,rx:7},n);var t=mk("text",{x:SX[i],y:48.5,"text-anchor":"middle"},n);t.textContent=st;pipe.push(n);
-    if(i<3){var l=mk("path",{"class":"l",d:"M"+(SX[i]+55)+",44 L"+(SX[i+1]-57)+",44"},g);l.style.markerEnd="url(#dvarr)";}});
-  var rn=mk("g",{"class":"n st"},g);mk("rect",{x:720,y:28,width:70,height:32,rx:7},rn);mk("text",{x:755,y:48.5,"text-anchor":"middle"},rn).textContent=".rune";
-  var l4=mk("path",{"class":"l",d:"M685,44 L718,44"},g);l4.style.markerEnd="url(#dvarr)";
+  var stages=["model","propose","verify","distill"],pipe=[];
+  var SX=narrow?[46,138,230,46]:[60,250,440,630], SY=narrow?[28,28,28,86]:[28,28,28,28], PW=narrow?80:110;
+  stages.forEach(function(st,i){var n=mk("g",{"class":"n st"},g);mk("rect",{x:SX[i]-PW/2,y:SY[i],width:PW,height:30,rx:7},n);var t=mk("text",{x:SX[i],y:SY[i]+20,"text-anchor":"middle"},n);t.textContent=st;pipe.push(n);
+    if(i<3 && !(narrow && i===2)){var l;
+      if(narrow) l=mk("path",{"class":"l",d:"M"+(SX[i]+PW/2)+","+(SY[i]+15)+" L"+(SX[i+1]-PW/2-2)+","+(SY[i+1]+15)},g);
+      else l=mk("path",{"class":"l",d:"M"+(SX[i]+55)+",44 L"+(SX[i+1]-57)+",44"},g);
+      l.style.markerEnd="url(#dvarr)";}});
+  if(narrow){var ld=mk("path",{"class":"l",d:"M230,58 L230,72 L46,72 L46,84"},g);ld.style.markerEnd="url(#dvarr)";}
+  var rn=mk("g",{"class":"n st"},g);
+  mk("rect",narrow?{x:110,y:86,width:70,height:30,rx:7}:{x:720,y:28,width:70,height:32,rx:7},rn);
+  mk("text",narrow?{x:145,y:106,"text-anchor":"middle"}:{x:755,y:48.5,"text-anchor":"middle"},rn).textContent=".rune";
+  var l4=mk("path",{"class":"l",d:narrow?"M86,101 L106,101":"M685,44 L718,44"},g);l4.style.markerEnd="url(#dvarr)";
   // the model: input -> Conv -> BN -> Relu -> Conv -> BN -> Relu -> output
-  var OPS=["input","Conv","BatchNorm","Relu","Conv","BatchNorm","Relu","output"],Y=170,X=[45,150,255,360,465,570,675,765],W=[70,80,90,70,80,90,70,70],N=[],E=[];
+  var OPS=["input","Conv","BatchNorm","Relu","Conv","BatchNorm","Relu","output"],N=[],E=[];
+  var Y=narrow?0:170, VX=90, VY0=150, VDY=46;
+  var X=narrow?OPS.map(function(){return VX;}):[45,150,255,360,465,570,675,765];
+  var YY=narrow?OPS.map(function(_,i){return VY0+i*VDY;}):OPS.map(function(){return 170;});
+  var W=narrow?[74,74,104,74,74,104,74,78]:[70,80,90,70,80,90,70,70];
   function nd(x,y,w,label,cls){var n=mk("g",{"class":"n "+(cls||"")},g);mk("rect",{x:x-w/2,y:y-15,width:w,height:30,rx:7},n);var t=mk("text",{x:x,y:y+4.5,"text-anchor":"middle"},n);t.textContent=label;return n;}
-  OPS.forEach(function(o,i){N.push(nd(X[i],Y,W[i],o,(i===0||i===7)?"port":""));});
-  for(var i=0;i<7;i++){var l=mk("path",{"class":"l",d:"M"+(X[i]+W[i]/2)+","+Y+" L"+(X[i+1]-W[i+1]/2-1)+","+Y},g);l.style.markerEnd="url(#dvarr)";E.push(l);}
+  OPS.forEach(function(o,i){N.push(nd(X[i],YY[i],W[i],o,(i===0||i===7)?"port":""));});
+  for(var i=0;i<7;i++){var l;
+    if(narrow) l=mk("path",{"class":"l",d:"M"+VX+","+(YY[i]+15)+" L"+VX+","+(YY[i+1]-17)},g);
+    else l=mk("path",{"class":"l",d:"M"+(X[i]+W[i]/2)+","+YY[i]+" L"+(X[i+1]-W[i+1]/2-1)+","+YY[i]},g);
+    l.style.markerEnd="url(#dvarr)";E.push(l);}
   // candidates: two BN folds and one merge through a Relu
+  function candV(i0,i1,label){var c=mk("g",{"class":"cand"},g);var y0=YY[i0]-22,y1=YY[i1]+22;
+    mk("rect",{x:VX-62,y:y0,width:124,height:y1-y0,rx:9},c);
+    var t=mk("text",{x:VX+70,y:(y0+y1)/2+4,"class":"sub"},c);t.textContent=label;return c;}
   function cand(x0,x1,label){var c=mk("g",{"class":"cand"},g);mk("rect",{x:x0,y:Y-26,width:x1-x0,height:52,rx:9},c);var t=mk("text",{x:(x0+x1)/2,y:Y+46,"text-anchor":"middle","class":"sub"},c);t.textContent=label;return c;}
-  var C=[cand(X[1]-46,X[2]+52,"fold BN into Conv"),cand(X[4]-46,X[5]+52,"fold BN into Conv"),cand(X[6]-42,X[6]+42,"drop the Relu?")];
-  function tick(x){var tk=mk("g",{"class":"tick"},svg);mk("circle",{cx:x,cy:Y-34,r:11},tk);mk("path",{d:"M"+(x-6)+","+(Y-34)+" l4,4 l8,-9"},tk);return tk;}
-  function cross(x){var c=mk("g",{"class":"xmark"},svg);mk("circle",{cx:x,cy:Y-34,r:11},c);mk("path",{d:"M"+(x-5)+","+(Y-39)+" l10,10 M"+(x+5)+","+(Y-39)+" l-10,10"},c);return c;}
-  var T=[tick((X[1]+X[2])/2),tick((X[4]+X[5])/2)],XM=cross(X[6]);
-  var why=mk("text",{x:X[6],y:Y+62,"text-anchor":"middle","class":"del"},svg);why.textContent="not equivalent: refused";
+  var C=narrow
+    ? [candV(1,2,"fold BN"),candV(4,5,"fold BN"),candV(6,6,"drop Relu?")]
+    : [cand(X[1]-46,X[2]+52,"fold BN into Conv"),cand(X[4]-46,X[5]+52,"fold BN into Conv"),cand(X[6]-42,X[6]+42,"drop the Relu?")];
+  function markAt(cls,cx,cy,draw){var m=mk("g",{"class":cls},svg);mk("circle",{cx:cx,cy:cy,r:11},m);mk("path",{d:draw(cx,cy)},m);return m;}
+  function tickD(x,y){return markAt("tick",x,y,function(a,b){return "M"+(a-6)+","+b+" l4,4 l8,-9";});}
+  function crossD(x,y){return markAt("xmark",x,y,function(a,b){return "M"+(a-5)+","+(b-5)+" l10,10 M"+(a+5)+","+(b-5)+" l-10,10";});}
+  var T,XM,why;
+  if(narrow){
+    T=[tickD(VX-78,(YY[1]+YY[2])/2),tickD(VX-78,(YY[4]+YY[5])/2)];
+    XM=crossD(VX-78,YY[6]);
+    why=mk("text",{x:VX+70,y:YY[6]+22,"class":"del"},svg);why.textContent="refused";
+  }else{
+    T=[tickD((X[1]+X[2])/2,Y-34),tickD((X[4]+X[5])/2,Y-34)];
+    XM=crossD(X[6],Y-34);
+    why=mk("text",{x:X[6],y:Y+62,"text-anchor":"middle","class":"del"},svg);why.textContent="not equivalent: refused";
+  }
   // distilled: Conv absorbs BN, edges go direct, and the rule card appears
-  var D=[mk("path",{"class":"l new",d:"M"+(X[1]+40)+","+Y+" L"+(X[3]-36)+","+Y},g),mk("path",{"class":"l new",d:"M"+(X[4]+40)+","+Y+" L"+(X[6]-36)+","+Y},g)];
+  var D=narrow
+    ? [mk("path",{"class":"l new",d:"M"+VX+","+(YY[1]+16)+" L"+VX+","+(YY[3]-17)},g),
+       mk("path",{"class":"l new",d:"M"+VX+","+(YY[4]+16)+" L"+VX+","+(YY[6]-17)},g)]
+    : [mk("path",{"class":"l new",d:"M"+(X[1]+40)+","+Y+" L"+(X[3]-36)+","+Y},g),
+       mk("path",{"class":"l new",d:"M"+(X[4]+40)+","+Y+" L"+(X[6]-36)+","+Y},g)];
   D.forEach(function(d){d.style.markerEnd="url(#dvarrA)";});
-  var sub1=mk("text",{x:X[1],y:Y+30,"text-anchor":"middle","class":"sub fold"},svg);sub1.textContent="BN folded in";
-  var sub2=mk("text",{x:X[4],y:Y+30,"text-anchor":"middle","class":"sub fold"},svg);sub2.textContent="BN folded in";
-  var card=mk("g",{"class":"card"},svg);mk("rect",{x:40,y:262,width:720,height:112,rx:12},card);
-  var lines=[["","Conv#c -> BatchNormalization#bn"],["+","Constant#w file=conv_w_folded.npy      # BN folded into the weights"],[">","w.output[0] -> c.input[1]"],[">","c.output[0] -> bn.output[0]                # bn has no readers left"]];
-  lines.forEach(function(ln,i){var t=mk("text",{x:58,y:290+i*22},card);if(ln[0]){var k=mk("tspan",{"class":"k"},t);k.textContent=ln[0]+" ";}var r=mk("tspan",{},t);r.textContent=ln[1];});
-  var lab=mk("text",{x:40,y:252,"class":"lab card-lab"},svg);lab.textContent="THE DISTILLED RULE";
-  var cap=mk("text",{x:400,y:394,"text-anchor":"middle","class":"cap"},svg);
-  var CAPS=["","three candidates proposed from the model itself, no templates","two proven equivalent, one refused","the winners come out as a rule you can read and reuse"];
+  var sub1=mk("text",narrow?{x:VX+44,y:YY[1]+4,"class":"sub fold"}:{x:X[1],y:Y+30,"text-anchor":"middle","class":"sub fold"},svg);sub1.textContent="BN folded in";
+  var sub2=mk("text",narrow?{x:VX+44,y:YY[4]+4,"class":"sub fold"}:{x:X[4],y:Y+30,"text-anchor":"middle","class":"sub fold"},svg);sub2.textContent="BN folded in";
+  var card=mk("g",{"class":"card"},svg);
+  mk("rect",narrow?{x:0,y:452,width:330,height:74,rx:12}:{x:40,y:262,width:720,height:112,rx:12},card);
+  var lines=narrow
+    ? [["","Conv#c -> BatchNormalization#bn"],["+","Constant#w file=conv_w_folded.npy"],[">","w.output[0] -> c.input[1]"]]
+    : [["","Conv#c -> BatchNormalization#bn"],["+","Constant#w file=conv_w_folded.npy      # BN folded into the weights"],[">","w.output[0] -> c.input[1]"],[">","c.output[0] -> bn.output[0]                # bn has no readers left"]];
+  lines.forEach(function(ln,i){var t=mk("text",narrow?{x:12,y:474+i*20,"style":"font-size:11px"}:{x:58,y:290+i*22},card);if(ln[0]){var k=mk("tspan",{"class":"k"},t);k.textContent=ln[0]+" ";}var r=mk("tspan",{},t);r.textContent=ln[1];});
+  var lab=mk("text",narrow?{x:0,y:444,"class":"lab card-lab"}:{x:40,y:252,"class":"lab card-lab"},svg);lab.textContent="THE DISTILLED RULE";
+  var cap=mk("text",narrow?{x:0,y:552,"class":"cap","style":"font-size:11.5px"}:{x:400,y:394,"text-anchor":"middle","class":"cap"},svg);
+  var CAPS=narrow
+    ? ["","three candidates, no templates","two proven, one refused","the winners become a rule"]
+    : ["","three candidates proposed from the model itself, no templates","two proven equivalent, one refused","the winners come out as a rule you can read and reuse"];
   function on(el,c,v){el.classList.toggle(c,!!v);}
   function reset(){pipe.forEach(function(p){on(p,"hit",false);});on(rn,"hit",false);C.forEach(function(c){on(c,"show",false);on(c,"bad",false);});T.forEach(function(t){on(t,"show",false);});on(XM,"show",false);on(why,"show",false);
     [N[2],N[5]].forEach(function(n){on(n,"gone",false);});[N[1],N[4]].forEach(function(n){on(n,"hit",false);});[E[1],E[2],E[4],E[5]].forEach(function(e){on(e,"gone",false);});D.forEach(function(d){on(d,"show",false);});[sub1,sub2].forEach(function(t){on(t,"show",false);});on(card,"show",false);on(lab,"show",false);cap.textContent="";}
@@ -858,7 +894,8 @@ window.RuneDiscover=function(container){
 
 // ---- explainer: what does a rule do? four steps over a small graph with three matching sites
 window.RuneExplain=function(container){
-  var svg=mk("svg",{viewBox:"0 0 880 420","class":"ex",role:"img","aria-label":"A rule finds every matching site in a graph, checks the change on a shadow copy, applies it, and verifies the outputs."},container);
+  var narrow=window.matchMedia("(max-width:600px)").matches;
+  var svg=mk("svg",{viewBox:narrow?"0 0 330 470":"0 0 880 420","class":"ex",role:"img","aria-label":"A rule finds every matching site in a graph, checks the change on a shadow copy, applies it, and verifies the outputs."},container);
   var g=mk("g",{},svg);
   var sites=[],others=[],lines=[];
   function nd(x,y,label,cls,w){w=w||104;var n=mk("g",{"class":"n "+(cls||"")},g);mk("rect",{x:x-w/2,y:y-15,width:w,height:30,rx:7},n);var t=mk("text",{x:x,y:y+4.5,"text-anchor":"middle"},n);t.textContent=label;return n;}
@@ -866,9 +903,9 @@ window.RuneExplain=function(container){
   function lno(pts,cls){var d="M"+pts[0][0]+","+pts[0][1];for(var i=1;i<pts.length;i++)d+=" L"+pts[i][0]+","+pts[i][1];var p=mk("path",{"class":"l "+(cls||""),d:d},g);p.style.markerEnd="url(#exarr)";return p;}
   var defs=mk("defs",{},svg);var mm=mk("marker",{id:"exarr",markerWidth:9,markerHeight:9,refX:8,refY:4.5,orient:"auto",markerUnits:"userSpaceOnUse"},defs);mk("path",{d:"M0 0L9 4.5L0 9Z",style:"fill:var(--edge)"},mm);
   // a model: input -> [Conv, (Mul, Add, Relu)] x3 sites in a row -> output
-  var cols=[220,490,760],rows=[70,140,210,280,350];
-  
-  var inp=nd(70,rows[0],"input","",90);
+  var cols=narrow?[200]:[220,490,760],rows=narrow?[100,170,240,310,380]:[70,140,210,280,350];
+
+  var inp=nd(narrow?60:70,rows[0],"input","",90);
   cols.forEach(function(x,i){
     var conv=nd(x,rows[0],"Conv");others.push(conv);
     var a=nd(x,rows[1],"Mul"),b=nd(x,rows[2],"Add"),c=nd(x,rows[3],"Relu");
@@ -876,13 +913,18 @@ window.RuneExplain=function(container){
     sites.push({a:a,b:b,c:c,f:f,l1:ln([x,rows[0]+15],[x,rows[1]-15]),l2:ln([x,rows[1]+15],[x,rows[2]-15],"in"),l3:ln([x,rows[2]+15],[x,rows[3]-15],"in"),l4:ln([x,rows[3]+15],[x,rows[4]-15])});
     var out=nd(x,rows[4],i<2?"MatMul":"output");others.push(out);
   });
-  ln([115,rows[0]],[cols[0]-52,rows[0]]);
-  lno([[cols[0]+52,rows[4]],[355,rows[4]],[355,rows[0]],[cols[1]-52,rows[0]]]);
-  lno([[cols[1]+52,rows[4]],[625,rows[4]],[625,rows[0]],[cols[2]-52,rows[0]]]);
+  ln([narrow?105:115,rows[0]],[cols[0]-52,rows[0]]);
+  if(!narrow){
+    lno([[cols[0]+52,rows[4]],[355,rows[4]],[355,rows[0]],[cols[1]-52,rows[0]]]);
+    lno([[cols[1]+52,rows[4]],[625,rows[4]],[625,rows[0]],[cols[2]-52,rows[0]]]);
+  }
   // shadow frame + tick
-  var shadow=mk("g",{"class":"shadow"},svg);mk("rect",{x:130,y:104,width:730,height:224,rx:14},shadow);mk("text",{x:146,y:320,"class":"lab"},shadow).textContent="SHADOW COPY";
+  var shadow=mk("g",{"class":"shadow"},svg);
+  mk("rect",narrow?{x:116,y:140,width:204,height:196,rx:14}:{x:130,y:104,width:730,height:224,rx:14},shadow);
+  mk("text",narrow?{x:116,y:132,"class":"lab"}:{x:146,y:320,"class":"lab"},shadow).textContent="SHADOW COPY";
   var ticks=cols.map(function(x){var tk=mk("g",{"class":"tick"},svg);mk("circle",{cx:x+62,cy:rows[1]-4,r:11},tk);mk("path",{d:"M"+(x+56)+","+(rows[1]-4)+" l4,4 l8,-9"},tk);return tk;});
-  var verify=mk("g",{"class":"verify"},svg);mk("text",{x:490,y:405,"text-anchor":"middle"},verify).textContent="outputs identical to the original  ✓";
+  var verify=mk("g",{"class":"verify"},svg);
+  mk("text",narrow?{x:165,y:452,"text-anchor":"middle"}:{x:490,y:405,"text-anchor":"middle"},verify).textContent=narrow?"outputs identical  ✓":"outputs identical to the original  ✓";
   function reset(){shadow.classList.remove("show");ticks.forEach(function(t){t.classList.remove("show");});verify.classList.remove("show");
     sites.forEach(function(s){[s.a,s.b,s.c].forEach(function(n){n.classList.remove("hit","gone");});[s.l2,s.l3].forEach(function(l){l.classList.remove("gone");});s.f.classList.remove("show");});}
   function step(n){reset();
