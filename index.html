@@ -72,12 +72,12 @@
                             <h3 class="product-name"><img src="rune/brand/rune-mark.svg" alt="" style="height:1.05em;width:auto;margin-right:2px">Rune</h3>
                         </div>
                     </div>
-                    <p class="product-desc">Write the pattern and the change. Rune checks the graph, proves the outputs still match, and reports what it did.</p>
+                    <p class="product-desc">Describe the subgraph you want to change and what should replace it. Rune proves the rewrite is safe before it touches the model.</p>
                     <ul class="product-points">
-                        <li>Write the pattern, write the change</li>
-                        <li>A gate refuses anything that breaks the graph</li>
-                        <li>An oracle proves the outputs still match</li>
-                        <li>ONNX, TFLite and torch.export</li>
+                        <li>Pattern-match directly on the computation graph</li>
+                        <li>Every rewrite passes a safety gate before it lands</li>
+                        <li>Equivalence proof: same inputs, same outputs</li>
+                        <li>ONNX, TFLite, and torch.export</li>
                     </ul>
                     <a href="rune/" class="cta-btn">Explore Rune <span class="arrow">→</span></a>
                 </div>
@@ -112,12 +112,12 @@
                             <h3 class="product-name">Systems Research</h3>
                         </div>
                     </div>
-                    <p class="product-desc">We find out what neural accelerators really do, talk to them directly, and make them do things the vendor never shipped.</p>
+                    <p class="product-desc">We reverse-engineer neural accelerators, measure what they actually deliver, and push them past the boundaries the vendor drew.</p>
                     <ul class="product-points">
-                        <li>Real throughput, measured, not datasheet peaks</li>
-                        <li>Talk to the hardware, not the vendor's framework</li>
-                        <li>Our own compiler for the private instruction set</li>
-                        <li>Training on an inference-only chip</li>
+                        <li>Real silicon throughput, not datasheet peaks</li>
+                        <li>Direct hardware access, below the vendor runtime</li>
+                        <li>Our own compiler targeting undocumented instructions</li>
+                        <li>Training workloads on inference-only chips</li>
                     </ul>
 
                 </div>
@@ -148,12 +148,12 @@
                             <h3 class="product-name">Blaze</h3>
                         </div>
                     </div>
-                    <p class="product-desc">The math stays plain loops. A schedule says how to run them. Same loops, a different schedule per chip.</p>
+                    <p class="product-desc">Write the math once as readable loops. Write the schedule — how to tile, fuse, and parallelize — separately. Same algorithm, different schedule per chip.</p>
                     <ul class="product-points">
-                        <li>Write the math as plain scalar loops</li>
-                        <li>Write the schedule separately: tile, vectorize, parallel</li>
-                        <li>One source for x86, ARM, CUDA and Metal</li>
-                        <li>Matmul and attention near hardware peak</li>
+                        <li>Algorithm as plain scalar loops, nothing hidden</li>
+                        <li>Schedule as a separate concern: tile, vectorize, fuse</li>
+                        <li>One source targeting x86, ARM, CUDA, and Metal</li>
+                        <li>Matmul and attention within reach of hardware peak</li>
                     </ul>
                     <span class="cta-soon">Coming soon</span>
                 </div>
