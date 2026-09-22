@@ -435,6 +435,32 @@
   .skillrow{gap:8px}.sk{min-width:100%;padding:12px 14px}.sk .nm{font-size:.78rem}.sk .wh{font-size:.82rem}
   section.blk{padding:48px 0 24px;position:relative;z-index:1;background:var(--bg)}
   }
+  /* measured wins */
+  .winrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:14px;margin-top:40px}
+  @media (min-width:1100px){.winrow{grid-template-columns:repeat(4,1fr)}}
+  .win{padding:20px 22px;border:1px solid var(--hair-2);border-radius:14px;background:var(--card);display:flex;flex-direction:column;gap:7px;min-width:0;transition:border-color .2s,transform .2s}
+  .win .acc,.win .rl2{overflow-wrap:break-word}
+  .win:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .win .bk{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .win .big{font-size:2.2rem;font-weight:700;letter-spacing:-.03em;color:var(--ink);line-height:1;margin-top:4px;font-variant-numeric:tabular-nums}
+  .win .mdl{font-size:.98rem;color:var(--ink);font-weight:600;line-height:1.35}
+  .win .acc{font-family:var(--mono);font-size:.76rem;color:#2E7D46;line-height:1.5}
+  .win .rl2{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);margin-top:auto;padding-top:10px}
+  .win .rl2 a{color:var(--accent);text-decoration:none}
+  .win .rl2 a:hover{text-decoration:underline}
+  /* in the wild */
+  .wildrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin-top:40px}
+  .wild{padding:24px 26px;border:1px solid var(--hair-2);border-radius:14px;display:flex;flex-direction:column;transition:border-color .2s}
+  .wild:hover{border-color:var(--accent)}
+  .wild .tagm{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
+  .wild h3{font-size:1.3rem;margin:0 0 10px;letter-spacing:-.02em;color:var(--ink);line-height:1.2}
+  .wild p{font-size:.95rem;color:var(--ink-2);line-height:1.65;margin:0}
+  .wild p code{font-family:var(--mono);font-size:.86em;background:var(--inline-code);padding:2px 6px;border-radius:5px;color:var(--ink)}
+  .wild .iss{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .wild .iss a{font-family:var(--mono);font-size:.72rem;border:1px solid var(--hair-2);border-radius:999px;padding:4px 11px;color:var(--ink-2);text-decoration:none;transition:border-color .2s,color .2s}
+  .wild .iss a:hover{border-color:var(--accent);color:var(--accent)}
+  .wild .proof2{font-family:var(--mono);font-size:.84rem;color:#2E7D46;margin-top:14px;line-height:1.5}
+  @media (max-width:720px){.winrow{grid-template-columns:1fr;gap:10px}.win{padding:16px 18px}.win .big{font-size:1.8rem}.wildrow{grid-template-columns:1fr}.wild{padding:18px 20px}}
   @media (prefers-reduced-motion:reduce){.reveal > *{transition:none;opacity:1;transform:none}.slide{transition:none}}
 </style>
 </head>
@@ -443,7 +469,7 @@
 <nav class="top"><div class="wrap">
   <a class="home" href="../">&larr; ByteInfer Labs</a>
   <a class="logo" href="#hero"><svg class="rmark" viewBox="0 0 120 116" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 44L57 59L17 74"/></g><g fill="currentColor"><circle cx="17" cy="44" r="10.5"/><circle cx="17" cy="74" r="10.5"/><circle cx="57" cy="59" r="8"/><path d="M34 10H82L108 35V58L84 78L108 107H74L51 82L83 48L71 35H50Z"/></g></svg>Rune</a>
-  <span class="nl" style="opacity:.55;cursor:default" title="Coming on launch day">Whitepaper · coming soon</span>
+  <a class="nl" href="whitepaper/">Whitepaper</a>
   <a class="nl" href="https://github.com/ByteInfer-Labs/rune">GitHub</a>
   <button id="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle light / dark">
   <svg class="ic-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
@@ -456,6 +482,8 @@
   <a href="#problem"><span>Why</span></a>
   <a href="#what"><span>How it works</span></a>
   <a href="#examples"><span>Examples</span></a>
+  <a href="#wins"><span>Numbers</span></a>
+  <a href="#wild"><span>In the wild</span></a>
   <a href="#play"><span>Playground</span></a>
   <a href="#report"><span>Report</span></a>
   <a href="#agents"><span>Agents</span></a>
@@ -482,10 +510,10 @@
   function apply(t){
     if(t==='dark'){root.setAttribute('data-theme','dark');lbl.textContent='Light';}
     else{root.removeAttribute('data-theme');lbl.textContent='Dark';}
-    try{localStorage.setItem('byteinfer-theme',t);}catch(e){}
+    try{localStorage.setItem('rune-wp-theme',t);}catch(e){}
     if(window.__syncNet) requestAnimationFrame(window.__syncNet);
   }
-  var saved='light'; try{saved=localStorage.getItem('byteinfer-theme')||'light';}catch(e){}
+  var saved='light'; try{saved=localStorage.getItem('rune-wp-theme')||'light';}catch(e){}
   apply(saved);
   btn.addEventListener('click',function(){
     apply(root.getAttribute('data-theme')==='dark'?'light':'dark');
@@ -601,6 +629,18 @@
   </div>
 </div></div></div></section>
 
+<section class="blk" id="wins"><div class="wrap">
+  <div class="reveal"><p class="eyebrow">Measured</p><h2 class="t">Real models, <em>real numbers</em></h2>
+  <p class="s">Every number below came out of the same funnel: match, gate, verify against the original, then a paired A/B measurement that only counts when both halves agree. The green line is the accuracy each rewrite was proven at, not a target.</p></div>
+  <div class="winrow reveal"><div class="win"><span class="bk">ONNX Runtime · CUDA</span><span class="big">1.47×</span><span class="mdl">BERT-SQuAD</span><span class="acc">proven within 1e-2</span><span class="rl2">found by rune-cli plan</span></div><div class="win"><span class="bk">ONNX Runtime · CUDA</span><span class="big">1.18×</span><span class="mdl">SqueezeNet 1.1</span><span class="acc">exact · within 1e-4</span><span class="rl2">found by rune-cli plan</span></div><div class="win"><span class="bk">ONNX Runtime · CUDA</span><span class="big">1.05×</span><span class="mdl">MiniLM-L6-v2</span><span class="acc">exact · max err 1.2e-6</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/bert_hf_mha_fusion.rune">bert_hf_mha_fusion.rune</a></span></div><div class="win"><span class="bk">LiteRT</span><span class="big">1.27×</span><span class="mdl">MobileBERT</span><span class="acc">within 1e-4 · 48 sites</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/tflite/attention_batch_matmul.rune">attention_batch_matmul.rune</a></span></div><div class="win"><span class="bk">LiteRT</span><span class="big">1.54×</span><span class="mdl">BERT classifier · MediaPipe</span><span class="acc">within 1e-3 · 48 sites</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/tflite/attention_batch_matmul.rune">attention_batch_matmul.rune</a></span></div><div class="win"><span class="bk">torch · eager</span><span class="big">1.33×</span><span class="mdl">Llama-3.2-1B · decode</span><span class="acc">bit-identical · 16 layers</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/gqa_sdpa_enable_gqa.rune">gqa_sdpa_enable_gqa.rune</a></span></div><div class="win"><span class="bk">torch · eager</span><span class="big">1.42×</span><span class="mdl">Qwen3-0.6B · decode</span><span class="acc">bit-identical · 28 layers</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/gqa_sdpa_enable_gqa.rune">gqa_sdpa_enable_gqa.rune</a></span></div></div>
+</div></section>
+
+<section class="blk" id="wild"><div class="wrap">
+  <div class="reveal"><p class="eyebrow">In the wild</p><h2 class="t">Reported out there, <em>rewritten here</em></h2>
+  <p class="s">These aren&#x27;t invented benchmarks. Each one starts from a problem people reported on the runtime&#x27;s own tracker, still living inside models that ship today.</p></div>
+  <div class="wildrow reveal"><div class="wild"><p class="tagm">TFLite converter</p><h3>The unroll that never got re-rolled</h3><p>Before TFLite had a batched-matmul kernel, the converter wrote every batched matmul as a Split, a stack of per-head FullyConnecteds and a Pack&#8202;&mdash;&#8202;reported as tensorflow#56984, with #47425 asking for a way to turn the pass off. The pass is history, but the models it produced still ship: MediaPipe&#x27;s BERT text classifier carries 48 of those unrolled sites today. One rule re-rolls each stack back into the single BATCH_MATMUL the runtime now handles natively.</p><div class="iss"><a href="https://github.com/tensorflow/tensorflow/issues/56984">tensorflow#56984</a><a href="https://github.com/tensorflow/tensorflow/issues/47425">tensorflow#47425</a><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/tflite/attention_batch_matmul.rune">attention_batch_matmul.rune</a></div><p class="proof2">48 sites re-rolled · within 1e-3 · 1.54× on LiteRT</p></div><div class="wild"><p class="tagm">ONNX Runtime</p><h3>The fusions the fuser misses</h3><p>ONNX Runtime ships fast attention kernels, but its fuser only recognises the export layouts it was written for. CLIP-ViT encoders slip through (onnxruntime#21208), BART broke when transformers moved to SDPA (#23864), and MiniLM&#x27;s eager export gets its matmul scale-fused and nothing more. A rule describes the layout once and hands the runtime its own MultiHeadAttention kernel, mask included.</p><div class="iss"><a href="https://github.com/microsoft/onnxruntime/issues/21208">onnxruntime#21208</a><a href="https://github.com/microsoft/onnxruntime/issues/23864">onnxruntime#23864</a><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/bert_hf_mha_fusion.rune">bert_hf_mha_fusion.rune</a></div><p class="proof2">6 of 6 layers fused · exact, max err 1.2e-6 · 1.05× on CUDA</p></div><div class="wild"><p class="tagm">PyTorch GQA</p><h3>The KV copy nobody ordered</h3><p>Grouped-query models repeat their KV heads before attention, and sdpa&#x27;s broadcasting was called a memory footgun in pytorch#154363: the expanded heads get materialized, and at decode time that copy grows with the cache. One rule deletes the repeat chain and flips the same call to enable_gqa, so sdpa reads the un-repeated heads directly. Same numbers, bit for bit.</p><div class="iss"><a href="https://github.com/pytorch/pytorch/issues/154363">pytorch#154363</a><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/gqa_sdpa_enable_gqa.rune">gqa_sdpa_enable_gqa.rune</a></div><p class="proof2">bit-identical · Llama-3.2-1B 1.33× · Qwen3-0.6B 1.42× at a 2048-token cache</p></div></div>
+</div></section>
+
 <section class="blk" id="play"><div class="wrap">
   <script type="application/json" id="playtext">{"lines": [{"code": "ReduceMean#mean -> Identity#sg -> Sub#center -> Mul#sq -> ReduceMean#var -> Add#addeps -> Sqrt#sqrt -> Reciprocal#rstd -> Mul#gmul -> Mul#mul2 -> Sub#bsub -> Add#lnout", "note": "Find the 12-operation TensorFlow LayerNorm chain with named handles", "why": "Identifies the exact pattern to replace with references for each step"}, {"code": "+ LayerNormalization#ln epsilon=1e-12 axis=-1", "note": "Insert one native LayerNorm node with matching epsilon and axis", "why": "Runtime has a fast kernel for this; one node beats 12"}, {"code": "> mean.input[0] -> ln.input[X]", "note": "Connect the new node to the chain's original input", "why": "Preserves data flow from upstream; nothing changes there"}, {"code": "> gmul.input[1] -> ln.input[Scale]", "note": "Feed the scale weight parameter to the new node", "why": "Runtime LayerNorm needs this weight to compute correctly"}, {"code": "> bsub.input[0] -> ln.input[B]", "note": "Feed the bias weight parameter to the new node", "why": "Runtime LayerNorm needs this weight to compute correctly"}, {"code": "> ln.output[Y] -> lnout.output[0]", "note": "Redirect output so all downstream ops read from the new node", "why": "Old chain has no consumers left; safe implicit deletion"}], "bad_lines": [{"code": "ReduceMean#mean -> Identity#sg -> Sub#center", "note": "Find the first three operations of the LayerNorm chain", "why": "The match itself is fine; the mistake is in the next line"}, {"code": "! mean", "note": "Delete the ReduceMean node without rewiring its consumers", "why": "Breaks the graph; Sub still needs ReduceMean's output"}], "refusal": "Refused: ReduceMean node is deleted but Sub operation still depends on its output tensor.", "result_ok": "{before} operations became {after}. Outputs identical to the original.", "result_bad": "Refused: {node} is deleted but still needed downstream. Nothing changed.", "note_idle_title": "A rule is a pattern and a rewrite.", "note_idle": "It plays on its own. Step through it, or click any line.", "play_btn": "Play", "good_title": "One rule, wherever the pattern appears", "good_sub": "", "bad_title": "Now let's try a bad rule", "bad_sub": "This rule deletes a node but forgets to rewire its consumer. The gate catches it and refuses.", "btn_bad": "Try the bad rule", "btn_good": "Back to the good rule"}</script>
   <div class="reveal"><h2 class="t" id="play-title">One rule, wherever the pattern appears</h2><p class="s" id="play-sub"></p></div>
@@ -621,14 +661,14 @@
 <section class="blk" id="report"><div class="wrap limits">
   <div class="grid reveal">
     <div class="vl"><p class="eyebrow">Provenance</p><h2 class="t">Every run leaves a <em>receipt</em></h2>
-      <ul class="pts">
-        <li>See which rules matched, what changed, and whether the rewritten model <b>still agrees with the original</b>.</li>
-        <li>Runs can be reproduced and compared later.</li>
-      </ul>
-      <pre class="cmd">rune-cli optimize model.onnx --rules rules.rune \
-    --report reports/run
-rune-cli validate reports/run/optimized.onnx \
-    --original model.onnx</pre></div>
+      <p class="s">One command, end to end.</p>
+      <pre class="cmd">rune-cli run model.onnx --target ort-cpu --output model_optimized.onnx</pre>
+      <p class="s">Review before it lands.</p>
+      <pre class="cmd">rune-cli plan model.onnx --target ort-cpu
+rune-cli apply model.onnx model.plan</pre>
+      <p class="s">Need direct control? <code>optimize</code>, <code>validate</code>, <code>query</code>, <code>analyze</code>, <code>discover</code>&#8202;&mdash;&#8202;all there.</p>
+      <p class="s">Every rewrite leaves a receipt: which rules ran, tagged and versioned, so the same run can be replayed or compared later&#8202;&mdash;&#8202;<code>rune-cli versions</code>, <code>reproduce</code>, <code>diff</code>.</p>
+    </div>
     <div><div class="fig box"><svg class="lim rp" viewBox="0 0 640 400" role="img" aria-label="A Rune run report: model in and out, node counts, sites matched, gate refusals, validation verdict, and a before/after drawing of one transformed site.">
   <defs><marker id="rparr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker></defs>
   <rect x="0" y="0" width="640" height="400" rx="14" class="sheet"/>
