@@ -445,6 +445,7 @@
   .win .big{font-size:2.2rem;font-weight:700;letter-spacing:-.03em;color:var(--ink);line-height:1;margin-top:4px;font-variant-numeric:tabular-nums}
   .win .mdl{font-size:.98rem;color:var(--ink);font-weight:600;line-height:1.35}
   .win .acc{font-family:var(--mono);font-size:.76rem;color:#2E7D46;line-height:1.5}
+  .win .wht{font-family:var(--mono);font-size:.74rem;color:var(--ink-2);line-height:1.4}
   .win .rl2{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);margin-top:auto;padding-top:10px}
   .win .rl2 a{color:var(--accent);text-decoration:none}
   .win .rl2 a:hover{text-decoration:underline}
@@ -632,7 +633,7 @@
 <section class="blk" id="wins"><div class="wrap">
   <div class="reveal"><p class="eyebrow">Measured</p><h2 class="t">Real models, <em>real numbers</em></h2>
   <p class="s">Each number is a paired A/B measurement on the real model. Every rewrite passed an equivalence gate before it ran.</p></div>
-  <div class="winrow reveal"><div class="win"><span class="bk">ONNX Runtime · CUDA</span><span class="big">1.47×</span><span class="mdl">BERT-SQuAD</span><span class="acc">proven within 1e-2</span><span class="rl2">found by rune-cli plan</span></div><div class="win"><span class="bk">ONNX Runtime · CUDA</span><span class="big">1.18×</span><span class="mdl">SqueezeNet 1.1</span><span class="acc">exact · within 1e-4</span><span class="rl2">found by rune-cli plan</span></div><div class="win"><span class="bk">ONNX Runtime · CUDA</span><span class="big">1.05×</span><span class="mdl">MiniLM-L6-v2</span><span class="acc">exact · max err 1.2e-6</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/bert_hf_mha_fusion.rune">bert_hf_mha_fusion.rune</a></span></div><div class="win"><span class="bk">LiteRT</span><span class="big">1.27×</span><span class="mdl">MobileBERT</span><span class="acc">within 1e-4 · 48 sites</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/tflite/attention_batch_matmul.rune">attention_batch_matmul.rune</a></span></div><div class="win"><span class="bk">LiteRT</span><span class="big">1.54×</span><span class="mdl">BERT classifier · MediaPipe</span><span class="acc">within 1e-3 · 48 sites</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/tflite/attention_batch_matmul.rune">attention_batch_matmul.rune</a></span></div><div class="win"><span class="bk">torch · eager</span><span class="big">1.33×</span><span class="mdl">Llama-3.2-1B · decode</span><span class="acc">bit-identical · 16 layers</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/gqa_sdpa_enable_gqa.rune">gqa_sdpa_enable_gqa.rune</a></span></div><div class="win"><span class="bk">torch · eager</span><span class="big">1.42×</span><span class="mdl">Qwen3-0.6B · decode</span><span class="acc">bit-identical · 28 layers</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/gqa_sdpa_enable_gqa.rune">gqa_sdpa_enable_gqa.rune</a></span></div></div>
+  <div class="winrow reveal"><div class="win"><span class="bk">ONNX Runtime · CUDA</span><span class="big">1.47×</span><span class="mdl">BERT-SQuAD</span><span class="wht">Conv-BN fusion + constant folding</span><span class="acc">proven within 1e-2</span><span class="rl2">found by rune-cli plan</span></div><div class="win"><span class="bk">ONNX Runtime · CUDA</span><span class="big">1.18×</span><span class="mdl">SqueezeNet 1.1</span><span class="wht">Conv-BN fusion + constant folding</span><span class="acc">exact · within 1e-4</span><span class="rl2">found by rune-cli plan</span></div><div class="win"><span class="bk">ONNX Runtime · CUDA</span><span class="big">1.05×</span><span class="mdl">MiniLM-L6-v2</span><span class="wht">Eager attention → MultiHeadAttention</span><span class="acc">exact · max err 1.2e-6</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/bert_hf_mha_fusion.rune">bert_hf_mha_fusion.rune</a></span></div><div class="win"><span class="bk">LiteRT</span><span class="big">1.27×</span><span class="mdl">MobileBERT</span><span class="wht">Split-FC-Pack → BATCH_MATMUL</span><span class="acc">within 1e-4 · 48 sites</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/tflite/attention_batch_matmul.rune">attention_batch_matmul.rune</a></span></div><div class="win"><span class="bk">LiteRT</span><span class="big">1.54×</span><span class="mdl">BERT classifier · MediaPipe</span><span class="wht">Split-FC-Pack → BATCH_MATMUL</span><span class="acc">within 1e-3 · 48 sites</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/tflite/attention_batch_matmul.rune">attention_batch_matmul.rune</a></span></div><div class="win"><span class="bk">torch · eager</span><span class="big">1.33×</span><span class="mdl">Llama-3.2-1B · decode</span><span class="wht">repeat_kv → sdpa enable_gqa</span><span class="acc">bit-identical · 16 layers</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/gqa_sdpa_enable_gqa.rune">gqa_sdpa_enable_gqa.rune</a></span></div><div class="win"><span class="bk">torch · eager</span><span class="big">1.42×</span><span class="mdl">Qwen3-0.6B · decode</span><span class="wht">repeat_kv → sdpa enable_gqa</span><span class="acc">bit-identical · 28 layers</span><span class="rl2"><a href="https://github.com/ByteInfer-Labs/rune/blob/main/rulesets/gqa_sdpa_enable_gqa.rune">gqa_sdpa_enable_gqa.rune</a></span></div></div>
 </div></section>
 
 <section class="blk" id="wild"><div class="wrap">
@@ -5070,6 +5071,7 @@ new MutationObserver(function(){paint();}).observe(document.documentElement,{att
 });
 })();
 </script>
+
 <!-- LAUNCH GATE: remove this block on launch day. Dims install commands and GitHub links until the repo is public. -->
 <style>
 .install.soon{position:relative;opacity:.55}
@@ -5080,10 +5082,10 @@ new MutationObserver(function(){paint();}).observe(document.documentElement,{att
 </style>
 <script>
 (function(){
-  var inst=document.getElementById('install'); if(inst) inst.classList.add('soon');
-  document.querySelectorAll('a[href^="https://github.com/ByteInfer-Labs/rune"]').forEach(function(a){
-    var sp=document.createElement('span'); sp.className=(a.className?a.className+' ':'')+'soon-link';
-    sp.title='Public on launch day'; sp.innerHTML=a.innerHTML.replace(/\s*(&rarr;|→)\s*$/,'');
+  var inst=document.getElementById("install"); if(inst) inst.classList.add("soon");
+  document.querySelectorAll("a[href^="https://github.com/ByteInfer-Labs/rune"]").forEach(function(a){
+    var sp=document.createElement("span"); sp.className=(a.className?a.className+" ":"")+"soon-link";
+    sp.title="Public on launch day"; sp.innerHTML=a.innerHTML.replace(/\s*(&rarr;|→)\s*$/,"");
     a.replaceWith(sp);
   });
 })();
