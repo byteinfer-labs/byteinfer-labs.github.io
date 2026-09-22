@@ -494,7 +494,7 @@
   <a href="#wins"><span>Numbers</span></a>
   <a href="#wild"><span>In the wild</span></a>
   <a href="#play"><span>Playground</span></a>
-  <a href="#report"><span>Report</span></a>
+  <a href="#report"><span>Workflow</span></a>
   <a href="#agents"><span>Agents</span></a>
   <a href="#discover"><span>Discovery</span></a>
   <a href="#limits"><span>Limits</span></a>
@@ -674,14 +674,14 @@
 
 <section class="blk" id="report"><div class="wrap limits">
   <div class="grid reveal">
-    <div class="vl"><p class="eyebrow">Provenance</p><h2 class="t">Every run leaves a <em>receipt</em></h2>
-      <p class="s">One command, end to end.</p>
+    <div class="vl"><p class="eyebrow">Workflow</p><h2 class="t">Multiple <em>expertise levels</em></h2>
+      <p class="s"><b>Just run it.</b> One command picks rules, applies them, verifies the output.</p>
       <pre class="cmd">rune-cli run model.onnx --target ort-cpu --output model_optimized.onnx</pre>
-      <p class="s">Review before it lands.</p>
+      <p class="s"><b>Review first.</b> Generate a plan, inspect it, then apply.</p>
       <pre class="cmd">rune-cli plan model.onnx --target ort-cpu
 rune-cli apply model.onnx model.plan</pre>
-      <p class="s">Need direct control? <code>optimize</code>, <code>validate</code>, <code>query</code>, <code>analyze</code>, <code>discover</code>&#8202;&mdash;&#8202;all there.</p>
-      <p class="s">Every rewrite leaves a receipt: which rules ran, tagged and versioned, so the same run can be replayed or compared later&#8202;&mdash;&#8202;<code>rune-cli versions</code>, <code>reproduce</code>, <code>diff</code>.</p>
+      <p class="s"><b>Full control.</b> <code>optimize</code>, <code>validate</code>, <code>query</code>, <code>analyze</code>, <code>discover</code> are individual commands for when you need them.</p>
+      <p class="s">Every run leaves a receipt: which rules ran, tagged and versioned. <code>rune-cli versions</code>, <code>reproduce</code>, <code>diff</code>.</p>
     </div>
     <div><div class="fig box"><svg class="lim rp" viewBox="0 0 640 400" role="img" aria-label="A Rune run report: model in and out, node counts, sites matched, gate refusals, validation verdict, and a before/after drawing of one transformed site.">
   <defs><marker id="rparr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" class="mk"/></marker></defs>
