@@ -72,12 +72,12 @@
                             <h3 class="product-name"><img src="rune/brand/rune-mark.svg" alt="" style="height:1.05em;width:auto;margin-right:2px">Rune</h3>
                         </div>
                     </div>
-                    <p class="product-desc">A powerful graph rewrite system for model transformations. Describe the pattern you want to match and the change to make. Rune proves the rewrite is safe before it touches the model.</p>
+                    <p class="product-desc">Exported models are full of operations the runtime can't fuse. Rune fixes them in a few lines: name the pattern, say what replaces it. Every edit is checked before it lands, and the new model must give the same outputs as the old one.</p>
                     <ul class="product-points">
-                        <li>Pattern-match directly on the computation graph</li>
-                        <li>Every rewrite passes a safety gate before it lands</li>
-                        <li>Equivalence proof: same inputs, same outputs</li>
-                        <li>ONNX, TFLite, and torch.export</li>
+                        <li>Up to 1.54× faster on real models, from one rule</li>
+                        <li>Broken edits are refused before they touch the model</li>
+                        <li>Outputs checked against the original, every time</li>
+                        <li>One rule language for ONNX, TFLite and torch.export</li>
                     </ul>
                     <a href="rune/" class="cta-btn">Explore Rune <span class="arrow">→</span></a>
                 </div>
@@ -112,12 +112,12 @@
                             <h3 class="product-name">Systems Research</h3>
                         </div>
                     </div>
-                    <p class="product-desc">We reverse-engineer neural accelerators, measure what they actually deliver, and push them past the boundaries the vendor drew.</p>
+                    <p class="product-desc">Accelerators can do more than their vendors let them. We measure what they actually deliver, go below the vendor's software, and make them run what they weren't sold for.</p>
                     <ul class="product-points">
-                        <li>Real silicon throughput, not datasheet peaks</li>
+                        <li>Throughput measured on real silicon, not datasheet peaks</li>
                         <li>Direct hardware access, below the vendor runtime</li>
-                        <li>Our own compiler targeting undocumented instructions</li>
-                        <li>Training workloads on inference-only chips</li>
+                        <li>Our own compiler for instructions the vendor never documented</li>
+                        <li>Training workloads on chips sold for inference only</li>
                     </ul>
 
                 </div>
@@ -148,11 +148,11 @@
                             <h3 class="product-name">Blaze</h3>
                         </div>
                     </div>
-                    <p class="product-desc">Write the math once as readable loops. Write the schedule separately: how to tile, fuse, and parallelize. Same algorithm, different schedule per chip.</p>
+                    <p class="product-desc">Fast kernels without unreadable code. Write the math once as plain loops, then a separate schedule for each chip: how to tile, fuse and parallelize. The algorithm never changes; only the schedule does.</p>
                     <ul class="product-points">
-                        <li>Algorithm as plain scalar loops, nothing hidden</li>
-                        <li>Schedule as a separate concern: tile, vectorize, fuse</li>
-                        <li>One source targeting x86, ARM, CUDA, and Metal</li>
+                        <li>The math stays plain loops, with nothing hidden</li>
+                        <li>One schedule per chip, same algorithm underneath</li>
+                        <li>One source for x86, ARM, CUDA and Metal</li>
                         <li>Matmul and attention within reach of hardware peak</li>
                     </ul>
                     <span class="cta-soon">Coming soon</span>
