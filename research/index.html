@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | ByteInfer Labs</title>
+    <meta name="description" content="ByteInfer Labs research: long-form write-ups on how neural accelerators work inside, one chip per series.">
+    <script>try{var t=localStorage.getItem('byteinfer-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../rune/brand/rune-favicon.svg">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <button id="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle light / dark">
+        <svg class="ic-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+        <span class="tlbl">Dark</span>
+    </button>
+
+    <nav class="topnav">
+        <a href="../index.html" class="topnav-brand" aria-label="ByteInfer Labs home">
+            <img src="../flame-transparent.png" alt="" class="topnav-flame">
+            <span class="brand-txt">ByteInfer Labs</span>
+        </a>
+        <div class="topnav-links">
+            <a href="./" class="active">Research</a>
+            <a href="../rune/">Rune</a>
+            <a href="mailto:hello@byteinfer.ai">Contact</a>
+        </div>
+    </nav>
+
+    <main class="research-page">
+        <div class="product-eyebrow">Research</div>
+        <h1 class="rp-title">Inside neural accelerators</h1>
+        <p class="rp-lede">Each series takes one chip apart. We show how to reach it below the vendor's software, measure what it does in practice, and try what else it can run. The write-ups include the method, so the results can be checked.</p>
+
+        <section class="series">
+            <div class="series-head">
+                <div class="series-chip">Apple M4 &middot; Neural Engine</div>
+                <h2 class="series-title">Inside the M4 Apple Neural Engine</h2>
+            </div>
+            <ol class="pub-rows">
+                <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-1/"><span class="pub-part">Part 1</span><span class="pub-title">Reverse engineering</span><span class="pub-syn">We reach the Neural Engine without CoreML, through its private compile, load and run path, and decode the binary format of a compiled program.</span></a></li>
+                <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-2/"><span class="pub-part">Part 2</span><span class="pub-title">Benchmarks</span><span class="pub-syn">The chip peaks at 19 TFLOPS at 16-bit precision (Apple's 38 TOPS figure counts 8-bit operations). It slows down once data outgrows its 32 MB of on-chip memory, and CoreML makes small operations 2 to 4&times; slower.</span></a></li>
+                <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-3/"><span class="pub-part">Part 3</span><span class="pub-title">Training</span><span class="pub-syn">A 109M-parameter transformer trained from scratch, with the forward and backward passes on the chip at 2.8 W and the optimizer on the CPU. We later scaled it to Qwen3-0.6B.</span></a></li>
+                <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-4/"><span class="pub-part">Part 4</span><span class="pub-title">The complete machine</span><span class="pub-syn">We mapped the hardware end to end, including the program format, task descriptors and lookup tables, and built programs from scratch that match Apple's compiler byte for byte.</span></a></li>
+                <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-4b/"><span class="pub-part">Part 4b</span><span class="pub-title">Inside the compiler</span><span class="pub-syn">We traced Apple's compiler from graph to hardware binary. It runs 34 stages, covering graph recognition, lowering and scheduling.</span></a></li>
+            </ol>
+            <p class="series-cited">Cited as the first public training on the Neural Engine by <a href="https://rits.shanghai.nyu.edu/ai/reverse-engineering-apples-neural-engine-to-train-transformers-on-m4/">NYU Shanghai RITS</a> and in the <a href="https://arxiv.org/abs/2603.06728">Orion paper</a>. Code: <a href="https://github.com/maderix/ANE">github.com/maderix/ANE</a>.</p>
+        </section>
+
+        <section class="series series-next">
+            <div class="series-head">
+                <div class="series-chip">Next</div>
+                <h2 class="series-title">Other AI accelerators</h2>
+            </div>
+            <p class="series-note"><span class="cta-soon">Coming soon</span></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="mailto:hello@byteinfer.ai">hello@byteinfer.ai</a>
+            </div>
+            <div class="footer-copy">© 2026 ByteInfer Labs</div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

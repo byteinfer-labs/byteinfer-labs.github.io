@@ -22,13 +22,9 @@
 
     <!-- Nav bar -->
     <nav class="topnav">
-        <a href="index.html" class="topnav-brand">
-            <img src="flame-transparent.png" alt="" class="topnav-flame">
-            ByteInfer Labs
-        </a>
-        <div class="topnav-links">
+        <div class="topnav-links home-links">
+            <a href="research/">Research</a>
             <a href="rune/">Rune</a>
-            <a href="#research">Research</a>
             <a href="mailto:hello@byteinfer.ai">Contact</a>
         </div>
     </nav>
@@ -47,44 +43,9 @@
 
     <!-- Products -->
     <section class="product-section">
-        <div class="product-grid">
-            <!-- Rune -->
-            <div class="product-card">
-                <div class="product-card-inner">
-                    <svg class="card-art" viewBox="0 0 300 110" role="img" aria-hidden="true">
-                    <defs><marker id="ah-rune" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--edge)"/></marker></defs>
-<rect x="34" y="10" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 18.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
-<rect x="34" y="35" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 43.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
-<rect x="34" y="60" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 68.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
-<rect x="34" y="85" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 93.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
-<path d="M70 27v5" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
-<path d="M70 52v5" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
-<path d="M70 77v5" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
-<path d="M112 59h50" stroke="var(--edge)" stroke-width="1.6" fill="none" marker-end="url(#ah-rune)"/>
-<text x="137" y="51" text-anchor="middle" font-family="var(--mono)" font-size="8.5" letter-spacing=".08em" fill="var(--ink-3)">RULE</text>
-<rect x="170" y="36" width="104" height="46" rx="8" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.3"/>
-<path d="M190 59h40" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
-<path d="M240 60l6 6 12-13" stroke="var(--accent)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                    <div class="product-header">
-                        <div>
-                            <div class="product-eyebrow">Graph rewrite system</div>
-                            <h3 class="product-name"><img src="rune/brand/rune-mark.svg" alt="" style="height:1.05em;width:auto;margin-right:2px">Rune</h3>
-                        </div>
-                    </div>
-                    <p class="product-desc"><strong>Make exported models faster with a few lines of rules.</strong> Name a pattern and what replaces it. Rune rewrites every match and checks the outputs don't change.</p>
-                    <ul class="product-points">
-                        <li>Up to 1.54× faster on real models</li>
-                        <li>Every edit checked before it lands</li>
-                        <li>ONNX, TFLite and torch.export</li>
-                    </ul>
-                    <a href="rune/" class="cta-btn">Explore Rune <span class="arrow">→</span></a>
-                </div>
-            </div>
-
-            <!-- Research -->
-            <div class="product-card" id="research">
-                <div class="product-card-inner">
+        <div class="product-card research-card" id="research">
+            <div class="product-card-inner research-inner">
+                <div class="research-main">
                     <svg class="card-art" viewBox="0 0 300 110" role="img" aria-hidden="true">
                     <defs><marker id="ah-res" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--edge)"/></marker></defs>
 <rect x="36" y="10" width="86" height="72" rx="8" fill="none" stroke="var(--nd-port-stroke)" stroke-width="1.3"/>
@@ -107,17 +68,54 @@
                 </svg>
                     <div class="product-header">
                         <div>
-                            <div class="product-eyebrow">Accelerator research</div>
+                            <div class="product-eyebrow">Research &middot; neural processors</div>
                             <h3 class="product-name">Systems Research</h3>
                         </div>
                     </div>
-                    <p class="product-desc"><strong>What the silicon really does.</strong> We measure accelerators on real hardware, go below the vendor's software, and run what they weren't sold for.</p>
-                    <ul class="product-points">
-                        <li>Measured on real silicon, not datasheets</li>
-                        <li>Direct access, below the vendor runtime</li>
-                        <li>Training on inference-only chips</li>
-                    </ul>
+                    <p class="product-desc"><strong>We take neural processors apart and write up what we find.</strong> We reverse-engineer the AI chips in laptops and phones, down to the driver, the program format and the compiler. Then we run what the vendor's software doesn't allow, including training.</p>
+                </div>
+                <dl class="research-facts">
+                    <div><dt>Hardware</dt><dd>Apple Neural Engine (M4) today, with more neural processors to follow</dd></div>
+                    <div><dt>Depth</dt><dd>Private APIs, program binaries and the vendor's own compiler</dd></div>
+                    <div><dt>Results</dt><dd>The first public training run on Apple's Neural Engine, and the first public decoding of its program format</dd></div>
+                    <div><dt>Cited by</dt><dd><a class="cite" href="https://rits.shanghai.nyu.edu/ai/reverse-engineering-apples-neural-engine-to-train-transformers-on-m4/">NYU Shanghai RITS</a> and the <a class="cite" href="https://arxiv.org/abs/2603.06728">Orion paper</a></dd></div>
+                    <a href="research/" class="cta-btn">Read the research <span class="arrow">&rarr;</span></a>
+                </dl>
+            </div>
+        </div>
 
+    <div class="product-grid ship-grid">
+            <!-- Rune -->
+            <div class="product-card">
+                <div class="product-card-inner">
+                    <svg class="card-art" viewBox="0 0 300 110" role="img" aria-hidden="true">
+                    <defs><marker id="ah-rune" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--edge)"/></marker></defs>
+<rect x="34" y="10" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 18.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
+<rect x="34" y="35" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 43.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
+<rect x="34" y="60" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 68.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
+<rect x="34" y="85" width="72" height="17" rx="5" fill="var(--nd-fill)" stroke="var(--nd-port-stroke)" stroke-width="1.2"/><path d="M52 93.5h36" stroke="var(--edge-dead)" stroke-width="2" stroke-linecap="round"/>
+<path d="M70 27v5" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
+<path d="M70 52v5" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
+<path d="M70 77v5" stroke="var(--edge)" stroke-width="1.4" fill="none" marker-end="url(#ah-rune)"/>
+<path d="M112 59h50" stroke="var(--edge)" stroke-width="1.6" fill="none" marker-end="url(#ah-rune)"/>
+<text x="137" y="51" text-anchor="middle" font-family="var(--mono)" font-size="8.5" letter-spacing=".08em" fill="var(--ink-3)">RULE</text>
+<rect x="170" y="36" width="104" height="46" rx="8" fill="var(--nd-new-fill)" stroke="var(--accent)" stroke-width="1.3"/>
+<path d="M190 59h40" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M240 60l6 6 12-13" stroke="var(--accent)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                    <div class="product-header">
+                        <div>
+                            <div class="product-eyebrow">Tool &middot; rewrites model graphs</div>
+                            <h3 class="product-name"><img src="rune/brand/rune-mark.svg" alt="" style="height:1.05em;width:auto;margin-right:2px">Rune</h3>
+                        </div>
+                    </div>
+                    <p class="product-desc"><strong>Speed up a model with a few short rules.</strong> Name a pattern and what replaces it. Rune rewrites every match in the model you exported and checks each edit before it lands.</p>
+                    <ul class="product-points">
+                        <li>1.54&times; faster on MediaPipe's BERT classifier (LiteRT), from one rule</li>
+                        <li>Works on ONNX, TFLite and torch.export</li>
+                        <li>Rejects any edit that fails its checks</li>
+                    </ul>
+                    <a href="rune/" class="cta-btn">Explore Rune <span class="arrow">&rarr;</span></a>
                 </div>
             </div>
 
@@ -142,15 +140,14 @@
                 </svg>
                     <div class="product-header">
                         <div>
-                            <div class="product-eyebrow">Kernel compiler</div>
+                            <div class="product-eyebrow">Tool &middot; compiles kernels</div>
                             <h3 class="product-name">Blaze</h3>
                         </div>
                     </div>
-                    <p class="product-desc"><strong>Fast kernels you can still read.</strong> Write the math once as plain loops, then a schedule for each chip.</p>
+                    <p class="product-desc"><strong>Write the loops once. Compile for each processor.</strong> Blaze compiles kernels, the small programs that do a model's heavy math. You write the math as plain typed loops. The compiler plans the work once, and a backend for each processor turns that plan into native code.</p>
                     <ul class="product-points">
-                        <li>One algorithm, one schedule per chip</li>
-                        <li>x86, ARM, CUDA and Metal from one source</li>
-                        <li>Matmul and attention near hardware peak</li>
+                        <li>Backends for NVIDIA, Apple and AMD GPUs, and x86 and ARM CPUs</li>
+                        <li>An optional schedule sets tiling by hand; otherwise the compiler plans it</li>
                     </ul>
                     <span class="cta-soon">Coming soon</span>
                 </div>
