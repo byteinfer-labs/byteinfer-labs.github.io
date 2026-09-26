@@ -34,7 +34,7 @@
     <main class="research-page">
         <div class="product-eyebrow">Research</div>
         <h1 class="rp-title">Inside neural accelerators</h1>
-        <p class="rp-lede">Each series takes one chip apart. We show how to reach it below the vendor's software, measure what it does in practice, and try what else it can run. The write-ups include the method, so the results can be checked.</p>
+        <p class="rp-lede">Each series studies one accelerator: its architecture, software interfaces and performance in practice. We explore new training and inference workloads and document our methods so others can check the results.</p>
 
         <section class="series">
             <div class="series-head">
@@ -42,7 +42,7 @@
                 <h2 class="series-title">Inside the M4 Apple Neural Engine</h2>
             </div>
             <ol class="pub-rows">
-                <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-1/"><span class="pub-part">Part 1</span><span class="pub-title">Reverse engineering</span><span class="pub-syn">We reach the Neural Engine without CoreML, through its private compile, load and run path, and decode the binary format of a compiled program.</span></a></li>
+                <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-1/"><span class="pub-part">Part 1</span><span class="pub-title">Architecture and program formats</span><span class="pub-syn">A study of the Neural Engine's compilation and execution interfaces, and the binary format of a compiled program.</span></a></li>
                 <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-2/"><span class="pub-part">Part 2</span><span class="pub-title">Benchmarks</span><span class="pub-syn">The chip peaks at 19 TFLOPS at 16-bit precision (Apple's 38 TOPS figure counts 8-bit operations). It slows down once data outgrows its 32 MB of on-chip memory, and CoreML makes small operations 2 to 4&times; slower.</span></a></li>
                 <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-3/"><span class="pub-part">Part 3</span><span class="pub-title">Training</span><span class="pub-syn">A 109M-parameter transformer trained from scratch, with the forward and backward passes on the chip at 2.8 W and the optimizer on the CPU. We later scaled it to Qwen3-0.6B.</span></a></li>
                 <li class="pub-row"><a href="https://maderix.github.io/articles/inside-the-m4-ane-part-4/"><span class="pub-part">Part 4</span><span class="pub-title">The complete machine</span><span class="pub-syn">We mapped the hardware end to end, including the program format, task descriptors and lookup tables, and built programs from scratch that match Apple's compiler byte for byte.</span></a></li>
