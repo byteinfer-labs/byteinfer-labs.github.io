@@ -160,3 +160,24 @@ footer.foot .made { margin-left: auto; }
 .lightbox img { max-height: 94vh; max-width: 100%; width: auto; height: auto; border-radius: 28px; box-shadow: 0 30px 90px rgba(0,0,0,.7); }
 .lightbox button { position: absolute; top: 16px; right: 16px; font: 600 15px var(--body); color: var(--washi); background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; cursor: pointer; }
 .zoomhint { color: var(--washi-3); font-size: 14px; margin: -28px 0 32px; }
+
+/* The story: one ink line down the page, with a numbered seal at each step. */
+.story { position: relative; }
+.chapter { padding-block: 64px 24px; }
+.chapter .wrap { position: relative; padding-left: 72px; }
+.chapter.split-wrap .wrap { padding-left: 72px; }
+.chapter::before { content: ""; position: absolute; top: 0; bottom: 0; width: 1px; left: calc(max(0px, (100% - 1280px) / 2) + 20px + 21px); background: rgba(236,230,218,.16); z-index: 0; }
+.chapter.first::before { top: 64px; background: linear-gradient(var(--seal), rgba(236,230,218,.16) 120px); }
+.chapter.last::before { bottom: auto; height: 96px; }
+.chapter .eyebrow { display: flex; align-items: center; gap: 14px; min-height: 44px; }
+.step { position: absolute; left: 19px; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--seal); color: var(--washi); font: 600 18px var(--display); box-shadow: 0 0 0 6px var(--night), 0 0 30px rgba(194,64,47,.35); z-index: 1; }
+.plus .eyebrow .step { left: -54px; }
+.bridge { color: var(--washi-3); font-family: var(--display); font-size: 20px; padding-block: 40px 0; padding-left: 92px !important; margin: 0 auto; position: relative; z-index: 1; }
+.plus { position: relative; z-index: 1; }
+@media (max-width: 860px) {
+  .chapter .wrap { padding-left: 20px; }
+  .chapter::before { display: none; }
+  .step { position: static; width: 32px; height: 32px; font-size: 15px; box-shadow: none; border-radius: 9px; }
+  .plus .eyebrow .step { left: auto; }
+  .bridge { padding-left: 20px !important; font-size: 18px; }
+}
