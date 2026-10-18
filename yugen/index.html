@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="yugen.css">
 </head>
 <body>
-    <div class="sky" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="sky" aria-hidden="true"><i></i><i></i><i></i></div>
 
     <div class="wrap">
         <header class="top">
@@ -21,7 +21,7 @@
                 <svg viewBox="24 24 60 60" aria-hidden="true"><path d="M70.82,49.36 A19,19 0 1 1 57.24,33.74" stroke="#ECE6DA" stroke-width="6.5" stroke-linecap="round" fill="none"/><rect x="69.3" y="69.5" width="8.4" height="8.4" rx="1.2" fill="#C2402F"/></svg>
                 Yugen
             </a>
-            <nav><a href="#uses">What it does</a><a href="#plus">Yugen Plus</a><a href="privacy/">Privacy</a></nav>
+            <nav><a href="#plus">Yugen Plus</a><a href="privacy/">Privacy</a></nav>
         </header>
 
         <section class="hero">
@@ -39,20 +39,13 @@
                 <p class="agents">Works with your <span>Claude</span>, <span>ChatGPT</span>, <span>opencode</span> or <span>pi</span>.</p>
             </div>
 
-            <div class="stage" id="stage">
-                <div class="rig" id="rig">
-                    <div class="floater wide" style="--fw:220px;--fx:-200px;--fy:-10px;--fz:120px;--fs:.10;--fd:-1s"><img src="img/w-clock.webp" alt=""></div>
-                    <div class="floater wide" style="--fw:260px;--fx:-150px;--fy:600px;--fz:180px;--fs:.18;--fd:-3s"><img src="img/w-weather.webp" alt=""></div>
-                    <div class="floater" style="--fw:170px;--fx:290px;--fy:30px;--fz:160px;--fs:.14;--fd:-2s"><img src="img/w-water.webp" alt=""></div>
-                    <div class="floater" style="--fw:150px;--fx:310px;--fy:470px;--fz:90px;--fs:.24;--fd:-4s"><img src="img/w-stopwatch.webp" alt=""></div>
-                    <div class="floater wide" style="--fw:250px;--fx:150px;--fy:-50px;--fz:-160px;--fs:.04;--fd:-5s"><img src="img/w-moon.webp" alt=""></div>
-                    <div class="device" style="--w:min(340px,72vw)"><div class="screen" id="screen">
-                        <img src="img/home.webp" alt="Yugen's home screen" class="on">
-                        <img src="img/agent.webp" alt="The agent's reply after making a water counter">
-                        <img src="img/page3.webp" alt="A countdown, a stopwatch and a focus timer">
-                        <img src="img/cyberpunk.webp" alt="The home screen in the Cyberpunk theme">
-                    </div></div>
-                </div>
+            <div class="demo">
+                <div class="device"><div class="screen" id="screen">
+                    <img src="img/home.webp" alt="Yugen's home screen" class="on" width="540" height="1200">
+                    <img src="img/agent.webp" alt="The agent's reply after making a water counter" width="540" height="1200">
+                    <img src="img/page3.webp" alt="A countdown, a stopwatch and a focus timer" width="540" height="1200">
+                    <img src="img/cyberpunk.webp" alt="The home screen in the Cyberpunk theme" width="540" height="1200">
+                </div></div>
                 <div class="prompt" aria-live="polite"><span class="who" aria-hidden="true"></span><span class="text" id="typed"></span></div>
                 <div class="chips" role="group" aria-label="Try a request">
                     <button type="button" data-i="1">Water counter</button>
@@ -63,27 +56,25 @@
         </section>
     </div>
 
-    <section class="band" id="uses">
-        <div class="wrap center">
-            <p class="eyebrow">What it does</p>
-            <h2>Ask for it, or make it by hand</h2>
-            <p class="intro">Every screen here is real, from Yugen running on a phone. Drag the ring, or use the arrows.</p>
-        </div>
-        <div class="ring-stage" id="ringStage" tabindex="0" aria-roledescription="carousel" aria-label="Use cases">
-            <div class="ring" id="ring"></div>
-            <div class="reflection" aria-hidden="true"></div>
-        </div>
+    <section class="band">
         <div class="wrap">
-            <div class="ring-caption" id="ringCaption" aria-live="polite"></div>
-            <div class="ring-nav"><button type="button" id="prev" aria-label="Previous">‹</button><button type="button" id="next" aria-label="Next">›</button></div>
-            <div class="dots" id="dots" aria-hidden="true"></div>
+            <p class="eyebrow">What people asked for</p>
+            <h2>One sentence, one widget</h2>
+            <p class="intro">Claude Code made these on a phone from the request written under each one. The market heatmap comes with Yugen.</p>
+            <div class="asked">
+                <figure><img src="img/agent.webp" alt="The agent card after making a water counter" loading="lazy" width="540" height="1200"><figcaption><q>Make a widget that counts the glasses of water I drink today</q>A counter with a goal of eight glasses that starts again each day.</figcaption></figure>
+                <figure><img src="img/page3.webp" alt="A page with a New Year countdown, a stopwatch and a focus timer" loading="lazy" width="540" height="1200"><figcaption><q>Make a stopwatch widget with lap times</q>It sits beside a New Year countdown and a focus timer, each made from its own request.</figcaption></figure>
+                <figure><img src="img/market.webp" alt="A heatmap of the Nifty 50 grouped by sector" loading="lazy" width="540" height="1200"><figcaption><span class="src">Comes with Yugen</span>The Nifty 50 by sector, coloured by today’s change, with the S&amp;P 500 and Nasdaq 100 a tap away.</figcaption></figure>
+                <figure><img src="img/cyberpunk.webp" alt="The home screen in the Cyberpunk theme" loading="lazy" width="540" height="1200"><figcaption><q>Switch the theme to Cyberpunk</q>Every widget restyles at once, down to the dock.</figcaption></figure>
+            </div>
         </div>
     </section>
 
     <section class="band">
         <div class="wrap split">
-            <div class="tilt" id="tilt">
-                <div class="device"><div class="screen"><img class="on" src="img/drag.webp" alt="A focus timer lifted and moved in edit mode" loading="lazy"></div></div>
+            <div class="pic">
+                <img src="img/drag.webp" alt="A focus timer lifted and moved in edit mode" loading="lazy" width="540" height="1200">
+                <img src="img/home.webp" alt="The home screen in the Glass Dark theme" loading="lazy" width="540" height="1200">
             </div>
             <div>
                 <p class="eyebrow">By hand, too</p>
@@ -92,7 +83,7 @@
                 <ul class="notes">
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 9l-3 3 3 3M19 9l3 3-3 3M9 5l3-3 3 3M9 19l3 3 3-3M2 12h20M12 2v20"/></svg><span><b>Drag and resize</b>A drop shape shows where a widget will land, and pulling an edge makes it larger.</span></li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><path d="M17 14v6M14 17h6"/></svg><span><b>Apps from the drawer</b>Hold an app and carry it onto any page, or into a widget.</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15l3 3-3 3"/></svg><span><b>Pages in any order</b>Add a page, move it left or right, or delete it.</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3a7 7 0 0 0-7 7c0 5-2 6-2 7h18c0-1-2-2-2-7a7 7 0 0 0-7-7zM10 20a2 2 0 0 0 4 0"/></svg><span><b>Reminders that ring</b>They sound like an alarm, with Snooze and Dismiss, and automations run on time, battery, Wi-Fi and notifications.</span></li>
                 </ul>
             </div>
         </div>
@@ -101,24 +92,18 @@
     <section class="band" id="plus">
         <div class="wrap">
             <div class="plus">
-                <div class="plus-head">
-                    <div>
-                        <span class="badge"><i></i>Yugen Plus</span>
-                        <h2 style="margin:0">The agent uses your phone for you</h2>
-                    </div>
-                    <p class="intro" style="margin:0">Ask for something done in your other apps. The agent opens them, reads the screen and taps through each step while a pill at the top shows what it is doing, with a Stop button. It asks you before anything that sends, pays or deletes.</p>
+                <div>
+                    <span class="badge"><i></i>Yugen Plus</span>
+                    <h2>The agent uses your phone for you</h2>
+                    <p class="intro" style="margin-bottom:0">Ask for something done in your other apps. The agent opens them, reads the screen and taps through each step while a card shows what it is doing, with a Stop button, and it asks you before anything that sends, pays or deletes.</p>
+                    <dl class="feats">
+                        <div><dt>Phone tasks</dt><dd><q>Set an alarm for 6:30 called Gym.</q> <q>Text Riya that I’m running late.</q> <q>Find the cheapest cake on Zomato that delivers now.</q></dd></div>
+                        <div><dt>Make something new</dt><dd>One sentence becomes a widget, an automation or a theme, and it waits in your inbox until you approve it.</dd></div>
+                        <div><dt>Smarter automations</dt><dd>They can start when you open an app, and they can ask the agent, such as adding a bank alert to your spending notes.</dd></div>
+                        <div><dt>Suggestions, voice and memory</dt><dd>The agent suggests widgets from how you use your phone, takes spoken tasks, and remembers what you told it.</dd></div>
+                    </dl>
                 </div>
-                <div class="fan" id="fan" style="--spread:1">
-                    <figure><div class="device"><div class="screen"><img class="on" src="img/task-doing.webp" alt="The agent opening the Clock app" loading="lazy"></div></div><figcaption><b>You ask</b><q>Set an alarm for 6:15 tomorrow morning called Gym</q></figcaption></figure>
-                    <figure><div class="device"><div class="screen"><img class="on" src="img/task-label.webp" alt="The agent typing the label Gym in the Clock app" loading="lazy"></div></div><figcaption><b>It does it</b>In the Clock app, step by step</figcaption></figure>
-                    <figure><div class="device"><div class="screen"><img class="on" src="img/task-result.webp" alt="A 6:15 alarm named Gym in the Clock app" loading="lazy"></div></div><figcaption><b>Done</b>A 6:15 alarm called Gym, and a note on the home screen</figcaption></figure>
-                </div>
-                <dl class="feats">
-                    <div><dt>Phone tasks</dt><dd>Alarms, messages, places in Maps and settings, done in the apps themselves.</dd></div>
-                    <div><dt>Make something new</dt><dd>One sentence becomes a widget, an automation or a theme, and waits in your inbox for approval.</dd></div>
-                    <div><dt>Smarter automations</dt><dd>Start one when an app opens, or let it ask the agent.</dd></div>
-                    <div><dt>Suggestions, voice, memory</dt><dd>Ideas from how you use your phone, spoken tasks, and what you told it before.</dd></div>
-                </dl>
+                <div class="device"><div class="screen"><img class="on" src="img/plus.webp" alt="The Yugen Plus screen with a task box and five automations" loading="lazy" width="540" height="1200"></div></div>
             </div>
         </div>
     </section>
@@ -144,110 +129,40 @@
 
     <script>
     (function () {
+        var prompts = [
+            "",
+            "Make a widget that counts the glasses of water I drink today",
+            "Make a stopwatch widget with lap times",
+            "Switch the theme to Cyberpunk"
+        ];
+        var imgs = document.querySelectorAll('#screen img');
+        var typed = document.getElementById('typed');
+        var chips = document.querySelectorAll('.chips button');
         var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var root = document.documentElement;
+        var timer = null, auto = true;
 
-        // Scroll depth: layers read --scroll and move at their own speed.
-        function onScroll() {
-            root.style.setProperty('--scroll', String(window.scrollY));
-            var fan = document.getElementById('fan');
-            var r = fan.getBoundingClientRect(), vh = innerHeight;
-            var p = Math.min(1, Math.max(0, (vh - r.top) / (vh * .7)));
-            fan.style.setProperty('--spread', still ? '1' : (0.6 + 0.4 * p).toFixed(3));
-            var t = document.getElementById('tilt').getBoundingClientRect();
-            document.getElementById('tilt').style.setProperty('--scroll-local', ((vh / 2 - (t.top + t.height / 2)) / vh).toFixed(3));
-        }
-        if (!still) addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-
-        // The hero phone turns toward the pointer.
-        var rig = document.getElementById('rig'), stage = document.getElementById('stage');
-        if (!still && matchMedia('(pointer: fine)').matches) {
-            addEventListener('pointermove', function (e) {
-                var b = stage.getBoundingClientRect();
-                var x = (e.clientX - (b.left + b.width / 2)) / innerWidth, y = (e.clientY - (b.top + b.height / 2)) / innerHeight;
-                rig.style.setProperty('--ry', (-14 + x * 26).toFixed(2) + 'deg');
-                rig.style.setProperty('--rx', (6 - y * 14).toFixed(2) + 'deg');
-            });
-        }
-
-        // The prompt types itself, then the phone shows what the agent made.
-        var prompts = ["", "Make a widget that counts the glasses of water I drink today", "Make a stopwatch widget with lap times", "Switch the theme to Cyberpunk"];
-        var imgs = document.querySelectorAll('#screen img'), typed = document.getElementById('typed');
-        var chips = document.querySelectorAll('.chips button'), timer = null, auto = true;
         function show(i) { imgs.forEach(function (im, k) { im.classList.toggle('on', k === i); }); }
         function mark(i) { chips.forEach(function (c) { c.setAttribute('aria-pressed', String(+c.dataset.i === i)); }); }
+        // Types the request, then shows what the agent made; on its own it moves to the next one.
         function play(i) {
-            clearTimeout(timer); mark(i);
+            clearTimeout(timer);
             var text = prompts[i], n = 0;
+            mark(i);
             if (still) { typed.textContent = text; show(i); return; }
             show(0);
             (function step() {
                 typed.textContent = text.slice(0, n);
                 if (n++ < text.length) { timer = setTimeout(step, 34); return; }
-                timer = setTimeout(function () { show(i); if (auto) timer = setTimeout(function () { play(i % 3 + 1); }, 4200); }, 700);
+                timer = setTimeout(function () {
+                    show(i);
+                    if (auto) timer = setTimeout(function () { play(i % 3 + 1); }, 4200);
+                }, 700);
             })();
         }
         chips.forEach(function (c) { c.addEventListener('click', function () { auto = false; play(+c.dataset.i); }); });
-        typed.textContent = prompts[1]; mark(1);
+        typed.textContent = prompts[1];
+        mark(1);
         if (still) play(1); else timer = setTimeout(function () { play(1); }, 1900);
-
-        // The ring of use cases.
-        var uses = [
-            { img: 'agent', kind: 'Ask', q: 'Make a widget that counts the glasses of water I drink today', p: 'A counter with a goal of eight glasses that starts again each day.' },
-            { img: 'page3', kind: 'Ask', q: 'Make a stopwatch widget with lap times', p: 'It sits beside a New Year countdown and a focus timer, each from its own request.' },
-            { img: 'cyberpunk', kind: 'Ask', q: 'Switch the theme to Cyberpunk', p: 'Every widget restyles at once, down to the dock.' },
-            { img: 'task-result', kind: 'Yugen Plus', plus: true, q: 'Set an alarm for 6:15 tomorrow morning called Gym', p: 'The agent set it in the Clock app while you watched.' },
-            { img: 'plus', kind: 'Yugen Plus', plus: true, p: 'Automations for the time, the battery, Bluetooth, notifications and the apps you open.' },
-            { img: 'market', kind: 'Comes with Yugen', p: 'The Nifty 50 by sector, coloured by today’s change, with the S&P 500 and Nasdaq 100 a tap away.' },
-            { img: 'drag', kind: 'By hand', p: 'Hold anywhere to edit. The drop shape shows where a widget will land.' },
-            { img: 'home', kind: 'Your home screen', p: 'Clock, weather, the agent and your apps, in the Glass Dark theme.' }
-        ];
-        var ring = document.getElementById('ring'), stageEl = document.getElementById('ringStage');
-        var caption = document.getElementById('ringCaption'), dots = document.getElementById('dots');
-        var n = uses.length, step = 360 / n, index = 0;
-        ring.style.setProperty('--step', step + 'deg');
-        uses.forEach(function (u, i) {
-            var c = document.createElement('div'); c.className = 'card'; c.style.setProperty('--i', i);
-            c.innerHTML = '<div class="device"><div class="screen"><img src="img/' + u.img + '.webp" alt="" loading="lazy" draggable="false"></div></div>';
-            c.addEventListener('click', function () { go(i); });
-            ring.appendChild(c);
-            dots.appendChild(document.createElement('i'));
-        });
-        var cards = ring.children;
-        function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-        function go(i, quiet) {
-            index = i;
-            ring.style.setProperty('--angle', (i * step) + 'deg');
-            var k = ((i % n) + n) % n, u = uses[k];
-            for (var j = 0; j < n; j++) {
-                var d = Math.min(Math.abs(j - k), n - Math.abs(j - k));
-                cards[j].classList.toggle('front', d === 0); cards[j].classList.toggle('near', d === 1);
-                dots.children[j].classList.toggle('on', j === k);
-            }
-            caption.innerHTML = '<span class="kind' + (u.plus ? ' plus' : '') + '">' + esc(u.kind) + '</span>' + (u.q ? '<q>' + esc(u.q) + '</q>' : '') + '<p>' + esc(u.p) + '</p>';
-            if (!quiet) restartAuto();
-        }
-        var spin = null;
-        function restartAuto() { clearInterval(spin); if (!still) spin = setInterval(function () { go(index + 1, true); }, 4500); }
-        document.getElementById('prev').addEventListener('click', function () { go(index - 1); });
-        document.getElementById('next').addEventListener('click', function () { go(index + 1); });
-        stageEl.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') go(index - 1); if (e.key === 'ArrowRight') go(index + 1); });
-        var startX = null, startAngle = 0, moved = false;
-        stageEl.addEventListener('pointerdown', function (e) { startX = e.clientX; startAngle = index * step; moved = false; ring.classList.add('dragging'); clearInterval(spin); });
-        addEventListener('pointermove', function (e) {
-            if (startX === null) return;
-            var dx = e.clientX - startX; if (Math.abs(dx) > 6) moved = true;
-            ring.style.setProperty('--angle', (startAngle - dx * .25) + 'deg');
-        });
-        addEventListener('pointerup', function (e) {
-            if (startX === null) return;
-            ring.classList.remove('dragging');
-            var dx = e.clientX - startX; startX = null;
-            if (moved) go(Math.round(index - dx * .25 / step));
-        });
-        stageEl.addEventListener('click', function (e) { if (moved) { e.stopPropagation(); e.preventDefault(); } }, true);
-        go(0);
     })();
     </script>
 </body>
