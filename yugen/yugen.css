@@ -1,0 +1,65 @@
+/* Yugen's pages on byteinfer.ai: the app's own night palette, outside the lab site's design system. */
+:root {
+  --bg: #0E1018; --bg-2: #161A26; --card: #1B2030; --hair: rgba(255,255,255,.09);
+  --ink: #ECE6DA; --ink-2: #B9BCC8; --ink-3: #8C90A0;
+  --accent: #8FD8FF; --seal: #B8392B;
+  --sans: "Inter", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  --display: "Archivo Black", "Inter", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); }
+body { background: radial-gradient(1200px 700px at 15% 85%, #2A2F45 0%, transparent 60%), radial-gradient(900px 600px at 90% 0%, #1E3746 0%, transparent 55%), var(--bg); background-attachment: fixed; min-height: 100vh; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+header.top { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; font-weight: 600; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+.top nav a { color: var(--ink-2); text-decoration: none; margin-left: 20px; font-size: 15px; }
+.top nav a:hover { color: var(--ink); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center; padding: 48px 0 72px; }
+.hero h1 { font-family: var(--display); font-weight: 400; font-size: clamp(44px, 7vw, 84px); line-height: 1; margin: 0 0 18px; letter-spacing: -.01em; }
+.hero .tag { font-size: clamp(20px, 2.4vw, 26px); color: var(--accent); margin: 0 0 18px; font-weight: 500; }
+.hero p { color: var(--ink-2); font-size: 18px; line-height: 1.6; max-width: 34em; margin: 0 0 28px; }
+.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--bg); padding: 14px 22px; border-radius: 999px; font-weight: 600; text-decoration: none; }
+.cta.soon { background: transparent; color: var(--ink-2); border: 1px solid var(--hair); }
+.agents { color: var(--ink-3); font-size: 15px; margin-top: 18px; }
+.phone { justify-self: center; width: min(320px, 80vw); border-radius: 34px; overflow: hidden; border: 1px solid var(--hair); box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+.phone img { display: block; width: 100%; height: auto; }
+
+section.band { padding: 56px 0; border-top: 1px solid var(--hair); }
+section.band h2 { font-family: var(--display); font-weight: 400; font-size: clamp(28px, 4vw, 40px); margin: 0 0 12px; }
+section.band > .wrap > p { color: var(--ink-2); font-size: 18px; line-height: 1.6; max-width: 40em; margin: 0 0 32px; }
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.shots figure { margin: 0; }
+.shots img { width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--hair); display: block; }
+.shots figcaption { color: var(--ink-2); font-size: 15px; line-height: 1.5; margin-top: 12px; }
+.shots figcaption b { color: var(--ink); font-weight: 600; display: block; }
+
+.editions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.edition { background: var(--card); border: 1px solid var(--hair); border-radius: 22px; padding: 28px; }
+.edition h3 { margin: 0 0 6px; font-size: 22px; }
+.edition .price { color: var(--accent); margin: 0 0 16px; }
+.edition ul { margin: 0; padding-left: 20px; color: var(--ink-2); line-height: 1.7; }
+
+footer.foot { padding: 36px 0 48px; color: var(--ink-3); font-size: 14px; border-top: 1px solid var(--hair); }
+footer.foot a { color: var(--ink-2); margin-right: 18px; }
+footer.foot .made a, footer.foot.made a { margin-right: 0; }
+
+.doc { max-width: 720px; padding: 24px 0 64px; }
+.doc h1 { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 5vw, 48px); margin: 16px 0 8px; }
+.doc .updated { color: var(--ink-3); margin: 0 0 32px; }
+.doc h2 { font-size: 20px; margin: 36px 0 10px; }
+.doc p, .doc li { color: var(--ink-2); font-size: 17px; line-height: 1.7; }
+.doc table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 15px; }
+.doc th, .doc td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--hair); color: var(--ink-2); vertical-align: top; }
+.doc th { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 36px; padding-top: 24px; }
+  .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .editions { grid-template-columns: minmax(0, 1fr); }
+  .doc table { display: block; overflow-x: auto; }
+}
+@media (prefers-reduced-motion: no-preference) { .cta { transition: transform .15s; } .cta:hover { transform: translateY(-1px); } }
