@@ -3,71 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yugen | The home screen your AI agent builds</title>
+    <title>Yugen</title>
     <meta name="description" content="Yugen is an Android home screen that your AI agent builds. Describe a widget and it appears. Works with Claude, ChatGPT, opencode and pi.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="yugen.css">
 </head>
 <body>
+    <div class="sky" aria-hidden="true"><i></i><i></i><i></i></div>
+
     <div class="wrap">
         <header class="top">
-            <a class="brand" href="./"><img src="img/icon.png" alt="">Yugen</a>
-            <nav><a href="privacy/">Privacy</a><a href="mailto:hello@byteinfer.ai">Contact</a></nav>
+            <a class="brand" href="./" aria-label="Yugen">
+                <svg viewBox="24 24 60 60" aria-hidden="true"><path d="M70.82,49.36 A19,19 0 1 1 57.24,33.74" stroke="#ECE6DA" stroke-width="6.5" stroke-linecap="round" fill="none"/><rect x="69.3" y="69.5" width="8.4" height="8.4" rx="1.2" fill="#C2402F"/></svg>
+                Yugen
+            </a>
+            <nav><a href="#plus">Yugen Plus</a><a href="privacy/">Privacy</a></nav>
         </header>
 
         <section class="hero">
-            <div>
+            <div class="mark">
+                <span class="kanji" aria-hidden="true">幽玄</span>
+                <svg class="enso" viewBox="24 24 60 60" aria-hidden="true">
+                    <path class="stroke" d="M70.82,49.36 A19,19 0 1 1 57.24,33.74" stroke="#ECE6DA" stroke-width="6.5" stroke-linecap="round" fill="none" pathLength="120"/>
+                    <path d="M50.10,73.72 A21.8,21.8 0 0 1 34.14,39.50" stroke="#ECE6DA" stroke-opacity=".4" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                    <rect class="seal" x="69.3" y="69.5" width="8.4" height="8.4" rx="1.2" fill="#C2402F"/>
+                </svg>
                 <h1>Yugen</h1>
                 <p class="tag">Imagine it. It’s on your home screen.</p>
-                <p>Yugen is an Android home screen that your AI agent builds. You describe a widget, a page or a whole look, and the agent makes it and places it while you watch.</p>
-                <span class="cta soon">Coming soon to Google Play</span>
-                <p class="agents">Works with your Claude, ChatGPT, opencode or pi.</p>
+                <p class="lede">An Android home screen that your AI agent builds. You describe a widget, a page or a whole look, and the agent makes it and places it while you watch.</p>
+                <span class="status"><b></b>Coming soon to Google Play</span>
+                <p class="agents">Works with your <span>Claude</span>, <span>ChatGPT</span>, <span>opencode</span> or <span>pi</span>.</p>
             </div>
-            <div class="phone"><img src="img/home.webp" alt="Yugen's home screen with a clock, the weather, the agent card and recent apps" width="540" height="1200"></div>
+
+            <div class="demo">
+                <div class="device"><div class="screen" id="screen">
+                    <img src="img/home.webp" alt="Yugen's home screen" class="on" width="540" height="1200">
+                    <img src="img/agent.webp" alt="The agent's reply after making a water counter" width="540" height="1200">
+                    <img src="img/page3.webp" alt="A countdown, a stopwatch and a focus timer" width="540" height="1200">
+                    <img src="img/cyberpunk.webp" alt="The home screen in the Cyberpunk theme" width="540" height="1200">
+                </div></div>
+                <div class="prompt" aria-live="polite"><span class="who" aria-hidden="true"></span><span class="text" id="typed"></span></div>
+                <div class="chips" role="group" aria-label="Try a request">
+                    <button type="button" data-i="1">Water counter</button>
+                    <button type="button" data-i="2">Stopwatch</button>
+                    <button type="button" data-i="3">New look</button>
+                </div>
+            </div>
         </section>
     </div>
 
     <section class="band">
         <div class="wrap">
-            <h2>Ask, and it appears</h2>
-            <p>The agent card sits on the home screen. You type what you want, and the agent writes the widget, checks it on the screen and tells you what it made.</p>
-            <div class="shots">
-                <figure><img src="img/agent.webp" alt="The agent card after making a water counter" loading="lazy" width="540" height="1200"><figcaption><b>A widget from one sentence</b>“Make a widget that counts the glasses of water I drink today.”</figcaption></figure>
-                <figure><img src="img/page3.webp" alt="A page with a moon phase, a New Year countdown, a stopwatch and a focus timer" loading="lazy" width="540" height="1200"><figcaption><b>A page made by asking</b>A countdown, a stopwatch and a focus timer, each from one request.</figcaption></figure>
-                <figure><img src="img/market.webp" alt="A heatmap of the Nifty 50 grouped by sector" loading="lazy" width="540" height="1200"><figcaption><b>Live data</b>Markets, weather and the moon, drawn in the theme’s colours.</figcaption></figure>
+            <p class="eyebrow">What people asked for</p>
+            <h2>One sentence, one widget</h2>
+            <p class="intro">Claude Code made these on a phone from the request written under each one. The market heatmap comes with Yugen.</p>
+            <div class="asked">
+                <figure><img src="img/agent.webp" alt="The agent card after making a water counter" loading="lazy" width="540" height="1200"><figcaption><q>Make a widget that counts the glasses of water I drink today</q>A counter with a goal of eight glasses that starts again each day.</figcaption></figure>
+                <figure><img src="img/page3.webp" alt="A page with a New Year countdown, a stopwatch and a focus timer" loading="lazy" width="540" height="1200"><figcaption><q>Make a stopwatch widget with lap times</q>It sits beside a New Year countdown and a focus timer, each made from its own request.</figcaption></figure>
+                <figure><img src="img/market.webp" alt="A heatmap of the Nifty 50 grouped by sector" loading="lazy" width="540" height="1200"><figcaption><span class="src">Comes with Yugen</span>The Nifty 50 by sector, coloured by today’s change, with the S&amp;P 500 and Nasdaq 100 a tap away.</figcaption></figure>
+                <figure><img src="img/cyberpunk.webp" alt="The home screen in the Cyberpunk theme" loading="lazy" width="540" height="1200"><figcaption><q>Switch the theme to Cyberpunk</q>Every widget restyles at once, down to the dock.</figcaption></figure>
             </div>
         </div>
     </section>
 
     <section class="band">
-        <div class="wrap">
-            <h2>Arrange it by hand</h2>
-            <p>Hold anywhere to edit. Drag widgets and apps from the drawer, pull an edge to resize, and add or move pages. A theme restyles every widget at once.</p>
-            <div class="shots">
-                <figure><img src="img/drag.webp" alt="A focus timer lifted and moved in edit mode" loading="lazy" width="540" height="1200"><figcaption><b>Move anything by touch</b>The drop shape shows where a widget will land.</figcaption></figure>
-                <figure><img src="img/cyberpunk.webp" alt="The home screen in the Cyberpunk theme" loading="lazy" width="540" height="1200"><figcaption><b>Change the whole look</b>The Cyberpunk theme, one of several.</figcaption></figure>
-                <figure><img src="img/alarm.webp" alt="A reminder in the notification shade with Snooze 10 min and Dismiss" loading="lazy" width="540" height="450"><figcaption><b>Reminders that ring</b>Reminders sound like an alarm, with Snooze and Dismiss, and automations run on time, battery, Wi-Fi and notifications.</figcaption></figure>
+        <div class="wrap split">
+            <div class="pic">
+                <img src="img/drag.webp" alt="A focus timer lifted and moved in edit mode" loading="lazy" width="540" height="1200">
+                <img src="img/home.webp" alt="The home screen in the Glass Dark theme" loading="lazy" width="540" height="1200">
+            </div>
+            <div>
+                <p class="eyebrow">By hand, too</p>
+                <h2>Arrange it with your fingers</h2>
+                <p class="intro">Hold anywhere on the home screen and it turns into an editor.</p>
+                <ul class="notes">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 9l-3 3 3 3M19 9l3 3-3 3M9 5l3-3 3 3M9 19l3 3 3-3M2 12h20M12 2v20"/></svg><span><b>Drag and resize</b>A drop shape shows where a widget will land, and pulling an edge makes it larger.</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><path d="M17 14v6M14 17h6"/></svg><span><b>Apps from the drawer</b>Hold an app and carry it onto any page, or into a widget.</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3a7 7 0 0 0-7 7c0 5-2 6-2 7h18c0-1-2-2-2-7a7 7 0 0 0-7-7zM10 20a2 2 0 0 0 4 0"/></svg><span><b>Reminders that ring</b>They sound like an alarm, with Snooze and Dismiss, and automations run on time, battery, Wi-Fi and notifications.</span></li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section class="band">
+    <section class="band" id="plus">
         <div class="wrap">
-            <h2>Yugen Plus: the agent uses your phone</h2>
-            <p>In Yugen Plus you can ask the agent to do things in your other apps. It opens them, reads the screen and taps through the steps while a card shows each one, with a Stop button, and it asks you before anything that sends, pays or deletes.</p>
             <div class="plus">
-                <div class="phone"><img src="img/plus.webp" alt="The Yugen Plus screen with a task box, Do it and Make it, and a list of automations" loading="lazy" width="540" height="1200"></div>
-                <dl class="feats">
-                    <div><dt>Phone tasks</dt><dd>“Set an alarm for 6:30 called Gym.” “Text Riya that I’m running late.” “Find the cheapest cake on Zomato that delivers now.”</dd></div>
-                    <div><dt>Make something new</dt><dd>One sentence becomes a widget, an automation or a theme, and it waits in your inbox until you approve it.</dd></div>
-                    <div><dt>Smarter automations</dt><dd>Automations can start when you open an app, and they can ask the agent, such as summing up a bank alert into your spending notes.</dd></div>
-                    <div><dt>Suggestions</dt><dd>Twice a day or every three hours, the agent looks at how you use your phone and suggests a widget or an automation.</dd></div>
-                    <div><dt>Voice and memory</dt><dd>Speak a task instead of typing it, and the agent remembers what you told it, such as your gym days or your usual café.</dd></div>
-                </dl>
+                <div>
+                    <span class="badge"><i></i>Yugen Plus</span>
+                    <h2>The agent uses your phone for you</h2>
+                    <p class="intro" style="margin-bottom:0">Ask for something done in your other apps. The agent opens them, reads the screen and taps through each step while a card shows what it is doing, with a Stop button, and it asks you before anything that sends, pays or deletes.</p>
+                    <dl class="feats">
+                        <div><dt>Phone tasks</dt><dd><q>Set an alarm for 6:30 called Gym.</q> <q>Text Riya that I’m running late.</q> <q>Find the cheapest cake on Zomato that delivers now.</q></dd></div>
+                        <div><dt>Make something new</dt><dd>One sentence becomes a widget, an automation or a theme, and it waits in your inbox until you approve it.</dd></div>
+                        <div><dt>Smarter automations</dt><dd>They can start when you open an app, and they can ask the agent, such as adding a bank alert to your spending notes.</dd></div>
+                        <div><dt>Suggestions, voice and memory</dt><dd>The agent suggests widgets from how you use your phone, takes spoken tasks, and remembers what you told it.</dd></div>
+                    </dl>
+                </div>
+                <div class="device"><div class="screen"><img class="on" src="img/plus.webp" alt="The Yugen Plus screen with a task box and five automations" loading="lazy" width="540" height="1200"></div></div>
             </div>
         </div>
     </section>
@@ -75,19 +111,59 @@
     <section class="band">
         <div class="wrap">
             <h2>Two editions</h2>
-            <p>Both run the agent inside the app, in a small Linux system that downloads about 130 MB when you choose to set it up. Each agent needs your own account with its provider.</p>
             <div class="editions">
-                <div class="edition"><h3>Yugen</h3><p class="price">Free</p><ul><li>Widgets, pages and themes your agent builds</li><li>Editing by touch, and dragging apps from the drawer</li><li>Reminders and automations</li></ul></div>
-                <div class="edition"><h3>Yugen Plus</h3><p class="price">Paid</p><ul><li>Everything in Yugen</li><li>Phone tasks in your other apps, step by step, with a Stop button</li><li>Make something new from one sentence, with an inbox to approve it</li><li>Automations that start when an app opens or that ask the agent</li><li>Suggestions, voice input and a memory of what you told it</li></ul></div>
+                <div class="edition"><h3>Yugen</h3><p class="price">Free</p><ul><li>Widgets, pages and themes your agent builds</li><li>Editing by touch, and apps dragged from the drawer</li><li>Reminders and automations</li></ul></div>
+                <div class="edition"><h3>Yugen Plus</h3><p class="price">Paid</p><ul><li>Everything in Yugen</li><li>Phone tasks in your other apps, with a Stop button</li><li>Make something new, with an inbox to approve it</li><li>Automations that start when an app opens or ask the agent</li><li>Suggestions, voice input and memory</li></ul></div>
             </div>
+            <p class="fine">Both run the agent in a small Linux system inside the app, which downloads about 130 MB when you choose to set it up. Each agent needs your own account with its provider.</p>
         </div>
     </section>
 
     <div class="wrap">
         <footer class="foot">
-            <a href="privacy/">Privacy policy</a><a href="mailto:hello@byteinfer.ai">hello@byteinfer.ai</a>
-            <div class="made" style="margin-top:12px">Yugen is made by <a href="https://byteinfer.ai/">Byteinfer Labs</a>. © 2026</div>
+            <a href="privacy/">Privacy policy</a>
+            <span>hello@byteinfer.ai</span>
+            <span class="made">Made by <a href="https://byteinfer.ai/">Byteinfer Labs</a> · 2026</span>
         </footer>
     </div>
+
+    <script>
+    (function () {
+        var prompts = [
+            "",
+            "Make a widget that counts the glasses of water I drink today",
+            "Make a stopwatch widget with lap times",
+            "Switch the theme to Cyberpunk"
+        ];
+        var imgs = document.querySelectorAll('#screen img');
+        var typed = document.getElementById('typed');
+        var chips = document.querySelectorAll('.chips button');
+        var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var timer = null, auto = true;
+
+        function show(i) { imgs.forEach(function (im, k) { im.classList.toggle('on', k === i); }); }
+        function mark(i) { chips.forEach(function (c) { c.setAttribute('aria-pressed', String(+c.dataset.i === i)); }); }
+        // Types the request, then shows what the agent made; on its own it moves to the next one.
+        function play(i) {
+            clearTimeout(timer);
+            var text = prompts[i], n = 0;
+            mark(i);
+            if (still) { typed.textContent = text; show(i); return; }
+            show(0);
+            (function step() {
+                typed.textContent = text.slice(0, n);
+                if (n++ < text.length) { timer = setTimeout(step, 34); return; }
+                timer = setTimeout(function () {
+                    show(i);
+                    if (auto) timer = setTimeout(function () { play(i % 3 + 1); }, 4200);
+                }, 700);
+            })();
+        }
+        chips.forEach(function (c) { c.addEventListener('click', function () { auto = false; play(+c.dataset.i); }); });
+        typed.textContent = prompts[1];
+        mark(1);
+        if (still) play(1); else timer = setTimeout(function () { play(1); }, 1900);
+    })();
+    </script>
 </body>
 </html>
