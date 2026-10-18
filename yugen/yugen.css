@@ -181,3 +181,13 @@ footer.foot .made { margin-left: auto; }
   .plus .eyebrow .step { left: auto; }
   .bridge { padding-left: 20px !important; font-size: 18px; }
 }
+
+.editions { grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); }
+.edition.plus-ed { background: rgba(194,64,47,.07); position: relative; }
+.edition.plus-ed + .edition { background: transparent; }
+.edition.plus-ed li::before { border-color: var(--seal); background: var(--seal); }
+.edition.plus-ed + .edition li::before { border-color: var(--washi-3); background: transparent; }
+.edition.plus-ed h3 { font-size: 38px; }
+.pick { position: absolute; top: 28px; right: 28px; font-size: 13px; font-weight: 600; color: var(--washi); background: var(--seal); border-radius: 999px; padding: 4px 12px; }
+.edition .lite { color: var(--washi-2); margin: 0; font-size: 15px; }
+@media (max-width: 860px) { .editions { grid-template-columns: minmax(0, 1fr); } }
