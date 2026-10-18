@@ -14,7 +14,7 @@ html { background: var(--night); }
 body { margin: 0; background: var(--night); color: var(--washi); font-family: var(--body); font-size: 17px; line-height: 1.6; overflow-x: hidden; }
 a { color: var(--sky); }
 :focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 4px; }
-.wrap { max-width: 1140px; margin: 0 auto; padding-inline: 20px; }
+.wrap { max-width: 1280px; margin: 0 auto; padding-inline: 20px; }
 
 /* The sky: three slow glows behind everything, like the app's aurora. */
 .sky { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
@@ -59,7 +59,7 @@ a { color: var(--sky); }
 
 /* The live phone */
 .demo { display: grid; justify-items: center; gap: 18px; }
-.device { position: relative; width: min(330px, 78vw); aspect-ratio: 540 / 1200; border-radius: 40px; padding: 8px; background: linear-gradient(160deg, #2A2F45, #10131C); box-shadow: 0 40px 90px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.08); }
+.device { position: relative; width: min(420px, 86vw); aspect-ratio: 540 / 1200; border-radius: 40px; padding: 8px; background: linear-gradient(160deg, #2A2F45, #10131C); box-shadow: 0 40px 90px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.08); }
 .device .screen { position: relative; width: 100%; height: 100%; border-radius: 33px; overflow: hidden; background: var(--night-2); }
 .device img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s ease; }
 .device img.on { opacity: 1; }
@@ -81,9 +81,12 @@ a { color: var(--sky); }
 .eyebrow { font-family: var(--display); font-weight: 600; color: var(--seal); font-size: 18px; margin: 0 0 10px; }
 
 /* What people asked for: a staggered row of screens, each with its request. */
-.asked { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; align-items: start; }
+.asked { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 56px; align-items: start; }
+.asked figure { display: grid; justify-items: center; }
+.asked figure img { max-width: 440px; }
+.asked figcaption { max-width: 440px; width: 100%; }
 .asked figure { margin: 0; }
-.asked figure:nth-child(even) { margin-top: 64px; }
+.asked figure:nth-child(even) { margin-top: 120px; }
 .asked img { width: 100%; height: auto; display: block; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.45); }
 .asked figcaption { margin-top: 14px; font-size: 15px; color: var(--washi-2); }
 .asked q, .asked .src { display: block; font-family: var(--typed); font-size: 13px; color: var(--washi); quotes: "“" "”"; margin-bottom: 4px; }
@@ -92,7 +95,7 @@ a { color: var(--sky); }
 /* By hand: pictures and notes side by side. */
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
 .pic { display: flex; gap: 20px; justify-content: center; }
-.pic img { width: min(270px, 46%); height: auto; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+.pic img { width: min(380px, 48%); height: auto; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.45); }
 .pic img:nth-child(2) { margin-top: 48px; }
 .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
 .notes li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; color: var(--washi-2); }
@@ -108,7 +111,7 @@ a { color: var(--sky); }
 .feats dt { font-weight: 600; font-size: 18px; }
 .feats dd { margin: 0; color: var(--washi-2); }
 .feats dd q { font-family: var(--typed); font-size: 13.5px; color: var(--washi); }
-.plus .device { width: min(300px, 74vw); justify-self: center; }
+.plus .device { width: min(400px, 82vw); justify-self: center; }
 
 /* Editions */
 .editions { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--line); border-radius: 28px; overflow: hidden; }
@@ -140,11 +143,20 @@ footer.foot .made { margin-left: auto; }
 
 @media (max-width: 860px) {
   .hero, .split, .plus { grid-template-columns: minmax(0, 1fr); gap: 44px; }
-  .asked { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-  .asked figure:nth-child(even) { margin-top: 40px; }
+  .asked { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .asked figure:nth-child(even) { margin-top: 0; }
+  .asked figure img { max-width: min(420px, 100%); }
   .editions { grid-template-columns: minmax(0, 1fr); }
   .edition + .edition { border-left: 0; border-top: 1px solid var(--line); }
   .band { padding-block: 72px; }
   .kanji { font-size: 64px; }
   footer.foot .made { margin-left: 0; }
 }
+
+/* Any screenshot opens full size when tapped. */
+.zoomable { cursor: zoom-in; }
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(5,6,10,.92); display: grid; place-items: center; padding: 16px; cursor: zoom-out; }
+.lightbox[hidden] { display: none; }
+.lightbox img { max-height: 94vh; max-width: 100%; width: auto; height: auto; border-radius: 28px; box-shadow: 0 30px 90px rgba(0,0,0,.7); }
+.lightbox button { position: absolute; top: 16px; right: 16px; font: 600 15px var(--body); color: var(--washi); background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+.zoomhint { color: var(--washi-3); font-size: 14px; margin: -28px 0 32px; }

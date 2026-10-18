@@ -61,6 +61,7 @@
             <p class="eyebrow">What people asked for</p>
             <h2>One sentence, one widget</h2>
             <p class="intro">Claude Code made these on a phone from the request written under each one. The market heatmap comes with Yugen.</p>
+            <p class="zoomhint">Tap any screen to see it full size.</p>
             <div class="asked">
                 <figure><img src="img/agent.webp" alt="The agent card after making a water counter" loading="lazy" width="540" height="1200"><figcaption><q>Make a widget that counts the glasses of water I drink today</q>A counter with a goal of eight glasses that starts again each day.</figcaption></figure>
                 <figure><img src="img/page3.webp" alt="A page with a New Year countdown, a stopwatch and a focus timer" loading="lazy" width="540" height="1200"><figcaption><q>Make a stopwatch widget with lap times</q>It sits beside a New Year countdown and a focus timer, each made from its own request.</figcaption></figure>
@@ -127,7 +128,20 @@
         </footer>
     </div>
 
+    <div class="lightbox" id="lightbox" hidden role="dialog" aria-label="Screenshot"><button type="button">Close</button><img alt=""></div>
+
     <script>
+    (function () {
+        var box = document.getElementById('lightbox'), big = box.querySelector('img');
+        document.querySelectorAll('.asked img, .pic img, .device img, .plus img').forEach(function (im) {
+            im.classList.add('zoomable'); im.tabIndex = 0;
+            function open() { big.src = im.currentSrc || im.src; big.alt = im.alt; box.hidden = false; box.querySelector('button').focus(); }
+            im.addEventListener('click', open);
+            im.addEventListener('keydown', function (e) { if (e.key === 'Enter') open(); });
+        });
+        box.addEventListener('click', function () { box.hidden = true; });
+        addEventListener('keydown', function (e) { if (e.key === 'Escape') box.hidden = true; });
+    })();
     (function () {
         var prompts = [
             "",
