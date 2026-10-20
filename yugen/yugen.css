@@ -115,7 +115,7 @@ a { color: var(--sky); }
 
 /* Editions */
 .editions { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--line); border-radius: 28px; overflow: hidden; }
-.edition { padding: 36px; }
+.edition { padding: 36px; position: relative; }
 .edition + .edition { border-left: 1px solid var(--line); background: rgba(194,64,47,.05); }
 .edition h3 { font-family: var(--display); font-weight: 800; font-size: 30px; margin: 0; }
 .edition .price { color: var(--washi-3); margin: 4px 0 20px; }
@@ -191,3 +191,14 @@ footer.foot .made { margin-left: auto; }
 .pick { position: absolute; top: 28px; right: 28px; font-size: 13px; font-weight: 600; color: var(--washi); background: var(--seal); border-radius: 999px; padding: 4px 12px; }
 .edition .lite { color: var(--washi-2); margin: 0; font-size: 15px; }
 @media (max-width: 860px) { .editions { grid-template-columns: minmax(0, 1fr); } }
+
+/* Google Play, while the free app is the one to get: a light pill, and the Plus status beside it. */
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.play { display: inline-flex; align-items: center; gap: 10px; background: var(--washi); color: #0E1018; font-weight: 600; font-size: 15px;
+  border-radius: 999px; padding: 11px 20px; text-decoration: none; }
+.play::before { content: ""; width: 0; height: 0; border-left: 11px solid currentColor; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.play:hover { background: #fff; }
+.edition .play { margin-top: 24px; }
+.edition.free-ed { background: rgba(236,230,218,.04); position: relative; }
+.edition.free-ed li::before { border-color: var(--washi); background: var(--washi); }
+.pick.soon { background: transparent; border: 1px solid var(--line); color: var(--washi-3); }
