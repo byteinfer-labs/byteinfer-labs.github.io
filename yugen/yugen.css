@@ -95,8 +95,8 @@ a { color: var(--sky); }
 /* By hand: pictures and notes side by side. */
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
 .pic { display: flex; gap: 20px; justify-content: center; }
-.pic img { width: min(380px, 48%); height: auto; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.45); }
-.pic img:nth-child(2) { margin-top: 48px; }
+.pic img, .pic video { width: min(380px, 48%); height: auto; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+.pic > :nth-child(2) { margin-top: 48px; }
 .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
 .notes li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; color: var(--washi-2); }
 .notes li svg { width: 26px; height: 26px; color: var(--sky); margin-top: 2px; }
