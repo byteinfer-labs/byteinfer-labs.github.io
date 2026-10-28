@@ -6,11 +6,29 @@
     <title>Research | ByteInfer Labs</title>
     <meta name="description" content="ByteInfer Labs research: long-form write-ups on how neural accelerators work inside, one chip per series.">
     <script>try{var t=localStorage.getItem('byteinfer-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="../assets/fonts/inter-latin-v20.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/jetbrains-mono-latin-v24.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" type="image/svg+xml" href="../rune/brand/rune-favicon.svg">
     <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Keep the existing typography without a third-party CSS/font request chain. */
+        @font-face {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 400 800;
+            font-display: swap;
+            src: url("../assets/fonts/inter-latin-v20.woff2") format("woff2");
+        }
+        @font-face {
+            font-family: "JetBrains Mono";
+            font-style: normal;
+            font-weight: 400 600;
+            font-display: swap;
+            src: url("../assets/fonts/jetbrains-mono-latin-v24.woff2") format("woff2");
+        }
+        /* Small labels and citations need sufficient contrast on white. */
+        html:not([data-theme="dark"]) { --ink-3: #6E6E73; }
+    </style>
 </head>
 <body>
     <button id="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle light / dark">
@@ -21,7 +39,7 @@
 
     <nav class="topnav">
         <a href="../index.html" class="topnav-brand" aria-label="ByteInfer Labs home">
-            <img src="../flame-transparent.png" alt="" class="topnav-flame">
+            <img src="../assets/flame-nav-128.png" width="128" height="75" alt="" class="topnav-flame">
             <span class="brand-txt">ByteInfer Labs</span>
         </a>
         <div class="topnav-links">
@@ -70,6 +88,6 @@
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="../script.js" defer></script>
 </body>
 </html>
